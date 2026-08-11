@@ -78,12 +78,6 @@ window.ANKI = {
      "q": "According to Burkeman, what does the world do once you realize you're never going to sort your life out?"
     },
     {
-     "id": "1609d5bc8c42304d",
-     "loc": 35,
-     "theme": "mindfulness",
-     "text": "This is a book about how the world opens up once you realize you’re never going to sort your life out."
-    },
-    {
      "id": "757da6f62b5f518c",
      "loc": 40,
      "theme": "mindfulness",
@@ -105,12 +99,6 @@ window.ANKI = {
      "q": "How does Zen teacher Mel Weitsman define our suffering?"
     },
     {
-     "id": "3ac4e26b8c14cadf",
-     "loc": 274,
-     "theme": "mindfulness",
-     "text": "To be human, according to this analogy, is to occupy a little one-person kayak, borne along on the river of time towards your inevitable yet unpredictable death. It’s a thrilling situation, but also an intensely vulnerable one: you’re at the mercy of the current, and all you can really do is to stay alert, steering as best you can, reacting as wisely and gracefully as possible to whatever arises from moment to moment."
-    },
-    {
      "id": "554203c827107575",
      "loc": 277,
      "theme": "ideas",
@@ -124,23 +112,11 @@ window.ANKI = {
      "text": "To be human, according to this analogy, is to occupy a little one-person kayak, borne along on the river of time towards your inevitable yet unpredictable death. It’s a thrilling situation, but also an intensely vulnerable one: you’re at the mercy of the current, and all you can really do is to stay alert, steering as best you can, reacting as wisely and gracefully as possible to whatever arises from moment to moment."
     },
     {
-     "id": "cd44e3feb722cf60",
-     "loc": 285,
-     "theme": "ideas",
-     "text": "The German philosopher Martin Heidegger described this state of affairs using the word Geworfenheit, or ‘thrownness,’ a suitably awkward word for an awkward predicament: merely to come into existence is to find oneself thrown into a time and place you didn’t choose, with a personality you didn’t pick, and with your time flowing away beneath you, minute by minute, whether you like it or not."
-    },
-    {
      "id": "a85a60826727cf78",
      "loc": 288,
      "theme": "mindfulness",
      "text": "The challenge, then, is simple, though for many of us also excruciating: What’s one thing you could do today – or tomorrow at the latest, if you’re reading this at night – that would constitute a good-enough use of a chunk of your finite time, and that you’d actually be willing to do?",
      "q": "What single question does Burkeman pose as the challenge for making good-enough use of your finite time?"
-    },
-    {
-     "id": "57b951d0408fed29",
-     "loc": 297,
-     "theme": "mindfulness",
-     "text": "The challenge, then, is simple, though for many of us also excruciating: What’s one thing you could do today – or tomorrow at the latest, if you’re reading this at night – that would constitute a good-enough use of a chunk of your finite time, and that you’d actually be willing to do?"
     },
     {
      "id": "73ffa3ba552666a8",
@@ -162,24 +138,6 @@ window.ANKI = {
      "theme": "ideas",
      "text": "The conservative American economist Thomas Sowell summed things up with a bleakness I appreciate, insisting that there are no solutions, only trade-offs. The only two questions, at any moment of choice in life, is what the price is, and whether or not it’s worth paying.",
      "q": "What does Thomas Sowell claim exists instead of solutions, and what two questions matter at any moment of choice?"
-    },
-    {
-     "id": "66f16444a1d200e3",
-     "loc": 335,
-     "theme": "ideas",
-     "text": "The astounding reality – in the words of Sheldon B. Kopp, a genial and brilliant American psychotherapist who died in 1999 – is that you’re pretty much free to do whatever you like. You need only face the consequences."
-    },
-    {
-     "id": "bcf481011aa8f897",
-     "loc": 340,
-     "theme": "ideas",
-     "text": "Freedom isn’t a matter of somehow wriggling free of the costs of your choice – that’s never an option – but of realizing, as Kopp points out, that nothing stops you doing anything at all, so long as you’re willing to pay those costs."
-    },
-    {
-     "id": "45d7546a673afe0a",
-     "loc": 345,
-     "theme": "ideas",
-     "text": "The conservative American economist Thomas Sowell summed things up with a bleakness I appreciate, insisting that there are no solutions, only trade-offs. The only two questions, at any moment of choice in life, is what the price is, and whether or not it’s worth paying."
     }
    ]
   },
