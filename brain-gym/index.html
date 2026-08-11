@@ -120,43 +120,55 @@
     .bar h1 { margin: 0; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; }
     .bar .pos { color: var(--muted-foreground); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
 
+    /* A segmented control rather than a scrolling row of pills: the decks are
+       laid into equal columns sized to the screen, so nothing overflows and
+       nothing needs a fade to hint at what is hidden. --n is the segment count,
+       set from the deck, so a deck with fewer themes gets wider segments. */
     .pills {
-      display: flex; gap: 0.5rem;
-      overflow-x: auto; scrollbar-width: none;
-      overscroll-behavior-x: contain;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x proximity;
-      padding: 0.85rem 1rem 0.95rem;
-      margin: 0 -1rem;
-      -webkit-mask-image: linear-gradient(to right, transparent, #000 1rem, #000 calc(100% - 2rem), transparent);
-      mask-image: linear-gradient(to right, transparent, #000 1rem, #000 calc(100% - 2rem), transparent);
+      display: grid;
+      /* min-content keeps a long theme name whole — equal columns would clip
+         "Mindfulness" — while 1fr shares the leftover space with the rest. */
+      grid-template-columns: repeat(var(--n, 5), minmax(min-content, 1fr));
+      gap: 2px;
+      margin: 0.8rem 0 0.9rem;
+      padding: 3px;
+      background: var(--muted);
+      border-radius: calc(var(--radius) - 2px);
+      /* Backstop only. Five segments fit every phone; a six-segment deck of
+         long names on a 320px screen would not, and the control scrolling is
+         far better than the whole page scrolling sideways. */
+      overflow-x: auto;
+      scrollbar-width: none;
     }
     .pills::-webkit-scrollbar { display: none; }
+    /* Small phones get slightly smaller type so the backstop stays unused. */
+    @media (max-width: 360px) {
+      .pill { font-size: 0.66rem; padding: 0 0.1rem; }
+      .pill .n { font-size: 0.58rem; }
+    }
     .pill {
-      flex: 0 0 auto;
-      scroll-snap-align: start;
-      border: 1px solid var(--input);
-      background: var(--background); color: var(--foreground);
-      border-radius: 999px;
-      /* 2.75rem = the 44px minimum touch target on a phone; the old 2rem was
-         both under it and left the labels boxed in against the border. */
-      min-height: 2.75rem;
-      padding: 0 0.95rem;
-      font-size: 0.85rem; font-weight: 550; line-height: 1;
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      touch-action: pan-x;
-    }
-    .pill .n {
+      min-height: 2.4rem;
+      padding: 0 0.2rem;
+      border: 0;
+      border-radius: calc(var(--radius) - 5px);
+      background: transparent;
       color: var(--muted-foreground);
-      font-size: 0.72rem; font-variant-numeric: tabular-nums;
-      /* A hairline keeps the count from reading as part of the label. */
-      padding-left: 0.5rem;
-      border-left: 1px solid var(--border);
+      font-size: 0.72rem; font-weight: 600; line-height: 1.15;
+      display: grid; place-items: center; gap: 1px;
     }
-    .pill[aria-pressed="true"] { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
-    .pill[aria-pressed="true"] .n {
-      color: color-mix(in srgb, var(--primary-foreground) 70%, transparent);
-      border-left-color: color-mix(in srgb, var(--primary-foreground) 30%, transparent);
+    /* No ellipsis here on purpose: `overflow: hidden` reports a min-content
+       width of zero, which collapses the min-content track above and clips the
+       longest theme name. Labels come from a fixed list in build_deck.py and
+       are short enough to set whole. */
+    .pill .t { white-space: nowrap; }
+    .pill .n {
+      font-size: 0.62rem; font-weight: 500;
+      opacity: 0.8; font-variant-numeric: tabular-nums;
+    }
+    .pill[aria-pressed="true"] {
+      background: var(--background);
+      color: var(--foreground);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
     }
 
     .progress { height: 4px; border-radius: 999px; background: var(--muted); overflow: hidden; }
@@ -229,6 +241,13 @@
     const THEME = Object.fromEntries(themes.map(t => [t.id, t.label]));
     const app = document.getElementById("app");
     const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+    // Kindle titles carry the whole cover: "Expectations Investing: Reading
+    // Stock Prices for Better Returns, Revised and Updated (Heilbrunn Center
+    // for Graham & Dodd Investing Series)". Set whole, that runs to four lines
+    // above the question and buries it. Everything up to the subtitle is what
+    // anyone actually calls the book.
+    const shortTitle = (t) => (String(t).split(/[:(]/)[0].trim() || String(t));
 
     // Only highlights aligned with their book's core subject are reviewable.
     // build_deck.py already drops the rest, so a generated deck carries no
@@ -389,12 +408,12 @@
     }
 
     function pillsHtml() {
-      const pills = [
-        `<button class="pill" aria-pressed="${activeTheme === "all"}" data-theme="all">All <span class="n">${dueCards("all").length}</span></button>`,
-        ...themes.map(t =>
-          `<button class="pill" aria-pressed="${activeTheme === t.id}" data-theme="${t.id}">${esc(t.label)} <span class="n">${dueCards(t.id).length}</span></button>`)
-      ].join("");
-      return `<div class="pills">${pills}</div>`;
+      const decks = [{ id: "all", label: "All" }, ...themes];
+      const pills = decks.map(d =>
+        `<button class="pill" aria-pressed="${activeTheme === d.id}" data-theme="${d.id}" title="${esc(d.label)}">` +
+        `<span class="t">${esc(d.label)}</span>` +
+        `<span class="n">${dueCards(d.id).length}</span></button>`).join("");
+      return `<div class="pills" role="group" aria-label="Deck" style="--n:${decks.length}">${pills}</div>`;
     }
 
     function headerHtml(pos) {
@@ -431,7 +450,7 @@
       const pct = Math.round(100 * s.done / s.total);
 
       const front = isQ
-        ? `<span class="prompt-label">Recall · ${esc(c.book.title)}</span>
+        ? `<span class="prompt-label">Recall · ${esc(shortTitle(c.book.title))}</span>
            <p class="question">${esc(c.q)}</p>`
         : `<span class="prompt-label">Which book is this from — and why did you save it?</span>
            <p class="quote">${esc(c.text)}</p>`;
@@ -439,7 +458,7 @@
       const back = !s.revealed ? "" : `
         <div class="answer">
           ${isQ ? `<p class="quote">${esc(c.text)}</p>` : ""}
-          <p class="src-line"><span class="bt">${esc(c.book.title)}</span> — ${esc(c.book.author)} · loc. ${c.loc} · <span class="badge">${esc(THEME[c.theme])}</span></p>
+          <p class="src-line"><span class="bt">${esc(shortTitle(c.book.title))}</span> — ${esc(c.book.author)} · loc. ${c.loc} · <span class="badge">${esc(THEME[c.theme])}</span></p>
           ${c.note ? `<p class="note-box">${esc(c.note)}</p>` : ""}
         </div>`;
 
