@@ -227,42 +227,117 @@
       .filter(c => c.aligned)
       .sort((a, b) => hash(a.id) - hash(b.id));
 
-    // ---- Spaced repetition (SM-2, day granularity), persisted locally ----
-    const SRS_KEY = "brain-gym.srs.v1";
-    const DAY = 86400e3;
-    const today = () => Math.floor(Date.now() / DAY);
+    // ---- Spaced repetition: SM-2 with Anki's learning steps ----
+    //
+    // Day-granularity alone collapses Hard and Good into the same "1d" on a
+    // brand-new card, which makes the two buttons indistinguishable exactly
+    // when you use them most. Real Anki avoids that by walking new cards
+    // through sub-day learning steps first, so every grade lands somewhere
+    // different. Due times are therefore timestamps, not day numbers.
+    //
+    // Card states: lrn (learning), rev (review), rel (relearning after a lapse).
+    const SRS_KEY = "brain-gym.srs.v2";
+    const MIN = 60e3, DAY = 864e5;
+    const LEARN_STEPS = [1 * MIN, 10 * MIN];   // new card path
+    const RELEARN_STEPS = [10 * MIN];          // after a lapse
+    const GRAD_IVL = 1;      // days, graduating with Good
+    const EASY_IVL = 4;      // days, graduating straight out with Easy
+    const LAPSE_IVL = 1;     // days, where a lapsed card restarts
+    const HARD_FACTOR = 1.2, EASY_BONUS = 1.3, MIN_EF = 1.3, START_EF = 2.5;
+
     const loadSrs = () => { try { return JSON.parse(localStorage.getItem(SRS_KEY)) || {}; } catch { return {}; } };
     const saveSrs = s => localStorage.setItem(SRS_KEY, JSON.stringify(s));
     let srs = loadSrs();
 
-    // Returns the next interval in days for a grade without committing it.
-    function nextIvl(st, g) {
-      const ef = st ? st.ef : 2.5, ivl = st ? st.ivl : 0;
-      if (g === 0) return 0;
-      if (!ivl) return g === 3 ? 4 : 1;                     // graduating
-      if (g === 1) return Math.max(ivl + 1, Math.round(ivl * 1.2));
-      if (g === 2) return Math.round(ivl * ef);
-      return Math.round(ivl * ef * 1.3);
-    }
-    function applyGrade(id, g) {
-      const st = srs[id] || { ef: 2.5, ivl: 0, reps: 0 };
-      if (g === 0) { st.ef = Math.max(1.3, st.ef - 0.2); st.ivl = 0; st.reps = 0; }
-      else {
-        st.ivl = nextIvl(st, g); st.reps += 1;
-        if (g === 1) st.ef = Math.max(1.3, st.ef - 0.15);
-        if (g === 3) st.ef = st.ef + 0.15;
+    const freshState = () => ({ st: "lrn", step: 0, ef: START_EF, ivl: 0, due: 0, reps: 0, lapses: 0 });
+
+    // Pure: given a state and a grade, return the state that would follow.
+    // Both the grade buttons (for their labels) and applyGrade use this, so a
+    // button can never promise an interval the scheduler won't deliver.
+    function schedule(prev, g, now) {
+      const s = { ...(prev || freshState()) };
+      const days = (n) => { s.due = now + n * DAY; s.ivl = n; };
+      const mins = (ms) => { s.due = now + ms; };
+
+      if (s.st === "lrn") {
+        if (g === 0) { s.step = 0; mins(LEARN_STEPS[0]); }
+        else if (g === 1) {
+          // Hard repeats the current step; on the first step Anki uses the
+          // average of step one and two, which is what makes it ~6m not 1m.
+          mins(s.step === 0 ? (LEARN_STEPS[0] + LEARN_STEPS[1]) / 2 : LEARN_STEPS[s.step]);
+        } else if (g === 2) {
+          if (s.step + 1 >= LEARN_STEPS.length) { s.st = "rev"; s.reps += 1; days(GRAD_IVL); }
+          else { s.step += 1; mins(LEARN_STEPS[s.step]); }
+        } else { s.st = "rev"; s.reps += 1; days(EASY_IVL); }
+        return s;
       }
-      st.due = today() + st.ivl;
-      srs[id] = st; saveSrs(srs);
+
+      if (s.st === "rel") {
+        if (g <= 1) mins(RELEARN_STEPS[0]);
+        else if (g === 2) { s.st = "rev"; s.reps += 1; days(Math.max(1, s.ivl || LAPSE_IVL)); }
+        else { s.st = "rev"; s.reps += 1; days(Math.max(1, s.ivl || LAPSE_IVL) + 1); }
+        return s;
+      }
+
+      // Review card.
+      const ivl = s.ivl || GRAD_IVL;
+      if (g === 0) {
+        s.st = "rel"; s.step = 0; s.lapses += 1;
+        s.ef = Math.max(MIN_EF, s.ef - 0.2);
+        s.ivl = LAPSE_IVL;                       // where it lands once relearned
+        s.due = now + RELEARN_STEPS[0];
+        return s;
+      }
+      // Compute all three from the pre-grade ease, then force them strictly
+      // apart. Rounding alone lets Good and Easy collide on short intervals
+      // (at ivl 1 both round to 3d), which hides the difference between the
+      // buttons on exactly the young cards where it matters most.
+      s.reps += 1;
+      const hardI = Math.max(ivl + 1, Math.round(ivl * HARD_FACTOR));
+      const goodI = Math.max(hardI + 1, Math.round(ivl * s.ef));
+      const easyI = Math.max(goodI + 1, Math.round(ivl * s.ef * EASY_BONUS));
+      if (g === 1) { s.ef = Math.max(MIN_EF, s.ef - 0.15); days(hardI); }
+      else if (g === 2) { days(goodI); }
+      else { s.ef += 0.15; days(easyI); }
+      return s;
     }
+
+    function applyGrade(id, g) {
+      srs[id] = schedule(srs[id], g, Date.now());
+      saveSrs(srs);
+      return srs[id];
+    }
+
+    // Label for a grade button: how far away that choice puts the card.
+    function delayLabel(prev, g) {
+      const now = Date.now();
+      return fmtDelay(schedule(prev, g, now).due - now);
+    }
+    // Months and years carry a decimal (Anki does the same): rounding 33d and
+    // 42d both to "1mo" would make two different intervals read identically.
+    const trim = (n) => n.toFixed(1).replace(/\.0$/, "");
+    function fmtDelay(ms) {
+      const m = ms / MIN;
+      if (m < 1) return "<1m";
+      if (m < 60) return Math.round(m) + "m";
+      const h = m / 60;
+      if (h < 24) return Math.round(h) + "h";
+      const d = h / 24;
+      if (d < 30) return Math.round(d) + "d";
+      if (d < 365) return trim(d / 30) + "mo";
+      return trim(d / 365) + "y";
+    }
+
     const NEW_PER_SESSION = 20;
+    // A card counts as due when its timestamp has passed; cards never seen
+    // are drip-fed at NEW_PER_SESSION per deck.
     function dueCards(theme) {
+      const now = Date.now();
       const pool = cards.filter(c => theme === "all" || c.theme === theme);
-      const due = pool.filter(c => srs[c.id] && srs[c.id].due <= today());
+      const due = pool.filter(c => srs[c.id] && srs[c.id].due <= now);
       const fresh = pool.filter(c => !srs[c.id]).slice(0, NEW_PER_SESSION);
       return [...due, ...fresh];
     }
-    const fmtIvl = d => d === 0 ? "now" : d < 30 ? d + "d" : d < 365 ? Math.round(d / 30) + "mo" : (d / 365).toFixed(1) + "y";
 
     // ---- App state: the review IS the app ----
     let activeTheme = "all";
@@ -334,7 +409,7 @@
         </div>`;
 
       const grades = [["Again", 0], ["Hard", 1], ["Good", 2], ["Easy", 3]].map(([label, g]) =>
-        `<button class="grade g${g}" data-g="${g}"><b>${label}</b><span>${fmtIvl(nextIvl(st, g))}</span></button>`).join("");
+        `<button class="grade g${g}" data-g="${g}"><b>${label}</b><span>${delayLabel(st, g)}</span></button>`).join("");
 
       app.innerHTML = `
         ${headerHtml(`${s.done + 1} / ${s.total}${st ? "" : " · new"}`)}
@@ -349,10 +424,13 @@
       const rv = document.getElementById("reveal");
       if (rv) rv.addEventListener("click", () => { s.revealed = true; render(); });
       document.querySelectorAll(".grade").forEach(b => b.addEventListener("click", () => {
-        const g = Number(b.dataset.g);
-        applyGrade(c.id, g);
+        const next = applyGrade(c.id, Number(b.dataset.g));
         s.queue.shift();
-        if (g === 0) s.queue.push(c); else s.done += 1;
+        // A card that graduated to review is finished for today. One still in
+        // a learning step comes back later this session, a few cards down, so
+        // you get spacing rather than an immediate re-show.
+        if (next.st === "rev") s.done += 1;
+        else s.queue.splice(Math.min(3, s.queue.length), 0, c);
         s.revealed = false;
         render();
       }));
