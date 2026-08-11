@@ -313,19 +313,23 @@
       const now = Date.now();
       return fmtDelay(schedule(prev, g, now).due - now);
     }
-    // Months and years carry a decimal (Anki does the same): rounding 33d and
-    // 42d both to "1mo" would make two different intervals read identically.
-    const trim = (n) => n.toFixed(1).replace(/\.0$/, "");
+    // Ported from Anki's timespan.rs: seconds, minutes and days round to whole
+    // numbers while hours, months and years carry one decimal. The decimal is
+    // load-bearing — without it 33d and 42d would both read "1mo" and two
+    // genuinely different intervals would look identical on the buttons.
+    const YEAR_D = 365, MONTH_D = 365 / 12;
+    const dec = (n) => (Math.round(n * 10) / 10).toFixed(1).replace(/\.0$/, "");
     function fmtDelay(ms) {
-      const m = ms / MIN;
-      if (m < 1) return "<1m";
+      const s = ms / 1000;
+      if (s < 60) return Math.round(s) + "s";
+      const m = s / 60;
       if (m < 60) return Math.round(m) + "m";
       const h = m / 60;
-      if (h < 24) return Math.round(h) + "h";
+      if (h < 24) return dec(h) + "h";
       const d = h / 24;
-      if (d < 30) return Math.round(d) + "d";
-      if (d < 365) return trim(d / 30) + "mo";
-      return trim(d / 365) + "y";
+      if (d < MONTH_D) return Math.round(d) + "d";
+      if (d < YEAR_D) return dec(d / MONTH_D) + "mo";
+      return dec(d / YEAR_D) + "y";
     }
 
     const NEW_PER_SESSION = 20;
