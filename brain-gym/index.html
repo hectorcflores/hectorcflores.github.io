@@ -230,12 +230,14 @@
     const app = document.getElementById("app");
     const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-    // Only highlights aligned with the source book's core subject enter the
-    // deck — the classifier pass would enforce this upstream. Deterministic
-    // shuffle (hash of id) so new cards mix books but stay stable.
+    // Only highlights aligned with their book's core subject are reviewable.
+    // build_deck.py already drops the rest, so a generated deck carries no
+    // `aligned` field at all; absent therefore has to mean included, or a real
+    // deck filters itself down to nothing. Deterministic shuffle (hash of id)
+    // so new cards mix books but stay stable between visits.
     const hash = s => { let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; };
     const cards = books.flatMap(b => b.highlights.map(h => ({ ...h, book: b })))
-      .filter(c => c.aligned)
+      .filter(c => c.aligned !== false)
       .sort((a, b) => hash(a.id) - hash(b.id));
 
     // ---- Spaced repetition: SM-2 with Anki's learning steps ----
