@@ -2,12 +2,12 @@
 window.ANKI = {
  "themes": [
   {
-   "id": "investing",
-   "label": "Investing"
-  },
-  {
    "id": "work",
    "label": "Work"
+  },
+  {
+   "id": "health",
+   "label": "Health"
   },
   {
    "id": "ideas",
@@ -16,9 +16,152 @@ window.ANKI = {
   {
    "id": "mindfulness",
    "label": "Mindfulness"
+  },
+  {
+   "id": "investing",
+   "label": "Investing"
   }
  ],
  "books": [
+  {
+   "id": "ciudad-abierta-narrativa-del-acantilado-no-31-spanish-edition--teju-cole-and-marcelo-cohen-de-levis",
+   "title": "Ciudad abierta (Narrativa del Acantilado nº 31) (Spanish Edition)",
+   "author": "Teju Cole and Marcelo Cohen de Levis",
+   "subject": "a psychiatrist's solitary walks through New York and the memories, history and identities they stir",
+   "total": 12,
+   "highlights": [
+    {
+     "id": "2ab1d794a6bd7f13",
+     "loc": 24,
+     "theme": "mindfulness",
+     "text": "Y así, cuando el otoño pasado empecé a dar largos paseos vespertinos, Morning Heights me pareció un lugar cómodo desde donde internarme en la ciudad."
+    },
+    {
+     "id": "4a973673fa8ccaef",
+     "loc": 27,
+     "theme": "mindfulness",
+     "text": "Estos paseos, contrapunto a mis ajetreados días en el hospital, se dilataban constantemente y, como cada vez se extendían más, a menudo me encontraba muy lejos de casa bien avanzada la noche y por fuerza tenía que volver en metro. De este modo, al comienzo del último año de mi beca de psiquiatría, Nueva York fue tramándose en mi vida a ritmo de caminata.",
+     "q": "¿Cómo describe el narrador la manera en que Nueva York fue entrando en su vida al comienzo del último año de su beca de psiquiatría?"
+    },
+    {
+     "id": "aad6217e5590ad45",
+     "loc": 74,
+     "theme": "mindfulness",
+     "text": "meses de prácticas de residencia, tres años antes. Una noche sencillamente seguí andando más y más, sin parar, hasta la calle Houston, una distancia de unos diez kilómetros, y en un estado de fatiga desorientada me encontré pugnando por mantenerme en pie. Esa noche volví a casa en metro y, en vez de dormirme enseguida, estuve tendido en la cama, demasiado exhausto para liberarme de la vigilia, repasando a oscuras los numerosos incidentes y visiones que había tenido mientras vagaba, disponiendo cada encuentro como un niño que juega con bloques de madera, tratando de dilucidar dónde encajaban, cuál era el sitio de cada uno. Cada barrio de la ciudad parecía de una sustancia distinta, cada uno tenía una presión atmosférica diferente, su propia carga sicológica: las luces brillantes y las tiendas cerradas, los edificios de viviendas y los hoteles de lujo, las escaleras de incendio y los parques."
+    },
+    {
+     "id": "086c6f95489eb174",
+     "loc": 424,
+     "theme": "ideas",
+     "text": "Recordaba cuántas horas había pasado en casa de mis primos viendo una película titulada Triunfo y caída de Idi Amin. Allí no se escatimaban detalles para presentar la crueldad, la demencia y la mera exaltación de aquel hombre. Por entonces yo tendría siete u ocho años, y las imágenes de gente acribillada y embutida en maleteros de coches, o decapitada y almacenada en frigoríficos, se me habían quedado grabadas. Eran auténticamente estremecedoras porque, al contrario que en las sangrientas películas estadounidenses de guerra de las que yo también disfrutaba en las largas vacaciones de la escuela, las víctimas de Triunfo y caída, con sus trajes safari, su pelo afro y sus frentes brillantes, se parecían a nuestros padres y nuestros tíos. Las ciudades en donde se representaba aquel desastre eran como la nuestra y los coches tiroteados eran los mismos modelos que veíamos a nuestro alrededor.",
+     "q": "¿Por qué las imágenes de la película Triunfo y caída de Idi Amin resultaban más estremecedoras para el narrador que las películas bélicas estadounidenses?"
+    },
+    {
+     "id": "9d03054eacd7060b",
+     "loc": 511,
+     "theme": "mindfulness",
+     "text": "El torrente había envuelto el parque en una atmósfera primordial, como si se acercara el diluvio del fin de mundo, y Manhattan aparecía como debió de ser en 1920 o, si uno estaba bastante lejos de los edificios más altos, mucho tiempo antes."
+    },
+    {
+     "id": "42cd54807201ab28",
+     "loc": 750,
+     "theme": "ideas",
+     "text": "Y otra vez el espacio vacío que, ahora lo veía y tuve que admitir, eran las obvias ruinas del World Trade Center. El lugar se había vuelto una metonimia del desastre: me acordé de que una vez un turista me había preguntado cómo llegar al 11-S: no al lugar de los acontecimientos del 11-S sino al 11-S mismo, la fecha petrificada en los escombros.",
+     "q": "¿Cómo ilustra el narrador que el 11-S se había vuelto una metonimia del desastre mediante la pregunta de un turista?"
+    },
+    {
+     "id": "05f681fdece364ee",
+     "loc": 786,
+     "theme": "ideas",
+     "text": "Ellis Island era un símbolo sobre todo para los refugiados europeos. Los negros, «nosotros los negros», habíamos entrado por puertos más duros: esto sólo podía admitirlo ahora que estaba menos impaciente, era lo que el taxista había querido decir. Éste era el reconocimiento que, a su brusca manera, quería de cada «hermano» que encontraba.",
+     "q": "Según el narrador, ¿por qué Ellis Island era un símbolo sobre todo para los refugiados europeos y no para los negros?"
+    },
+    {
+     "id": "6a71b63567cecf2b",
+     "loc": 925,
+     "theme": "ideas",
+     "text": "Era un hombre bien educado, no había vacilaciones en su inglés y yo lo dejé hablar sin interrumpirlo. Bajó un poco la voz, se inclinó hacia el vidrio y dijo que en su infancia América había sido un nombre nunca muy lejano. Tanto en la escuela como en casa le habían enseñado que entre Liberia y América había una relación especial, parecida a la que hay entre un tío y su sobrino favorito. Hasta en los nombres había una semejanza: Liberia, América; siete letras cada una, cuatro de ellas compartidas.",
+     "q": "¿Qué relación especial entre Liberia y América describía el hombre, y qué semejanza señalaba en sus nombres?"
+    }
+   ]
+  },
+  {
+   "id": "early-retirement-extreme-a-philosophical-and-practical-guide-to-financial-indepe--jacob-lund-fisker-ann-beaver-and-zev-averbach",
+   "title": "Early Retirement Extreme: A philosophical and practical guide to financial independence",
+   "author": "Jacob Lund Fisker, Ann Beaver, and Zev Averbach",
+   "subject": "achieving financial independence and early retirement through frugal, self-reliant living and a philosophical rethinking of consumerism",
+   "total": 1,
+   "highlights": [
+    {
+     "id": "b53eb5e790dfe7d1",
+     "loc": 326,
+     "theme": "mindfulness",
+     "text": "What will your legacy be--what you owned or who you were?"
+    }
+   ]
+  },
+  {
+   "id": "el-circuito-interior-una-cronica-de-la-ciudad-de-mexico-el-cuarto-de-las-maravil--francisco-goldman-juan-antonio-montiel-raul-ortiz-y-ortiz-elizabeth-flores-marti",
+   "title": "El circuito interior. Una crónica de la ciudad de México (El Cuarto de las Maravillas) (Spanish Edition)",
+   "author": "Francisco Goldman, Juan Antonio Montiel, Raúl Ortiz y Ortíz, Elizabeth Flores, Martín Lendínez, Miguel Temprano García, and Nuria Morgado",
+   "subject": "the author's grief-driven exploration of Mexico City after his wife's death",
+   "total": 11,
+   "highlights": [
+    {
+     "id": "7de779d7efcca219",
+     "loc": 127,
+     "theme": "mindfulness",
+     "text": "Aunque suene ilógico, en aquel momento sentía que todo aquello debía estar relacionado con alguna clase de problema o de enigma que solo podría solucionarse en la Ciudad de México o en mi modo de relacionarme con ella. Muchas veces pensé, por ejemplo, que lo que tenía que hacer era irme de ahí y empezar de nuevo en otro sitio, algún lugar en el que no hubiera vivido nunca antes, libre de recuerdos y de reminiscencias de Aura, donde me fuera más fácil escapar de mi papel de viudo público y privado al mismo tiempo. Sin embargo, cuando volvía a pensarlo siempre concluía que irme era inconcebible, y que la solución probablemente fuera quedarme; y no solo quedarme, sino ir más allá y aferrarme con más fuerza a ese lugar que había estado tentado a abandonar: quizás ésa fuera la manera de aprender a vivir en el DF sin Aura.",
+     "q": "¿A qué conclusión llegó el autor sobre irse o quedarse en el DF tras la muerte de Aura?"
+    },
+    {
+     "id": "e17f0affd64e53ff",
+     "loc": 155,
+     "theme": "mindfulness",
+     "text": "¿y si mi plan no era sino más de lo mismo: otro ritual relacionado con mi duelo, una simple maniobra –a través de un performance muy del gusto de Aura– para dar rienda suelta al deseo de explorar las calles donde ella había vivido su infancia; recorrer su ciudad tal como me habría gustado recorrer con los dedos sus labios, sus ojos, su cara?"
+    },
+    {
+     "id": "9e0acd2f83d61f4a",
+     "loc": 179,
+     "theme": "ideas",
+     "text": "La Guía Roji también sugiere una especie de infinito borgiano: un denso caos que en realidad posee un orden, aunque incluso aquellos que pasan la vida explorando la ciudad solo pueden percibirlo vagamente.",
+     "q": "¿Qué clase de orden borgiano sugiere la Guía Roji según el autor?"
+    },
+    {
+     "id": "68aff3601941bb6d",
+     "loc": 197,
+     "theme": "ideas",
+     "text": "Cada vez que hojeo las páginas de mi Guía Roji, me gusta dejar caer el dedo, al azar, sobre una de ellas, y después entornar los ojos y mirar de cerca para descubrir, en letra pequeñísima, el nombre de la calle: ahora mismo, Metalúrgicos, en el mapa de la página 133, en la colonia Trabajadores del Hierro (jamás la había oído nombrar)."
+    },
+    {
+     "id": "f90399529e33f65c",
+     "loc": 207,
+     "theme": "ideas",
+     "text": "Ése es el juego que me inventé: para descubrirlo, tenía que ir manejando hasta ahí. La idea era usar la Guía Roji más o menos como se usaría el I Ching: abrirla en cualquier página, señalar al azar con el dedo, con los ojos cerrados, e intentar luego ir manejando hasta el lugar elegido. Un juego de azar y destino (si no de Destino).",
+     "q": "¿En qué consiste el juego que el autor se inventó con la Guía Roji, usándola como el I Ching?"
+    },
+    {
+     "id": "b282cf2599e6eda1",
+     "loc": 243,
+     "theme": "ideas",
+     "text": "Entre otros factores, una docena de años de liderazgo político aceptablemente progresista y enérgico en el DF –continué– lo habían convertido en una ciudad vibrante, relativamente próspera y particularmente tolerante. Pese a seguir lastrada por la pobreza y otros problemas, y a ser absolutamente idiosincrásica, era una gran ciudad global, incomparable con ninguna otra. Mucha gente dice que Buenos Aires parece una ciudad europea, ¿pero qué otra ciudad del mundo se parece al DF? Ninguna.",
+     "q": "¿Qué factores, según el autor, habían convertido al DF en una ciudad vibrante y particularmente tolerante?"
+    },
+    {
+     "id": "451d6b083f5418d2",
+     "loc": 488,
+     "theme": "ideas",
+     "text": "Era 1995, de modo que no me tocó vivir nada parecido al ambiente que Daniel Hernández evoca en su libro de memorias El bajón y el delirio, donde narra su experiencia con las «tribus urbanas» de la ciudad en la década siguiente; sin embargo, también viví lo mío."
+    },
+    {
+     "id": "e8b6f70fbde451d5",
+     "loc": 498,
+     "theme": "ideas",
+     "text": "La avenida Ámsterdam es un largo óvalo construido sobre una pista de carreras de caballos que el Jockey Club de México levantó, a principios del siglo XX, en unos terrenos propiedad de la condesa de Miravalle, que era dueña de todas las tierras en varios kilómetros a la redonda; de ahí el nombre oficial del barrio: colonia Hipódromo Condesa.",
+     "q": "¿Sobre qué se construyó la avenida Ámsterdam y de dónde viene el nombre de la colonia Hipódromo Condesa?"
+    }
+   ]
+  },
   {
    "id": "expectations-investing-reading-stock-prices-for-better-returns-revised-and-updat--michael-j-mauboussin",
    "title": "Expectations Investing: Reading Stock Prices for Better Returns, Revised and Updated (Heilbrunn Center for Graham & Dodd Investing Series)",
@@ -60,6 +203,522 @@ window.ANKI = {
      "theme": "investing",
      "text": "The key to successful investing is to estimate the level of expected performance embedded in the current stock price and then assess the likelihood of a revision in expectations.",
      "q": "What does the book identify as the key to successful investing?"
+    }
+   ]
+  },
+  {
+   "id": "experiencing-flow-life-beyond-boredom-and-anxiety--susan-a-jackson",
+   "title": "Experiencing Flow: Life Beyond Boredom and Anxiety",
+   "author": "Susan A. Jackson",
+   "subject": "the psychology of flow states and how to cultivate optimal experience through mindfulness",
+   "total": 4,
+   "highlights": [
+    {
+     "id": "b81a417502851cdd",
+     "loc": 217,
+     "theme": "mindfulness",
+     "text": "Drawing on the psychological frameworks of Acceptance and Commitment Therapy (ACT) and achievement motivation research, I offer strategies to help one move out of anxiety or boredom and towards flow. Another psychological approach that I have found to be particularly helpful when the goal is to facilitate flow in our lives is mindfulness, and three chapters are devoted to the interplay between mindfulness and flow and how to make flow more likely through developing a mindfulness practice.",
+     "q": "Which psychological frameworks and practices does the author draw on to help move a person from anxiety or boredom toward flow?"
+    },
+    {
+     "id": "9b80b5ff97909803",
+     "loc": 228,
+     "theme": "mindfulness",
+     "text": "What is life like beyond the opposing experiences of boredom and anxiety? At the edges of either being bored or being anxious lies the potential for experiencing an optimal psychological state called flow.",
+     "q": "What optimal psychological state lies at the edges of boredom and anxiety?"
+    },
+    {
+     "id": "6e994a43ce028446",
+     "loc": 403,
+     "theme": "mindfulness",
+     "text": "“Optimal experience is the bottom line of existence.”4 —Csikszentmihalyi"
+    },
+    {
+     "id": "71da13d654f7edbb",
+     "loc": 405,
+     "theme": "mindfulness",
+     "text": "Note that Mike didn’t write that optimal performance is what matters most, but rather optimal experience.",
+     "q": "According to Csikszentmihalyi, what matters most — optimal performance or optimal experience?"
+    }
+   ]
+  },
+  {
+   "id": "getting-to-yes-negotiating-agreement-without-giving-in--roger-fisher-william-l-ury-and-bruce-patton",
+   "title": "Getting to Yes: Negotiating Agreement Without Giving In",
+   "author": "Roger Fisher, William L. Ury, and Bruce Patton",
+   "subject": "principled negotiation and how to reach wise agreements without positional bargaining",
+   "total": 18,
+   "highlights": [
+    {
+     "id": "3f6758f7dce60e59",
+     "loc": 319,
+     "theme": "work",
+     "text": "There is a third way to negotiate, a way neither hard nor soft, but rather both hard and soft. The method of principled negotiation developed at the Harvard Negotiation Project",
+     "q": "What is the name of the negotiation method developed at the Harvard Negotiation Project that is neither hard nor soft but both?"
+    },
+    {
+     "id": "267e938130957b03",
+     "loc": 321,
+     "theme": "work",
+     "text": "It suggests that you look for mutual gains whenever possible, and that where your interests conflict, you should insist that the result be based on some fair standards independent of the will of either side. The method of principled negotiation is hard on the merits, soft on the people.",
+     "q": "In principled negotiation, how should you handle conflicting interests, and what is its stance toward people versus merits?"
+    },
+    {
+     "id": "41ad1f8fcbfc6516",
+     "loc": 326,
+     "theme": "work",
+     "text": "The next four chapters lay out the four principles of the method. The last three chapters answer the questions most commonly asked about the method: What if the other side is more powerful? What if they will not play along? And what if they use dirty tricks?"
+    },
+    {
+     "id": "35669e406b61792f",
+     "loc": 356,
+     "theme": "work",
+     "text": "Any method of negotiation may be fairly judged by three criteria: It should produce a wise agreement if agreement is possible. It should be efficient. And it should improve or at least not damage the relationship between the parties. (A wise agreement can be defined as one that meets the legitimate interests of each side to the extent possible, resolves conflicting interests fairly, is durable, and takes community interests into account.)",
+     "q": "By what three criteria can any method of negotiation be fairly judged?"
+    },
+    {
+     "id": "bdc94d1007e06247",
+     "loc": 365,
+     "theme": "work",
+     "text": "When negotiators bargain over positions, they tend to lock themselves into those positions.",
+     "q": "What happens to negotiators when they bargain over positions?"
+    },
+    {
+     "id": "66c5817e4f0957eb",
+     "loc": 391,
+     "theme": "work",
+     "text": "the more attention that is paid to positions, the less attention is devoted to meeting the underlying concerns of the parties.",
+     "q": "What is the cost of paying more attention to positions in a negotiation?"
+    },
+    {
+     "id": "9f899193eada2932",
+     "loc": 466,
+     "theme": "work",
+     "text": "In positional bargaining, a hard game dominates a soft one. If the hard bargainer insists on concessions and makes threats while the soft bargainer yields in order to avoid confrontation and insists on agreement, the negotiating game is biased in favor of the hard player.",
+     "q": "In positional bargaining, which style dominates when a hard bargainer faces a soft one, and why?"
+    },
+    {
+     "id": "6e099788ce6fbd1a",
+     "loc": 472,
+     "theme": "work",
+     "text": "The game of negotiation takes place at two levels. At one level, negotiation addresses the substance; at another, it focuses—usually implicitly—on the procedure for dealing with the substance. The first negotiation may concern your salary, the terms of a lease, or a price to be paid. The second negotiation concerns how you will negotiate the substantive question: by soft positional bargaining, by hard positional bargaining, or by some other method. This second negotiation is a game about a game—a “meta-game.”",
+     "q": "What are the two levels at which the game of negotiation takes place?"
+    },
+    {
+     "id": "4f24386d2f9c30b8",
+     "loc": 482,
+     "theme": "work",
+     "text": "At the Harvard Negotiation Project we have been developing an alternative to positional bargaining: a method of negotiation explicitly designed to produce wise outcomes efficiently and amicably. This method, called principled negotiation or negotiation on the merits, can be boiled down to four basic points."
+    },
+    {
+     "id": "d317df39a6c91635",
+     "loc": 487,
+     "theme": "work",
+     "text": "People: Separate the people from the problem. Interests: Focus on interests, not positions. Options: Invent multiple options looking for mutual gains before deciding what to do. Criteria: Insist that the result be based on some objective standard.",
+     "q": "What are the four basic points of principled negotiation?"
+    },
+    {
+     "id": "d685a8134584a3f9",
+     "loc": 561,
+     "theme": "work",
+     "text": "That period can be divided into three stages: analysis, planning, and discussion. During the analysis stage you are simply trying to diagnose the situation—to gather information, organize it, and think about it.",
+     "q": "What are the three stages into which the negotiation period can be divided, and what happens during the analysis stage?"
+    },
+    {
+     "id": "60bdda41bc318e18",
+     "loc": 565,
+     "theme": "work",
+     "text": "During the planning stage you deal with the same four elements a second time, both generating ideas and deciding what to do."
+    },
+    {
+     "id": "1eecda610c41f33f",
+     "loc": 568,
+     "theme": "work",
+     "text": "Again during the discussion stage, when the parties communicate back and forth, looking toward agreement, the same four elements are the best subjects to discuss."
+    }
+   ]
+  },
+  {
+   "id": "la-guerra-de-los-chips-edicion-mexicana-la-gran-lucha-por-el-dominio-mundial-spa--chris-miller-and-alex-guardia-berdiell",
+   "title": "La guerra de los chips (Edición mexicana): La gran lucha por el dominio mundial (Spanish Edition)",
+   "author": "Chris Miller and Àlex Guàrdia Berdiell",
+   "subject": "the global battle for dominance in semiconductor technology and the geopolitics of chip manufacturing",
+   "total": 9,
+   "highlights": [
+    {
+     "id": "bfc3da2779e8f95f",
+     "loc": 3293,
+     "theme": "ideas",
+     "text": "TSMC no fue un negocio privado en ningún momento: fue un proyecto del Estado taiwanés.11 Un ingrediente fundamental en los inicios de TSMC fueron los estrechos lazos con la industria norteamericana de chips.12 La mayoría de sus clientes eran diseñadores de ese país y muchos gerentes habían trabajado en Silicon Valley.",
+     "q": "¿Cómo describe el autor la naturaleza de TSMC en sus inicios y su relación con la industria estadounidense?"
+    },
+    {
+     "id": "1a72f20451b36cde",
+     "loc": 3309,
+     "theme": "ideas",
+     "text": "Con la fundación de TSMC, todos los diseñadores de chips tuvieron un socio de fiar. Chang juró que nunca los diseñaría, que solo los fabricaría. TSMC no competía con sus clientes; su éxito dependía del éxito ajeno.",
+     "q": "¿Qué modelo de negocio juró seguir Morris Chang al fundar TSMC respecto a sus clientes?"
+    },
+    {
+     "id": "0fd0a89a5013a082",
+     "loc": 3325,
+     "theme": "ideas",
+     "text": "China, en cambio, tenía una gran población, pero era pobre y tecnológicamente atrasada. Eso, sin embargo, no le había impedido adoptar una nueva política de apertura económica que había disparado el comercio, especialmente vía Hong Kong, la región a través de la cual se podían importar o pasar de contrabando los bienes. Shenzhen, la ciudad donde se fundó Huawei, estaba justo al cruzar la frontera.",
+     "q": "¿Qué condiciones económicas y geográficas rodeaban a Shenzhen cuando se fundó Huawei?"
+    },
+    {
+     "id": "b1300e158daf6a38",
+     "loc": 3578,
+     "theme": "ideas",
+     "text": "La carrera por encontrar el siguiente tipo de rayo —el más indicado para fabricar los chips— fue una de las tres batallas que se libraron para definir el futuro de la litografía. El segundo pulso fue comercial, y su propósito fue descubrir qué empresa fabricaría la siguiente generación de herramientas. El inmenso coste de desarrollar nuevo equipamiento forzó a las empresas del sector a fusionarse.",
+     "q": "¿Cuáles eran las tres batallas que definieron el futuro de la litografía según el autor?"
+    },
+    {
+     "id": "4f671cbaedbcf587",
+     "loc": 3934,
+     "theme": "ideas",
+     "text": "En los dos mil se tendía a dividir el sector en tres categorías. Los chips «lógicos» son los procesadores para móvil, ordenador y servidor. Los chips «de memoria» se refieren o bien a la DRAM, que proporciona la memoria a corto plazo que los ordenadores necesitan para funcionar; o bien a la flash, o NAND, que recuerda datos para el futuro. La tercera categoría es más difusa e incluye varios productos: chips analógicos, como los sensores, que convierten señales audiovisuales en datos digitales; chips de radiofrecuencia que se comunican con las redes de telefonía móvil; y semiconductores que gestionan el uso de la electricidad en los dispositivos. Esta tercera categoría no ha dependido mucho de la ley de Moore para mejorar su rendimiento. Diseñar bien es más importante que reducir el tamaño de los transistores. Hoy, cerca de tres de cada cuatro chips de esta categoría se producen sobre procesadores de 180 nanómetros o más, una tecnología de fabricación aparecida a finales de los noventa.3 En consecuencia, la economía de este segmento difiere de la de los chips lógicos y de memoria, que tienen que empequeñecer sin descanso sus transistores para seguir en la carrera.",
+     "q": "¿En qué tres categorías se dividía el sector de los chips en los dos mil y qué distingue a la tercera?"
+    },
+    {
+     "id": "89af38337a2984b2",
+     "loc": 3956,
+     "theme": "ideas",
+     "text": "Una fábrica moderna de DRAM, el semiconductor por el que Silicon Valley fue a la guerra con Japón en los ochenta, puede costar 20.000 millones de dólares. Antes había docenas de productores, pero hoy solo hay tres grandes. A finales de los noventa, varios productores japoneses de DRAM se fusionaron para crear una sola compañía, Elpida, a fin de intentar competir con Micron (de Idaho) y las coreanas Samsung y SK Hynix. Al término de los dos mil, estas cuatro empresas controlaban cerca del 85 por ciento del mercado.6 Pero Elpida no sobrevivió y Micron la acabó adquiriendo en 2013.7",
+     "q": "¿Cómo se consolidó el mercado de la DRAM y qué pasó con Elpida?"
+    },
+    {
+     "id": "9ed879ff1f600aa7",
+     "loc": 3967,
+     "theme": "ideas",
+     "text": "El otro gran tipo de chip de memoria es el de NAND, y es un sector muy bien asentado en Asia. Su líder destacado es Samsung, que acumula un 35 por ciento del mercado.9 El resto es producido por la surcoreana Hynix, la japonesa Kioxia y dos empresas norteamericanas: Micron y Western Digital.",
+     "q": "¿Qué empresa lidera el mercado de chips de memoria NAND y con qué cuota?"
+    },
+    {
+     "id": "f96724647a42c727",
+     "loc": 4029,
+     "theme": "ideas",
+     "text": "En 2006, tras percatarse de que los cálculos en paralelo y a alta velocidad se podían usar para otras cosas que no fueran los gráficos, Nvidia sacó CUDA, un software con el que se pueden programar las GPU con un lenguaje de programación estándar, sin hacer ninguna referencia a los gráficos.",
+     "q": "¿Qué es CUDA y por qué lo lanzó Nvidia en 2006?"
+    },
+    {
+     "id": "d35b86ea127d0afb",
+     "loc": 4034,
+     "theme": "ideas",
+     "text": "Huang decidió regalar CUDA, pero el programa solo funciona con chips de Nvidia. Al dar utilidad a las GPU más allá de la industria gráfica, Nvidia descubrió un mercado nuevo y gigantesco para el procesamiento en paralelo, fuera para la química computacional o para la previsión meteorológica.6 Por aquel entonces, Huang no podía más que intuir vagamente las posibilidades de crecimiento en el que acabaría siendo el mayor caso de uso del procesamiento en paralelo: la inteligencia artificial.",
+     "q": "¿Qué nuevo mercado descubrió Nvidia al regalar CUDA y hacer útiles las GPU más allá de los gráficos?"
+    }
+   ]
+  },
+  {
+   "id": "los-detectives-salvajes-spanish-edition--roberto-bolano",
+   "title": "Los detectives salvajes (Spanish Edition)",
+   "author": "Roberto Bolaño",
+   "subject": "a pair of poets' search for a vanished 1920s poet and the fate of a Latin American avant-garde literary movement",
+   "total": 18,
+   "highlights": [
+    {
+     "id": "6ed28f1623cfe18c",
+     "loc": 3717,
+     "theme": "ideas",
+     "text": "Hay una literatura para cuando estás aburrido. Abunda. Hay una literatura para cuando estás calmado. Ésta es la mejor literatura, creo yo. También hay una literatura para cuando estás triste. Y hay una literatura para cuando estás alegre. Hay una literatura para cuando estás ávido de conocimiento. Y hay una literatura para cuando estás desesperado.",
+     "q": "Según este pasaje, ¿cuál es la mejor literatura?"
+    },
+    {
+     "id": "7eef2b12b9a82521",
+     "loc": 6890,
+     "theme": "ideas",
+     "text": "las revistas inevitables que surgen en una ciudad de dieciséis millones de habitantes. Sus directores o jefes de redacción eran hombres y mujeres terribles, seres que si te los quedabas mirando mucho rato te dabas cuenta que habían surgido de las cloacas, una mezcla de funcionarios desterrados y de asesinos arrepentidos."
+    },
+    {
+     "id": "ef29a5b93e38a987",
+     "loc": 6979,
+     "theme": "ideas",
+     "text": "Y cuando hube vuelto a mi sillón les volví a preguntar qué era lo que opinaban ahora que tenían ante sí un verdadero poema de la mera Cesárea Tinajero, ya sin ninguna lengua de por medio, el poema y nada más, y ellos me miraron y luego, sosteniendo ambos la revista, se sumergieron otra vez en ese charco de los años veinte, en ese ojo cerrado y lleno de polvo, y dijeron caray, Amadeo, ¿esto es lo único que tienes de ella?, ¿éste es su único poema publicado?, y yo les dije o tal vez sólo susurré: pues sí, muchachos, no hay más."
+    },
+    {
+     "id": "c26e9e96ee2de3ca",
+     "loc": 6998,
+     "theme": "ideas",
+     "text": "Y ellos dijeron: es una broma, Amadeo, el poema es una broma que encubre algo muy serio.",
+     "q": "¿Qué dijeron los muchachos que era el poema de Cesárea Tinajero?"
+    },
+    {
+     "id": "89af4a069e621d2d",
+     "loc": 7094,
+     "theme": "ideas",
+     "text": "Y entonces vi pasar a mi viejo Impala del 74, gastado por los años, con abolladuras en los guardabarros y en las puertas, con la pintura descascarada, muy lentamente, a vuelta de rueda, como si me anduviera buscando por las calles nocturnas del DF, y el efecto que me produjo fue tal que entonces sí que me puse a temblar, agarrado con las dos manos a los barrotes de la verja para no caerme, y no me caí, bien cierto, pero se me cayeron las gafas, mis gafas se deslizaron nariz abajo hasta un matorral o una planta o un retoño de rosal, no lo sé, sólo oí el ruido y supe que no se habían roto, y entonces pensé que si me agachaba a recogerlas para cuando me levantara el Impala habría desaparecido, pero que si no lo hacía no iba a poder ver quién conducía aquel coche fantasma, mi coche perdido en las últimas horas de 1975, en las primeras horas de 1976."
+    },
+    {
+     "id": "58c71d29703be67a",
+     "loc": 7113,
+     "theme": "ideas",
+     "text": "Supe entonces, con humildad, con perplejidad, en un arranque de mexicanidad absoluta, que estábamos gobernados por el azar y que en esa tormenta todos nos ahogaríamos, y supe que sólo los más astutos, no yo ciertamente, iban a mantenerse a flote un poco más de tiempo."
+    },
+    {
+     "id": "f76f3d5b3bc27c0e",
+     "loc": 8523,
+     "theme": "ideas",
+     "text": "Y entonces se me ocurrió preguntarle hacia dónde se iba. No me lo va a decir, pensé, así es Cesárea, no va a querer que yo lo sepa. Pero me lo dijo: a Sonora, a su tierra, y me lo dijo con la misma naturalidad con que otros dan la hora o los buenos días. ¿Pero por qué, Cesárea?, le dije. ¿No te das cuenta que si te marchas ahora vas a tirar por la borda tu carrera literaria? ¿Tienes idea de la clase de páramo cultural que es Sonora? ¿Qué vas a hacer allí?",
+     "q": "¿Hacia dónde dijo Cesárea que se marchaba?"
+    },
+    {
+     "id": "f77c21996764f888",
+     "loc": 8531,
+     "theme": "ideas",
+     "text": "Y yo también, dije o grité, todos los mexicanos somos más real visceralistas que estridentistas, pero qué importa, el estridentismo y el realismo visceral son sólo dos máscaras para llegar a donde de verdad queremos llegar. ¿Y adónde queremos llegar?, dijo ella. A la modernidad, Cesárea, le dije, a la pinche modernidad.",
+     "q": "¿A qué dice el narrador que quieren llegar de verdad tanto el estridentismo como el realismo visceral?"
+    },
+    {
+     "id": "59b88648bb84e23c",
+     "loc": 8546,
+     "theme": "ideas",
+     "text": "pero ya no era la misma Cesárea que yo conocía sino una mujer diferente, una india gorda y vestida de negro bajo el sol del desierto de Sonora, y le dije o traté de decirle adiós, Cesárea Tinajero, madre de los real visceralistas,"
+    },
+    {
+     "id": "57a9f1060d33712a",
+     "loc": 9772,
+     "theme": "ideas",
+     "text": "y sin embargo cuando hablamos, digamos cuando hablamos de hombre a hombre, suena horrible pero ése es el nombre de ese tipo de conversación crepuscular, me dejó entender que estaba allí para hacerse matar, que supongo no es lo mismo que estar allí para matarte o para suicidarte, el matiz está en que no te tomas la molestia de hacerlo tú mismo, aunque en el fondo es igual de siniestro."
+    },
+    {
+     "id": "1e6b24e930b60a05",
+     "loc": 10212,
+     "theme": "ideas",
+     "text": "No se me achicopale, Amadeo, dijo uno de ellos. No quise ni mirarlos. Pero los miré. Y vi a dos muchachos, uno despierto y el otro dormido, y el que estaba dormido dijo no se me preocupe, Amadeo, nosotros le vamos a encontrar a Cesárea aunque tengamos que levantar todas las piedras del norte."
+    },
+    {
+     "id": "e51c61663ab8c9b5",
+     "loc": 10825,
+     "theme": "ideas",
+     "text": "De la semblanza necrológica que el periódico de Nogales hizo en su día de Pepín Avellaneda sólo me queda la imagen de Cesárea Tinajero caminando por una triste carretera del desierto de la mano de su torero chaparro, un torero chaparro que, además, lucha por no seguir empequeñeciéndose, que lucha por crecer, y que en efecto, poco a poco va creciendo, hasta alcanzar el metro sesenta, pongamos por caso, y luego desaparece."
+    },
+    {
+     "id": "1f378dc044d87ff5",
+     "loc": 10896,
+     "theme": "ideas",
+     "text": "Encontré la siguiente pista: Cesárea Tinajero había sido maestra durante los años 1930-1936. Su primer destino fue El Cubo. Después estuvo de maestra en Hermosillo, en Pitiquito, en Bábaco y en Santa Teresa.",
+     "q": "¿Qué profesión ejerció Cesárea Tinajero entre 1930 y 1936 y dónde fue su primer destino?"
+    },
+    {
+     "id": "d3c953bed835b77d",
+     "loc": 10983,
+     "theme": "ideas",
+     "text": "Pero Cesárea habló de los tiempos que iban a venir y la maestra, por cambiar de tema, le preguntó qué tiempos eran aquéllos y cuándo. Y Cesárea apuntó una fecha: allá por el año 2600. Dos mil seiscientos y pico.",
+     "q": "¿Qué fecha apuntó Cesárea cuando habló de los tiempos que iban a venir?"
+    }
+   ]
+  },
+  {
+   "id": "los-ingravidos-spanish-edition--valeria-luiselli",
+   "title": "Los ingrávidos (Spanish Edition)",
+   "author": "Valeria Luiselli",
+   "subject": "a fragmented novel about a woman writing about the ghost of poet Gilberto Owen while her own life and identities blur",
+   "total": 38,
+   "highlights": [
+    {
+     "id": "6b11ef0a06507104",
+     "loc": 31,
+     "theme": "ideas",
+     "text": "Todo empezó en otra ciudad y en otra vida, anterior a ésta de ahora pero posterior a aquélla."
+    },
+    {
+     "id": "6ef6898c888cd27b",
+     "loc": 31,
+     "theme": "ideas",
+     "text": "Por eso no puedo escribir esta historia como yo quisiera –como si todavía estuviera ahí y fuera sólo esa otra persona–. Me cuesta hablar de calles y de caras como si aún las recorriera todos los días. No encuentro los tiempos verbales precisos.",
+     "q": "¿Por qué dice la narradora que no puede escribir esta historia como quisiera?"
+    },
+    {
+     "id": "bbf8e223d0930f09",
+     "loc": 187,
+     "theme": "ideas",
+     "text": "¿De qué es tu libro, mamá?, me pregunta el mediano. Es una novela de fantasmas. ¿Da miedo? No, pero da un poco de tristeza. ¿Por qué? ¿Porque están muertos? No, no están muertos. Entonces no son tan fantasmas. No, no son fantasmas."
+    },
+    {
+     "id": "2ffa95c886761cf7",
+     "loc": 302,
+     "theme": "ideas",
+     "text": "Un viernes por la tarde, mientras hojeaba libros en la biblioteca de la Universidad de Columbia para llevar a la editorial el lunes, di con una carta del poeta Gilberto Owen a Xavier Villaurrutia: «Vivo en Morningside Av. 63. En la ventana derecha hay una maceta que parece una lámpara. Tiene redondas llamas verdes…».",
+     "q": "¿Cómo empieza la narradora a interesarse por Gilberto Owen?"
+    },
+    {
+     "id": "603940b65ac07b13",
+     "loc": 334,
+     "theme": "ideas",
+     "text": "En todo caso, ésa fue la primera noche que tuve que pasar con el fantasma de Gilberto Owen. En la vida real no hay giros de tuerca, pero fue a partir de entonces que comencé, poco a poco, a existir como habitada por otra posible vida que no era la mía, pero que bastaba imaginar para abandonarme a ella por completo. Empecé a mirar de fuera hacia dentro, de alguna parte a ninguna.",
+     "q": "¿Qué le empieza a ocurrir a la narradora tras pasar la primera noche con el fantasma de Owen?"
+    },
+    {
+     "id": "16cf5c855fd97012",
+     "loc": 422,
+     "theme": "ideas",
+     "text": "Supongo que alguien adulteró mi bebida mientras salimos a fumar. Cuando volvimos me terminé el trago de un jalón y poco a poco dejé de entender lo que me decía White. Lo miraba, impávida, mientras contaba una larga anécdota sobre William Carlos Williams y Zukofsky. Se desarmaba en sonoras carcajadas. Yo me reía con él, sin saber de qué nos estábamos riendo. Cuando por fin guardó silencio, vi crecer en torno a su cabeza un pequeño halo azul. Ya te moriste, ¿verdad White?"
+    },
+    {
+     "id": "fa26c005573cf687",
+     "loc": 495,
+     "theme": "ideas",
+     "text": "Se detuvo un tren. Detrás de Dakota me pareció ver el rostro de Owen entre las muchas caras del metro. Fue sólo un segundo. Pero estuve segura de que él me había visto también."
+    },
+    {
+     "id": "eccd54b40927a555",
+     "loc": 512,
+     "theme": "ideas",
+     "text": "En mis pesquisas de biblioteca nunca di con nada importante ni revelador, pero le mentí a White. Le dije que había encontrado, en la pequeña y desordenada biblioteca de la Casa Hispánica de la Universidad de Columbia, un original anónimo, torpemente mecanografiado y apenas legible, donde había una serie de traducciones comentadas de poemas de Owen. Era muy probable que las traducciones fueran de Zukofsky: estaban firmadas lz&go. Era la mentira menos verosímil de todas las posibles mentiras en torno a Owen, pero White decidió darme por mi lado. Le prometí llevarle avances de una transcripción literal que yo misma haría.",
+     "q": "¿Qué mentira le cuenta la narradora a White sobre unas traducciones de Owen?"
+    },
+    {
+     "id": "110655120b320d35",
+     "loc": 532,
+     "theme": "health",
+     "text": "Nota: Owen se pesaba todos los días antes de subirse al metro. Había una báscula en la estación de la calle 116, que le devolvía la certeza de que se estaba desintegrando. 126 libras, 125 libras. Nunca supo cuántos kilogramos perdía por semana.",
+     "q": "¿Qué hacía Owen todos los días antes de subir al metro y qué le confirmaba la báscula?"
+    },
+    {
+     "id": "65b5cf6352ef242e",
+     "loc": 579,
+     "theme": "ideas",
+     "text": "No conocía a Gilberto Owen, pero me escuchó atento. Le conte que Owen había vivido en Manhattan entre 1928 y 1930, en pleno Renacimiento de Harlem y al principio de la Gran Depresión Económica.",
+     "q": "¿En qué años y contexto histórico vivió Owen en Manhattan según la narradora?"
+    },
+    {
+     "id": "5cc79b20207a4104",
+     "loc": 589,
+     "theme": "ideas",
+     "text": "La primera entrega de la falsa transcripción fue un éxito. Llegué el viernes con un manojo de hojas escritas en Word, a espacio y medio, Times New Roman. White las leyó frente a mí y se mostró convencido, incluso entusiasmado. Si se trataba de traducciones de poemas de Owen hechas por Zukofsky, habíamos dado con un tesoro. Me pidió ver el manuscrito original. Lo tuve que elaborar durante el fin de semana, con la ayuda de Moby –era la única persona que yo conocía que tenía herramientas para falsificar esa clase de objetos–. Moby llegó a mi departamento con una Remington de 1927, y papel viejo. Como una especie de recompensa, hicimos el amor. Me dijo que le gustaban mis senos aunque fueran un poco chicos.",
+     "q": "¿Cómo fabrica la narradora el falso manuscrito original para White?"
+    },
+    {
+     "id": "e8112fc62c633029",
+     "loc": 638,
+     "theme": "ideas",
+     "text": "Antes de salir me detuve un instante a mirar la calle: la ciudad de México, mojada, vuelve a ser ese valle que obsesionó a Cortés, a Juan Zorrilla o a Velasco."
+    },
+    {
+     "id": "42c588f46cf6b59e",
+     "loc": 655,
+     "theme": "ideas",
+     "text": "Le llevé a White el falso original completo. La verdad es que con la ayuda del infame Moby habíamos logrado algo digno de vender a un coleccionista auténtico. Le dije a White que no nos lo podíamos quedar muchos días –temía que buscara un experto y comprobara que el documento había sido falsificado– porque lo tenía que devolver a la biblioteca de la Casa Hispánica. White prometió tenerme una respuesta al lunes siguiente y me dio el resto de la semana libre."
+    },
+    {
+     "id": "bc255123011f49f9",
+     "loc": 719,
+     "theme": "ideas",
+     "text": "Dejar una vida. Dinamitar todo. No, no todo: dinamitar el metro cuadrado que uno ocupaba entre la gente. Más bien: dejar sillas vacías en las mesas que se compartían con las amistades, no a modo de metáfora, sino en verdad, dejar una silla, volverse un hueco para los amigos, permitir que el círculo de silencio en torno a uno se ensanche y se llene de especulaciones.",
+     "q": "¿Qué significa, según el texto, dinamitar el metro cuadrado que uno ocupa entre la gente?"
+    },
+    {
+     "id": "a5abad143be4de23",
+     "loc": 721,
+     "theme": "ideas",
+     "text": "Lo que pocos entienden es que uno deja una vida para empezar otra.",
+     "q": "¿Qué es lo que pocos entienden sobre dejar una vida?"
+    },
+    {
+     "id": "f83137c210c1729b",
+     "loc": 749,
+     "theme": "ideas",
+     "text": "¿No estabas escribiendo una novela sobre Owen? Sí, le digo, es un libro sobre el fantasma de Gilberto Owen."
+    },
+    {
+     "id": "6a608664aa72a424",
+     "loc": 750,
+     "theme": "ideas",
+     "text": "En Las mil y una noches la narradora hilvana una serie de relatos para posponer el día de su muerte. Tal vez un mecanismo semejante pero inverso le sirva a esta historia, a esta muerte. La narradora descubre que mientras hilvana un relato, el tejido de su realidad inmediata se desgasta y quiebra. La fibra de la ficción empieza a modificar la realidad y no viceversa, como debiera ser. Ninguna de las dos cosas es sacrificable. El único remedio, la única manera de salvar todos los planos de la historia es cerrar una cortina y alzar otra: bajar una persiana, para poder desabrocharse la blusa; desescribir una historia en un archivo y urdir una trama distinta en otro, Penélope esquiva. Escribir lo que sí sucedió y lo que no. Al final de cada jornada de trabajo, separar párrafos, copiar y pegar, guardar; dejar sólo uno de los dos archivos abiertos para que los lea el marido y sacie su curiosidad hasta colmarla. La novela, la otra, se llama Filadelfia.",
+     "q": "¿Qué mecanismo, inverso al de Las mil y una noches, descubre la narradora entre ficción y realidad?"
+    },
+    {
+     "id": "51e975344af0a30e",
+     "loc": 777,
+     "theme": "ideas",
+     "text": "El metro, sus múltiples paradas, sus averías, sus aceleraciones repentinas, sus zonas oscuras, podría funcionar como esquema del tiempo de esa otra novela.",
+     "q": "¿Qué elemento podría funcionar como esquema del tiempo de la otra novela?"
+    },
+    {
+     "id": "4d6720e97b7991e2",
+     "loc": 780,
+     "theme": "ideas",
+     "text": "Un día, mientras regresaba a mi casa en la línea uno desde el sur de la ciudad, volví a ver a Owen. Esta vez fue distinto. Esta vez no fue una impresión externa provocada por algo ajeno a mí, como aquella noche en el bar de Harlem, ni una impresión fugaz como ya había ocurrido antes en el metro, sino algo como un golpe interior, una certeza punzante de que estaba ante algo hermoso y a la vez terrible. Iba mirando por la ventana –nada salvo la oscuridad espesa de los túneles– cuando se acercó por atrás otro tren y por unos instantes anduvo a la misma velocidad que el tren donde iba yo. Lo vi sentado, en la misma posición que yo había adoptado, con la cabeza reclinada sobre la ventana del vagón. Y después nada."
+    },
+    {
+     "id": "c5cb85e4aa25640a",
+     "loc": 788,
+     "theme": "ideas",
+     "text": "Una novela horizontal, contada verticalmente. Una novela que se tiene que escribir desde afuera para leerse desde dentro.",
+     "q": "¿Cómo describe la narradora la estructura de su novela horizontal?"
+    },
+    {
+     "id": "9d878dcde509cbfd",
+     "loc": 789,
+     "theme": "ideas",
+     "text": "Por supuesto hay muchas muertes a lo largo de una vida. La mayoría de las personas no se dan cuenta. Creen que se mueren una vez y ya. Pero basta con poner un poco de atención para darse cuenta de que uno va y se muere a cada rato.",
+     "q": "¿Qué afirma el narrador sobre la cantidad de muertes a lo largo de una vida?"
+    },
+    {
+     "id": "8dbf89089771e9f1",
+     "loc": 794,
+     "theme": "ideas",
+     "text": "Yo me empecé a morir en Manhattan, en el verano de 1928. Desde luego, nadie se daba cuenta de mis muertes más que yo –la gente está demasiado ocupada con su propia vida para reparar en las pequeñas muertes de los demás–. Yo me daba cuenta porque después de cada muerte me daba fiebre y perdía peso.",
+     "q": "¿Cómo se daba cuenta el narrador de sus propias muertes en Manhattan?"
+    },
+    {
+     "id": "5236ccf9b0dba037",
+     "loc": 862,
+     "theme": "ideas",
+     "text": "Desde luego, mi ceguera no fue inmediata ni lo fue tampoco la aparición de los inquilinos. Pero desde el día en que comenzaron a llegar todas estas cosas –la ceguera, los gatos, el fantasma y, más adelante, las visitas esporádicas de gente que yo no había invitado, las apariciones de muebles y decenas de libros que no había adquirido, desde luego las moscas y cucarachas, y sobre todo el árbol plantado en una maceta que un día encontré– supe que había empezado el final. No el mío, sino el final de algo con lo que yo me había identificado tan estrechamente que acabaría también conmigo.",
+     "q": "¿Qué señales le indicaron al narrador que había empezado el final?"
+    },
+    {
+     "id": "f8016125f6d60330",
+     "loc": 870,
+     "theme": "ideas",
+     "text": "La falsa traducción se publicó. Aparecieron reseñas de inmediato."
+    },
+    {
+     "id": "385d970142068436",
+     "loc": 983,
+     "theme": "ideas",
+     "text": "En el metro, camino a casa, vi por última vez a Owen. Creo que me saludó con una mano. Pero ya no me importaba, ya no sentí ningún entusiasmo. El fantasma, me quedaba claro, era yo.",
+     "q": "¿Qué revelación tiene la narradora al ver por última vez a Owen en el metro?"
+    },
+    {
+     "id": "5b28f4081ae1f5e8",
+     "loc": 985,
+     "theme": "ideas",
+     "text": "Supongo que la diferencia entre ser joven y ser viejo radica en el grado de frivolidad con el que nos relacionamos con la muerte.",
+     "q": "¿En qué radica, según el texto, la diferencia entre ser joven y ser viejo?"
+    },
+    {
+     "id": "89e308332950b16a",
+     "loc": 1362,
+     "theme": "ideas",
+     "text": "Nota (Owen a Araceli Otero): «Los negros son transparentes. De noche se visten de vidrio. Yo he ido a veces por Harlem entre un río de voces sin cauce, sin manantial tampoco (grito que nadie lanzó). A través de todos se veía la noche, transparente… Hablan como sus yucatecos. C’mon, c’mon in, mise, two dollahs. Un día entré. No se puede escribir sin música y coreografía»."
+    },
+    {
+     "id": "a24a95ba31b25f25",
+     "loc": 1674,
+     "theme": "ideas",
+     "text": "Una novela vertical, contada horizontalmente. Una historia que se tiene que ver desde abajo, como Manhattan desde el subway.",
+     "q": "¿Cómo describe el narrador la novela vertical contada horizontalmente?"
+    },
+    {
+     "id": "63f104b113ed9c8a",
+     "loc": 1779,
+     "theme": "ideas",
+     "text": "La dueña del estudio me sienta en un banquito, lo ajusta a mi altura, y me da a escoger entre un fondo italiano, uno suizo o uno tropical. Escojo el italiano, aunque la verdad me da igual. Haceun primer intento y un segundo. Vuelve a ajustar la altura del banquito. Hace un tercer intento. Cambia la pantalla de fondo. Al cuarto intento se disculpa conmigo. No le puedo hacer su retrato, señor, algo le pasa a nuestro equipo. Vuelva en unos días."
+    },
+    {
+     "id": "02a0dafa5bfea98e",
+     "loc": 1863,
+     "theme": "ideas",
+     "text": "veo a Ezra Pound, tumbado sobre mi reposet, tomando notas en una libreta. Encima de su cabeza, vuelan moscas en círculos perfectos, formando una especie de vórtice. Está concentradísimo en su labor, y yo no quiero interrumpirlo —no vaya a ser que por mi culpa se le escape un verso importante."
+    },
+    {
+     "id": "9e9e691d115bae98",
+     "loc": 1925,
+     "theme": "ideas",
+     "text": "Creo que los mosquitos son unas voces. Se distinguen dos: una de un niño, y otra de un bebé. El bebé llora mucho y el niño le recita una nana inquietante."
     }
    ]
   },
@@ -158,6 +817,80 @@ window.ANKI = {
    ]
   },
   {
+   "id": "nothing-but-net-10-timeless-stock-picking-lessons-from-one-of-wall-streets-top-t--mark-mahaney",
+   "title": "Nothing But Net: 10 Timeless Stock-Picking Lessons from One of Wall Street’s Top Tech Analysts",
+   "author": "Mark Mahaney",
+   "subject": "stock-picking lessons for investing in technology companies",
+   "total": 4,
+   "highlights": [
+    {
+     "id": "fc9a09e99d86102d",
+     "loc": 410,
+     "theme": "investing",
+     "text": "One of the reasons you absolutely, 100 percent will lose money in the market from time to time is that a large percentage of any individual stock’s movement has nothing at all to do with that stock’s particular fundamentals. It has to do with the market. It’s a bit of a truism on Wall Street that a third of a stock’s moves can be attributed to its fundamentals, a third to its sector, and a third to the overall market.",
+     "q": "According to the Wall Street truism Mahaney cites, how are a stock's moves roughly attributed across three factors?"
+    },
+    {
+     "id": "00fb90ed63dea694",
+     "loc": 488,
+     "theme": "investing",
+     "text": "No, the real investment lesson from Blue Apron has to do with what is probably the single most important factor in tech investing—probably in investing as a whole: management. The market opportunity was there. The business model was challenging, but not impossible. There were no real competitive moats around Blue Apron—competition was just a mouse click or a screen tap away, but Blue Apron was the market leader. And for a substantial period of time. For all you race fans: The track was firm, the horse was healthy, and it had the lead. But there was the slight issue of the jockey.",
+     "q": "What does Mahaney identify as probably the single most important factor in tech investing, illustrated by Blue Apron?"
+    },
+    {
+     "id": "c460a074e561328c",
+     "loc": 540,
+     "theme": "investing",
+     "text": "And that’s the lesson here—customer value proposition trumps TAMs and business models. You get the customer value prop right, and it can offset a lot of issues and challenges. You get it wrong, and it can also offset a lot of positives, such as large market opportunities and good business models (highly profitable or highly capital efficient).",
+     "q": "What does Mahaney say trumps TAMs and business models, able to offset large market opportunities or good business models?"
+    },
+    {
+     "id": "b166a6535ff0b4fc",
+     "loc": 584,
+     "theme": "investing",
+     "text": "At the core of Groupon was the Daily Deal. At the beginning of the company’s history, consumers were offered one promotional deal a day—for example, 25% off a pizza and pasta lunch for four or 30% off flowers at the local florist—if enough consumers signed up for the deal that day."
+    }
+   ]
+  },
+  {
+   "id": "pretotype-it10th-anniversary-edition-how-to-make-sure-you-are-building-the-right--alberto-savoia",
+   "title": "Pretotype It—10th Anniversary Edition: How to make sure you are building The Right It before you build It right",
+   "author": "Alberto Savoia",
+   "subject": "validating market demand for a new product idea before building it, using pretotypes",
+   "total": 1,
+   "highlights": [
+    {
+     "id": "6d5790c12aa56487",
+     "loc": 123,
+     "theme": "ideas",
+     "text": "Prototypes should be built to answer questions such as, “Can we build it?”, “Will it work as expected?”, or “How will people use it?” These are important questions that you need to eventually answer. But an even more important question that you need to answer first is: “Is there a big enough market for this new product?” Answering this last question is where pretotypes come in.",
+     "q": "According to Savoia, what question do pretotypes answer that prototypes do not, and that you must answer first?"
+    }
+   ]
+  },
+  {
+   "id": "shoe-dog-a-memoir-by-the-creator-of-nike--phil-knight",
+   "title": "Shoe Dog: A Memoir by the Creator of Nike",
+   "author": "Phil Knight",
+   "subject": "Phil Knight's memoir of founding and building Nike from a startup to a global company",
+   "total": 2,
+   "highlights": [
+    {
+     "id": "92a9cc65fe3c8699",
+     "loc": 3468,
+     "theme": "work",
+     "text": "WE HAD ABOUT two weeks to relax and enjoy our legal victory. Then we looked up and saw a new threat looming on the horizon. The yen. It was fluctuating wildly, and if it continued to do so it would spell certain doom.",
+     "q": "After winning their legal victory, what new threat did Nike face that Knight feared would spell certain doom?"
+    },
+    {
+     "id": "5cc0388d7099b3f9",
+     "loc": 3486,
+     "theme": "work",
+     "text": "I couldn’t bring myself to look Cale in the eye. Here we were, a dozen years out of Stanford, and while he was an eminently successful businessman, I was still struggling to keep my head above water."
+    }
+   ]
+  },
+  {
    "id": "the-almanack-of-naval-ravikant-a-guide-to-wealth-and-happiness--eric-jorgenson-jack-butcher-and-tim-ferriss",
    "title": "The Almanack of Naval Ravikant: A Guide to Wealth and Happiness",
    "author": "Eric Jorgenson, Jack Butcher, and Tim Ferriss",
@@ -206,7 +939,7 @@ window.ANKI = {
    "title": "The Beginning of Infinity: Explanations That Transform the World",
    "author": "David Deutsch",
    "subject": "how the pursuit of good explanations drives unbounded scientific and human progress",
-   "total": 3,
+   "total": 4,
    "highlights": [
     {
      "id": "804821ac6d45a8d7",
@@ -232,6 +965,124 @@ window.ANKI = {
    ]
   },
   {
+   "id": "the-effective-manager--mark-horstman",
+   "title": "The Effective Manager",
+   "author": "Mark Horstman",
+   "subject": "how frontline managers get results and retain their people through specific management behaviors",
+   "total": 21,
+   "highlights": [
+    {
+     "id": "ed6d259f7e61c09c",
+     "loc": 244,
+     "theme": "work",
+     "text": "If you scan the Management section of The Wall Street Journal, you'll see articles about those topics. That's not what this book is about. Frankly, if you're just a frontline manager, or maybe even a director, you don't need to know a lot about that kind of “management” just yet. What you do need to know about is how to manage people. If that's you, this book is for you.",
+     "q": "According to Horstman, what is the core skill a frontline manager or director actually needs, rather than high-level 'management' theory?"
+    },
+    {
+     "id": "4f7b846f879a430b",
+     "loc": 247,
+     "theme": "work",
+     "text": "This book is about managing people. It's about getting the most out of your direct reports, for two reasons: because most managers are very bad at that part of their job, yet that's the most valuable thing they do as a manager.",
+     "q": "What does Horstman say is the most valuable thing a manager does, and one that most managers are bad at?"
+    },
+    {
+     "id": "8ba90dd19313a8e1",
+     "loc": 250,
+     "theme": "work",
+     "text": "Isn't that sad? Most managers are terrible at the most important thing they're supposed to be doing: getting top performances out of the people they are managing."
+    },
+    {
+     "id": "4cd228fb9f055597",
+     "loc": 255,
+     "theme": "work",
+     "text": "Hundreds, if not thousands, of managers describe their “training” this way: I got promoted, and they didn't tell me anything about what I was supposed to do or how I was supposed to do it. They just gave me a team and wished me luck.",
+     "q": "How do most managers describe the 'training' they received when promoted?"
+    },
+    {
+     "id": "b1dd4d5aa20f5597",
+     "loc": 260,
+     "theme": "work",
+     "text": "That feeling you have that others know what they're doing but you don't is wrong. Almost everyone else doesn't know either. So, give yourself a break."
+    },
+    {
+     "id": "b1e1973554ed7c55",
+     "loc": 265,
+     "theme": "work",
+     "text": "There's a part of me, after 25 years of coaching managers, that doesn't really care what kind of attitude you have, because all the attitude in the world isn't going to change the results. The only thing that will change the results is to change what you DO.",
+     "q": "According to Horstman, what is the only thing that will change your results as a manager?"
+    },
+    {
+     "id": "8c098d16678cf455",
+     "loc": 288,
+     "theme": "work",
+     "text": "Success at work is about what you do—you are your behaviors. Almost nothing else matters. And that's what The Effective Manager is about.",
+     "q": "What does Horstman say success at work is about?"
+    },
+    {
+     "id": "4e67d0dd212b9a4a",
+     "loc": 351,
+     "theme": "work",
+     "text": "Your first responsibility is NOT to your team of directs. It's NOT to your people. You should NOT worry about them first. Your first responsibility is to deliver whatever results your organization expects from you.",
+     "q": "According to Horstman, what is a manager's first responsibility, ahead of their team?"
+    },
+    {
+     "id": "043d6f99fc5669dd",
+     "loc": 364,
+     "theme": "work",
+     "text": "The problem with not having clearly delineated responsibilities is that you can't make intelligent choices about where to focus. You begin to feel that “everything is important.” You begin to “try to get everything done.”",
+     "q": "What is the problem with not having clearly delineated responsibilities as a manager?"
+    },
+    {
+     "id": "22addcf70ff81dc2",
+     "loc": 386,
+     "theme": "work",
+     "text": "Effectively managed modern organizations now measure retention in addition to results when they are evaluating a manager.",
+     "q": "Beyond results, what do effectively managed organizations now measure when evaluating a manager?"
+    },
+    {
+     "id": "d3fcf7955af9c1de",
+     "loc": 413,
+     "theme": "work",
+     "text": "The four critical behaviors that an effective manager engages in to produce results and retain team members are the following: Get to Know Your People. Communicate about Performance. Ask for More. Push Work Down.",
+     "q": "What are the four critical behaviors of an effective manager?"
+    },
+    {
+     "id": "0fbd334924507758",
+     "loc": 424,
+     "theme": "work",
+     "text": "spend time getting to know the strengths and weaknesses of your direct reports. Managers who know how to get the most out of each individual member of the team achieve noticeably better results than managers who don't.",
+     "q": "What do managers who know how to get the most out of each team member achieve compared to those who don't?"
+    },
+    {
+     "id": "8e541fe2059c45ec",
+     "loc": 438,
+     "theme": "work",
+     "text": "Every person on the earth expects and deserves to be treated as an individual. Sadly, what most of us as managers do (I know I did early in my career) is manage others the way we would like to be managed. This is sort of the Golden Rule of nonexperienced managers.",
+     "q": "What does Horstman call the 'Golden Rule of nonexperienced managers'?"
+    },
+    {
+     "id": "64e795ec5b8f006d",
+     "loc": 439,
+     "theme": "work",
+     "text": "Sadly, what most of us as managers do (I know I did early in my career) is manage others the way we would like to be managed. This is sort of the Golden Rule of nonexperienced managers."
+    },
+    {
+     "id": "ed2615a7354dcf11",
+     "loc": 651,
+     "theme": "work",
+     "text": "The ideal place for your directs to be for maximum output/results is right on the line between distress and eustress, almost over the line into fear, but not quite there. They should have lots of energy but not panic. The only way to know where that line is, for each direct, is to push each direct into moments of distress and pay attention to when they start to lose effectiveness.",
+     "q": "Where does Horstman say the ideal place for maximum output is for each direct, and how do you find that line?"
+    },
+    {
+     "id": "04186681f8cb6bc6",
+     "loc": 693,
+     "theme": "work",
+     "text": "By using the defense of “busyness,” no work would ever be transferred to anyone else, and we would all be stuck in a weird productivity stasis (which, due to the link between productivity and profitability, and the inevitability of change, is the equivalent of an organizational death spiral). The question becomes, in a world in which everyone is busy with too much to do, “What work is most valuable to the organization?” That's the work we have to get done, right? And, in a general sense, the more important work of the organization is being done at higher levels.",
+     "q": "In a world where everyone is busy, what question determines what work must get done, and where is the more important work generally being done?"
+    }
+   ]
+  },
+  {
    "id": "the-laws-of-trading-a-trader-s-guide-to-better-decision-making-for-everyone-wile--agustin-lebron",
    "title": "The Laws of Trading: A Trader's Guide to Better Decision-Making for Everyone (Wiley Trading)",
    "author": "Agustin Lebron",
@@ -251,6 +1102,1904 @@ window.ANKI = {
      "theme": "investing",
      "text": "The question of what data to look for embodies a notion of locality: what is most relevant for A is information that is causally local (in the sense of proximal, or close) to A.",
      "q": "What notion of locality governs which data is most relevant to a decision A?"
+    }
+   ]
+  },
+  {
+   "id": "the-making-of-a-manager-what-to-do-when-everyone-looks-to-you--julie-zhuo",
+   "title": "The Making of a Manager: What to Do When Everyone Looks to You",
+   "author": "Julie Zhuo",
+   "subject": "how to be an effective people manager, especially as a new or growing leader",
+   "total": 69,
+   "highlights": [
+    {
+     "id": "862944c3b652e338",
+     "loc": 172,
+     "theme": "work",
+     "text": "I remember my three primary emotions navigating the choppy waters of my new role: fear, doubt, and am I crazy for feeling this way? Everyone else around me seemed to be doing just fine. Everyone else made it look easy."
+    },
+    {
+     "id": "5ae5ee393e937480",
+     "loc": 200,
+     "theme": "work",
+     "text": "But most managers are not CEOs or senior executives. Most lead smaller teams, and sometimes not even directly."
+    },
+    {
+     "id": "fa08f772b10b6dce",
+     "loc": 279,
+     "theme": "work",
+     "text": "This is the crux of management: It is the belief that a team of people can achieve more than a single person going it alone. It is the realization that you don’t have to do everything yourself, be the best at everything yourself, or even know how to do everything yourself. Your job, as a manager, is to get better outcomes from a group of people working together.",
+     "q": "According to Zhuo, what is the crux of management?"
+    },
+    {
+     "id": "cd54da128386785c",
+     "loc": 295,
+     "theme": "work",
+     "text": "Andy Grove, founder and CEO of Intel and a legendary manager of his time, wrote that when it comes to evaluations, one should look at “the output of the work unit and not simply the activity involved. Obviously, you measure a salesman by the orders he gets (output), not by the calls he makes (activity).”",
+     "q": "What does Andy Grove say evaluations should measure instead of activity?"
+    },
+    {
+     "id": "5efa5b7d1f70a60d",
+     "loc": 304,
+     "theme": "work",
+     "text": "Six years ago, I switched my reporting to a different manager, Chris Cox, Facebook’s chief product officer. One of the earliest conversations I remember us having is when I asked him how he evaluates the job of a manager. He smiled and said, “My framework is quite simple.” Half of what he looked at was my team’s results—did we achieve our aspirations in creating valuable, easy-to-use, and well-crafted design work? The other half was based on the strength and satisfaction of my team—did I do a good job hiring and developing individuals, and was my team happy and working well together? The first criterion looks at our team’s present outcomes; the second criterion",
+     "q": "What two halves make up Chris Cox's simple framework for evaluating a manager?"
+    },
+    {
+     "id": "03bd2b1b7ffed9cf",
+     "loc": 311,
+     "theme": "work",
+     "text": "Through thick or thin, in spite of the hundreds of things calling for your attention every day, never forget what you’re ultimately here to do: help your team achieve great outcomes.",
+     "q": "What does Zhuo say a manager is ultimately there to do?"
+    },
+    {
+     "id": "e6c5355da4cd9247",
+     "loc": 319,
+     "theme": "work",
+     "text": "Hackman’s research describes five conditions that increase a team’s odds of success: having a real team (one with clear boundaries and stable membership), a compelling direction, an enabling structure, a supportive organizational context, and expert coaching.",
+     "q": "What five conditions does Hackman's research say increase a team's odds of success?"
+    },
+    {
+     "id": "615acb79a46df8dd",
+     "loc": 322,
+     "theme": "work",
+     "text": "My own observations are similar, and I’ve come to think of the multitude of tasks that fill up a manager’s day as sorting neatly into three buckets: purpose, people, and process. The purpose is the outcome your team is trying to accomplish, otherwise known as the why.",
+     "q": "What three buckets does Zhuo sort a manager's tasks into?"
+    },
+    {
+     "id": "4cbe76e55142ec7c",
+     "loc": 333,
+     "theme": "work",
+     "text": "The first big part of your job as a manager is to ensure that your team knows what success looks like and cares about achieving it. Getting everyone to understand and believe in your team’s purpose, whether it’s as specific as “make every customer who calls feel cared for” or as broad as “bring the world closer together,” requires understanding and believing in it yourself, and then sharing it at every opportunity—from writing emails to setting goals, from checking in with a single",
+     "q": "What is the first big part of a manager's job regarding the team's purpose?"
+    },
+    {
+     "id": "aad8a8c652627d3c",
+     "loc": 337,
+     "theme": "work",
+     "text": "report to hosting large-scale meetings. The next important bucket that managers think about is people, otherwise known as the who."
+    },
+    {
+     "id": "d58fd60fdfb00f3e",
+     "loc": 344,
+     "theme": "work",
+     "text": "Finally, the last bucket is process, which describes how your team works together.",
+     "q": "In Zhuo's framework, what does the 'process' bucket describe?"
+    },
+    {
+     "id": "783b08ff9bf3d94c",
+     "loc": 357,
+     "theme": "work",
+     "text": "For managers, important processes to master include running effective meetings, future proofing against past mistakes, planning for tomorrow, and nurturing a healthy culture.",
+     "q": "Which processes does Zhuo say managers should master?"
+    },
+    {
+     "id": "1f21c4cf8449d5b8",
+     "loc": 374,
+     "theme": "work",
+     "text": "If I spend all my time personally selling lemonade, then I’m contributing an additive amount to my business, not a multiplicative one. My performance as a manager would be considered poor because I’m actually operating as an individual contributor.",
+     "q": "Why does Zhuo say doing all the work yourself makes you a poor manager?"
+    },
+    {
+     "id": "061101ab60621f62",
+     "loc": 380,
+     "theme": "work",
+     "text": "Your role as a manager is not to do the work yourself, even if you are the best at it, because that will only take you so far. Your role is to improve the purpose, people, and process of your team to get as high a multiplier effect on your collective outcome as you can.",
+     "q": "According to Zhuo, what is a manager's role rather than doing the work themselves?"
+    },
+    {
+     "id": "05aa493d30b97457",
+     "loc": 406,
+     "theme": "work",
+     "text": "Remember what I said before: great managers are made, not born. But there is one caveat, and that caveat is this: you have to enjoy the day-to-day of management and want to do it.",
+     "q": "What caveat does Zhuo attach to the claim that great managers are made?"
+    },
+    {
+     "id": "09a479a62b1c728e",
+     "loc": 420,
+     "theme": "work",
+     "text": "Do I Find It More Motivating to Achieve a Particular Outcome or to Play a Specific Role?"
+    },
+    {
+     "id": "13e67e959985590e",
+     "loc": 429,
+     "theme": "work",
+     "text": "This question is more important than any other on the list, and a strong yes can make up for almost anything, which is why you see leaders with vastly different strengths and temperaments helming companies.",
+     "q": "Which of the three questions does Zhuo call the most important for aspiring managers?",
+     "note": "This is the most important question for me personally. Do I really want to be a manager?"
+    },
+    {
+     "id": "06c112a0b6111807",
+     "loc": 479,
+     "theme": "work",
+     "text": "That was when I realized the root problem: None of the designers were truly sold on my idea. They didn’t think it was going to succeed. And because of that, the work trudged along, lacking heart and soul. I learned then one of my first lessons of management—the best outcomes come from inspiring people to action, not telling them what to do.",
+     "q": "What early management lesson did Zhuo learn about how the best outcomes are produced?"
+    },
+    {
+     "id": "85f581dd9e43515a",
+     "loc": 575,
+     "theme": "work",
+     "text": "The manager–report relationship is different than the peer relationship. You are now responsible for the outcome of your team, including all the decisions that are made within it. If something is getting in the way of great work happening, you need to address it swiftly and directly. This may mean giving people difficult feedback or making some hard calls. The sooner you internalize that you own the outcomes of your team, the easier it becomes to have these conversations.",
+     "q": "How does the manager–report relationship differ from a peer relationship in terms of responsibility?"
+    },
+    {
+     "id": "e364dd60935780c5",
+     "loc": 740,
+     "theme": "work",
+     "text": "You don’t build Rome in a day, and you don’t start off your management career standing in front of a packed room delivering a ten-year vision. Instead, most of us begin by managing just a few people. You cultivate an environment of trust while diving into the detailed depths of the work. Everybody knows everybody, and two pizzas are enough to feed the group. Managing a small team is about mastering a few basic fundamentals: developing a healthy manager–report relationship and creating an environment of support. In this chapter, we’ll dive in to the specifics of those skills.",
+     "q": "What fundamentals does Zhuo say managing a small team is about?"
+    },
+    {
+     "id": "b8ad285b0ab47d83",
+     "loc": 748,
+     "theme": "work",
+     "text": "What leads people to do great work? It feels like a complicated question but it really isn’t, as Andy Grove points out in his classic High Output Management. He flips the question around and asks: What gets in the way of good work? There are only two possibilities. The first is that people don’t know how to do good work. The second is that they know how, but they aren’t motivated.",
+     "q": "According to Andy Grove, what are the only two reasons people don't do good work?"
+    },
+    {
+     "id": "16eed31f7acddb23",
+     "loc": 755,
+     "theme": "work",
+     "text": "Why would someone not be motivated to do great work? One possible answer is that he doesn’t have a clear picture of what great work looks like. Another possibility is that the role doesn’t speak to his aspirations; he can, but he’d rather be doing something else. Or perhaps he thinks nothing will change if he puts in more effort—there will be no rewards if things improve, and no penalties if they don’t, so why bother?",
+     "q": "What are some reasons Zhuo gives for why someone might not be motivated to do great work?"
+    },
+    {
+     "id": "a171ae7e79a5972d",
+     "loc": 826,
+     "theme": "work",
+     "text": "“If you take nothing else away from today,” he told us, “remember this: managing is caring.”",
+     "q": "What one-line message does the speaker want managers to remember about managing?"
+    },
+    {
+     "id": "a7b9b938e3cb6392",
+     "loc": 847,
+     "theme": "work",
+     "text": "I recommend no less than a weekly 1:1 with every report for thirty minutes, and more time if needed.",
+     "q": "How often and how long does Zhuo recommend a 1:1 with each report?"
+    },
+    {
+     "id": "14cdeea17bcd271a",
+     "loc": 854,
+     "theme": "work",
+     "text": "How can you achieve stellar 1:1s? The answer is preparation. It’s rare that an amazing conversation springs forth when nobody has a plan for what to talk about.",
+     "q": "What does Zhuo say is the key to achieving stellar 1:1s?"
+    },
+    {
+     "id": "1444dc19c5b5c9fd",
+     "loc": 864,
+     "theme": "work",
+     "text": "Every morning, I’ve gotten into the habit of scanning my calendar and compiling a list of questions for each person I’m meeting with. Why questions? Because a coach’s best tool for understanding what’s going on is to ask. Don’t presume you know what the problem or solution is.",
+     "q": "Why does Zhuo prepare questions rather than presumed solutions for each 1:1?",
+     "note": "I Ususlly dont ask questions but prepare to answer questions"
+    },
+    {
+     "id": "8860bfa34114122a",
+     "loc": 872,
+     "theme": "work",
+     "text": "What’s top of mind for you right now? What priorities are you thinking about this week? What’s the best use of our time today?"
+    },
+    {
+     "id": "24ae9bcc0b757a7f",
+     "loc": 877,
+     "theme": "work",
+     "text": "What does your ideal outcome look like? What’s hard for you in getting to that outcome? What do you really care about? What do you think is the best course of action? What’s the worst-case scenario you’re worried about? Support:"
+    },
+    {
+     "id": "fcbd956e19bccdfd",
+     "loc": 882,
+     "theme": "work",
+     "text": "How can I help you? What can I do to make you more successful? What was the most useful part of our conversation today? Be Honest and Transparent about Your Report’s Performance As a manager, your perspective on how your report is doing carries far more weight than his perspective on how you are doing.",
+     "q": "Whose perspective on performance carries more weight, the manager's or the report's?"
+    },
+    {
+     "id": "7b72edaea0f0ca8a",
+     "loc": 895,
+     "theme": "work",
+     "text": "don’t fall into the trap of thinking that because you’re the boss, you can’t admit your shortcomings or weaknesses. Instead, apologize. Admit that you screwed up, and take meaningful action to do better in the future.",
+     "q": "What does Zhuo advise managers to do rather than hide their shortcomings?"
+    },
+    {
+     "id": "68acac86109d8657",
+     "loc": 934,
+     "theme": "work",
+     "text": "Furthermore, people are more likely to succeed when using their strengths—a message explored in depth by Marcus Buckingham and Donald Clifton in Now, Discover Your Strengths and Tom Rath in StrengthsFinder 2.0.",
+     "q": "According to Buckingham and Clifton, when are people more likely to succeed?"
+    },
+    {
+     "id": "e0aa4b09495970d6",
+     "loc": 944,
+     "theme": "work",
+     "text": "But in the same way that individuals should play to their strengths, so should you pay attention to your team’s top talent—the people who are doing well and could be doing even better. Don’t let the worst performers dominate your time—try to diagnose, address, and resolve their issues as swiftly as you can.",
+     "q": "According to Zhuo, how should managers allocate their attention between top talent and worst performers?"
+    },
+    {
+     "id": "3cdf47558bf2bdde",
+     "loc": 950,
+     "theme": "work",
+     "text": "Good CEOs know that they should double down on the projects that are working and put more people, resources, and attention on those rather than get every single project to the point of “not failing.”",
+     "q": "What do good CEOs do with projects that are working rather than trying to get every project to 'not failing'?"
+    },
+    {
+     "id": "f4a443e3977633fd",
+     "loc": 966,
+     "theme": "work",
+     "text": "What I later realized is that the team actually becomes better off when brilliant assholes leave. Yes, you lose out on their individual contributions, but the fog lifts for everyone else. They can let their guard down. Collaboration becomes more honest and productive, so the work of the team as a whole improves. The second thing I learned is that it is possible to find people who are just as talented and who are humble and kind.",
+     "q": "What does Zhuo say happens to a team after brilliant assholes leave?"
+    },
+    {
+     "id": "5d8fcf5b841fa48c",
+     "loc": 971,
+     "theme": "work",
+     "text": "The third lesson is that assholes can change if the culture you set is clear that it won’t tolerate them.",
+     "q": "Under what condition does Zhuo say assholes can change?"
+    },
+    {
+     "id": "01ab983ad7056470",
+     "loc": 989,
+     "theme": "work",
+     "text": "Call it what you want—fit, motivation, chemistry—but the things a person cares about must also be what the team (and company) cares about. If not, then that person might find themselves in frequent misalignment with what they want for their own career. If the fit just isn’t right on a particular team, sometimes a move within the same organization solves the issue—a new environment plus a different problem to noodle on is often exactly",
+     "q": "What must align between a person and the team for good fit, and what solutions exist when it doesn't?"
+    },
+    {
+     "id": "3f97cdc1582551f6",
+     "loc": 1434,
+     "theme": "work",
+     "text": "The first part in understanding how you lead is to know your strengths—the things you’re talented at and love to do. This is crucial because great management typically comes from playing to your strengths rather than from fixing your weaknesses. There are some useful frameworks for understanding your strengths, like StrengthsFinder 2.0 by Tom Rath or StandOut by Marcus Buckingham.",
+     "q": "Why does Zhuo say great management comes from playing to strengths rather than fixing weaknesses, and what tools does she recommend?"
+    }
+   ]
+  },
+  {
+   "id": "the-nvidia-way-jensen-huang-and-the-making-of-a-tech-giant--tae-kim",
+   "title": "The Nvidia Way: Jensen Huang and the Making of a Tech Giant",
+   "author": "Tae Kim",
+   "subject": "how Nvidia and Jensen Huang built a dominant chip company through culture, strategy, and the GPU-to-AI transition",
+   "total": 50,
+   "highlights": [
+    {
+     "id": "045e222b4336fbfe",
+     "loc": 148,
+     "theme": "work",
+     "text": "“Over the years, I realized what was happening, how people protect their turf and they protect their ideas. I created a much flatter organization,” Jensen said. His antidote to the backstabbing, to the gaming of metrics, and to political infighting is public accountability and, if needed, public embarrassment. “If we have leaders who are not fighting for other people to be successful and [who are] depriving opportunities to others, I’ll just say it out loud,” he said. “I’ve got no trouble calling people out. You do that once or twice, nobody’s going to go near that again.”",
+     "q": "What is Jensen's antidote to backstabbing, metric-gaming, and political infighting at Nvidia?"
+    },
+    {
+     "id": "55535d05c10c62f9",
+     "loc": 1179,
+     "theme": "work",
+     "text": "Jensen was sending a message: long hours were a necessary prerequisite for excellence. To this day, he has not deviated from that view or altered Nvidia’s expectation that employees adopt extreme work habits.",
+     "q": "What message was Jensen sending about long hours, and has he ever deviated from it?"
+    },
+    {
+     "id": "332f1561644b18ab",
+     "loc": 1189,
+     "theme": "work",
+     "text": "“We’re ultra-aggressive,” he told the new employees. “We don’t waste time finding excuses for why things don’t work. We move on. If you came here thinking you can just hide in the back, collect your paycheck, and go home at five, you’re mistaken. If that’s what you think, you should resign today.”"
+    },
+    {
+     "id": "e73639d4e3610daf",
+     "loc": 1193,
+     "theme": "work",
+     "text": "“We don’t do things like anybody else. If you come here and say, ‘This is how we did it before,’ we don’t care. We’re about doing things differently and better. When we were just twenty-five people, Jensen taught us to come here, take risks, do things outside the box, and make mistakes. I encourage you to do all three. But don’t make the same mistake twice, because we will fire you in a heartbeat.”",
+     "q": "What did Jensen teach employees about risk-taking, and what was the one unforgivable behavior?"
+    },
+    {
+     "id": "6db26bfda2973bad",
+     "loc": 1197,
+     "theme": "work",
+     "text": "Jensen’s primary guidance to all of his hiring managers was simple: “Hire someone smarter than yourself.”",
+     "q": "What was Jensen's primary hiring guidance to his managers?"
+    },
+    {
+     "id": "6af7799ac066e455",
+     "loc": 1203,
+     "theme": "work",
+     "text": "SINCE NVIDIA’S FOUNDING, JENSEN HAS insisted that all Nvidia employees work at the “Speed of Light.”3 He wants their work to be constrained only by the laws of physics—not by internal politics or financial concerns. Each project must be broken down into its component tasks, and each task must have a target time-to-completion that assumes no delays, queues, or downtime. This sets the theoretical maximum: the “Speed of Light” that it is physically impossible to exceed.",
+     "q": "What does Jensen mean by working at the 'Speed of Light'?"
+    },
+    {
+     "id": "31861bc63ced8932",
+     "loc": 1252,
+     "theme": "work",
+     "text": "“There may be people smarter than me,” Jensen once told his executive staff, “but no one is ever going to work harder than me.”7 He was often in the office from 9:00 a.m. to near midnight, and his engineers usually felt obligated to keep similar hours.",
+     "q": "What did Jensen tell his executive staff about how hard he works relative to others?"
+    },
+    {
+     "id": "50d5191966728517",
+     "loc": 1277,
+     "theme": "work",
+     "text": "FEAR AND ANXIETY BECAME JENSEN’S favorite motivational tools. At each monthly company meeting, he would say, “We’re thirty days from going out of business.”",
+     "q": "What phrase did Jensen repeat at each monthly company meeting as a motivational tool?"
+    },
+    {
+     "id": "c4d99b6aa621952a",
+     "loc": 1516,
+     "theme": "work",
+     "text": "“The number one feature of any product is the schedule,” Jensen later said.",
+     "q": "According to Jensen, what is the number one feature of any product?"
+    },
+    {
+     "id": "a4fea9bae8376415",
+     "loc": 1574,
+     "theme": "work",
+     "text": "“Oh my God, we got here and we thought there was going to be a secret sauce,” one engineer said.3 “It turns out it’s just really hard work and intense execution on schedules.” It was Nvidia’s culture, in other words, that made the difference.",
+     "q": "What did an engineer discover was Nvidia's real 'secret sauce'?"
+    },
+    {
+     "id": "53073ef943712b68",
+     "loc": 1870,
+     "theme": "ideas",
+     "text": "Russell grabbed Michael Hara for a thirty-minute brainstorm session to figure out how to market the GeForce 256 more effectively, and both executives remember coming out of the room with the notion to call the new chip the first entry in an entirely new product category altogether: a graphics processing unit, or GPU, which would be to graphics rendering what the computer’s main central processing unit (CPU) was for all other computational tasks.",
+     "q": "How did Nvidia executives decide to market the GeForce 256 as a new product category?"
+    },
+    {
+     "id": "f692b4efcbfeb586",
+     "loc": 1906,
+     "theme": "ideas",
+     "text": "MODERN GRAPHICS CHIPS ORGANIZE computation through what is called a graphics pipeline, turning geometry data with object coordinates into an image. The first stage of this process, called the geometry stage, involves transforming object vertices, or points, in a virtual 3-D space through scaling and rotation calculations. The second stage, rasterization, determines the position of each object on the screen. The third stage, called the fragment stage, calculates the color and textures. In the final stage, the image is assembled. Early graphics pipelines involved fixed-function stages each with a handful of hardwired operations. Nvidia and its competitor graphics-card makers each defined how its chips would handle all four stages in the pipeline; third-party developers could not change how the chips rendered anything, meaning that they could only create visual effects and artistic styles from a menu of options set by the chip designers.9 Because every programmer had to use the same handful of fixed-function operations, every game on the market looked similar—none could stand out through visuals alone. David Kirk, Nvidia’s chief scientist, wanted to change all this by inventing a true GPU. His idea was to introduce a new technology called programmable shaders. These would open up the graphics pipeline to third-party developers, giving them the ability to write their own rendering functions and exert more control over how they presented their games visually. The shaders would allow developers to make visuals in real time that rivaled the best computer-generated graphics in movies. He argued that developers would quickly adopt programmable shaders in their games, as they knew far better than chip designers how to create cutting-edge visuals. This, in turn, would push gamers to Nvidia cards, because they would be the only cards on the market that could support the advanced new graphics. The downside was that programmable shading, and therefore a true GPU, could be enabled only by revising how Nvidia chips were designed. It would be an expensive and time-consuming undertaking, even for an established player. Kirk knew that the technological upside would be clear to Jensen, who would have the final say. He also knew that Jensen would fixate on cost: how much Nvidia would have to invest to create the technology, whether the market was ready for it, and how much more revenue it would bring in. Although Jensen seemed enthusiastic initially, Kirk didn’t know yet whether that was a good sign. “One of the things that happens with Jensen is right before he’s about to kill your project, he will sound optimistic when he’s talking to you about it,” Kirk said.10 To ensure his project’s survival, he stoked Jensen’s ever-present fear of being outflanked by the competition. He pointed out that Nvidia’s lead in fixed-function graphics acceleration would inevitably erode; the fixed-function operations of a traditional graphics chip would someday become miniaturized…\n                Some highlights have been hidden or truncated due to export limits.",
+     "q": "What did David Kirk propose with programmable shaders, and how would they change the graphics pipeline?"
+    },
+    {
+     "id": "17a37c023af2745f",
+     "loc": 2115,
+     "theme": "ideas",
+     "text": "In 2002, Harris observed that an increasing number of computer scientists were using GPUs, such as Nvidia’s GeForce 3, for nongraphics applications. Researchers who ran their simulations on computers with GPUs reported significant speed improvements over computers that relied on CPU power only. But to run these simulations required computers to learn how to reframe nongraphics computations in the terms of graphical functions that a GPU could perform. In other words: the researchers had hacked GPUs.",
+     "q": "What did Harris observe in 2002 that computer scientists were doing with GPUs?"
+    },
+    {
+     "id": "c673e96ac41e8cbb",
+     "loc": 2126,
+     "theme": "ideas",
+     "text": "Using GPUs for nongraphics purposes, however, required a very specific skill set. Researchers had to rely on programming languages designed exclusively for graphics shading, including OpenGL and Nvidia’s Cg (C for graphics), which was introduced in 2002 to run on the GeForce 3."
+    },
+    {
+     "id": "d723b574f7866278",
+     "loc": 2144,
+     "theme": "ideas",
+     "text": "Harris learned there was a chip team within Nvidia working on a secret project code-named the NV50. Most chip designs were only one or two generations removed from the current architecture. The NV50 was Nvidia’s most forward-looking chip under development: it would not be released for several years. It would have its own dedicated compute mode, so that its GPU would be easier to access for nongraphics applications. Instead of Cg, it would utilize extensions to the C programming language, a widely used general-purpose language. And it would enable parallel compute threads with access to addressable memory—in essence, allowing the GPU to perform all the functions of a secondary CPU that might be needed in scientific, technical, or industrial computing. Nvidia called this programming model for chips the Compute Unified Device Architecture, or CUDA.",
+     "q": "What was the NV50 project, and what programming model did it introduce that became CUDA?"
+    },
+    {
+     "id": "7d91ac6e8e0cd886",
+     "loc": 2298,
+     "theme": "ideas",
+     "text": "Jensen then pivoted to explain how simulations had changed the chip industry. He was among the first generation of engineers who were able to do a large amount of virtual debugging of chips before they went out to be manufactured. This was, he argued, the same revolution that CUDA promised to bring to the sciences. Instead of the expensive and manual process of designing and testing new drugs by hand in the lab, they could do it virtually with software. CUDA-powered GPUs could make their research cheaper, faster, and far less prone to human error.",
+     "q": "What analogy did Jensen use to explain how CUDA could transform the sciences?"
+    },
+    {
+     "id": "63b8a77079058c3e",
+     "loc": 2514,
+     "theme": "work",
+     "text": "“I don’t like giving up on people,” he said. “I’d rather torture them into greatness.”",
+     "q": "What did Jensen say he preferred to do rather than give up on people?"
+    },
+    {
+     "id": "53c99f9fb47f209b",
+     "loc": 2588,
+     "theme": "work",
+     "text": "“The concept of the mission is the boss makes a lot of sense because ultimately we’re here to realize a particular mission, not in service of some organization,” Jensen said.10 “It got people thinking about the work and not the organization. The work, not the hierarchy.”",
+     "q": "What does Jensen mean by 'the mission is the boss'?"
+    },
+    {
+     "id": "6951a73f57f565db",
+     "loc": 2593,
+     "theme": "work",
+     "text": "“We always have a PIC for every project. Whenever Jensen talks about any project or any deliverables, he always wants the name. Nobody can hide behind, ‘such and such a team is working on that,’ ” former finance executive Simona Jankowski said.11 “Everything has to have a name attached to it because you have to know who’s the PIC, who’s accountable.”",
+     "q": "What is a PIC at Nvidia and why does Jensen insist every project has one?"
+    },
+    {
+     "id": "dcf54453ada69d8c",
+     "loc": 2623,
+     "theme": "work",
+     "text": "So Jensen asked employees at every level of the organization to send an e-mail to their immediate team and to executives that detailed the top five things they were working on and what they had recently observed in their markets, including customer pain points, competitor activities, technology developments, and the potential for project delays. “The ideal top five e-mail is five bullet points where the first word is an action word. It has to be something like finalize, build, or secure,” said early employee Robert Csongor.14",
+     "q": "What is Jensen's 'top five' email practice and what should the ideal one look like?"
+    },
+    {
+     "id": "2344330a630a8701",
+     "loc": 2832,
+     "theme": "work",
+     "text": "THE PUREST EXPRESSION OF Jensen’s engineering background is his seemingly limitless capacity for work. In business, as he sees it, work ethic may well be more important than intelligence. “It doesn’t matter how smart you are because there is always someone smarter than you,” he said. And in a global world, “your competition doesn’t go to sleep.”14",
+     "q": "Why does Jensen believe work ethic may be more important than intelligence in business?"
+    },
+    {
+     "id": "525804f7a2e3ade4",
+     "loc": 2846,
+     "theme": "work",
+     "text": "“I don’t actually know anybody who is incredibly successful who just approaches business like, ‘This is just business. This is what I do from 8 to 5, and I’m going home, and at 5:01, I’m shutting it down,’ ” Jensen has said.15 “I’ve never known anybody who is incredibly successful like that. You have to allow yourself to be obsessed with your work.”",
+     "q": "What does Jensen say about the relationship between obsession with work and being incredibly successful?"
+    },
+    {
+     "id": "85e26a06f67a676c",
+     "loc": 2972,
+     "theme": "ideas",
+     "text": "The GPU, in contrast, is optimized for volume over complexity. It contains hundreds or thousands of tiny processing cores, enabling it to break down tasks into numerous simpler operations executed in parallel. While a GPU is less versatile than a CPU, it can vastly outperform a CPU in processing speed for many applications.3 The secret to a GPU’s success is parallel computing—the field Bill Dally had pioneered.",
+     "q": "What is the secret to a GPU's success compared to a CPU?"
+    },
+    {
+     "id": "40ed0e8ab07834cb",
+     "loc": 3069,
+     "theme": "ideas",
+     "text": "In the third contest, which occurred in 2012, University of Toronto professor Gary Hinton and two of his students, Ilya Sutskever and Alex Krizhevsky, put forward an entry they called AlexNet. Unlike the rest of the field, which had started developing algorithms and models before optimizing them for use on ImageNet, the AlexNet team took the opposite approach. They used Nvidia GPUs to support a small-scale deep-learning neural network that was fed ImageNet content and which then “learned” how to build relationships between images and their associated tags. The team did not set out to write the best computer-vision algorithm possible; in fact, they did not write a single line of computer-vision code themselves. Instead, they wrote the best deep-learning model they could—and trusted it to figure out the computer-vision problem on its own.",
+     "q": "How did the AlexNet team's approach to the ImageNet contest differ from the rest of the field?"
+    },
+    {
+     "id": "9b97c1fb94f19583",
+     "loc": 3104,
+     "theme": "work",
+     "text": "Jensen announced the change in strategic focus in a company all-hands meeting. “We need to consider this work as our highest priority,” he said.20 He explained that Nvidia had to get the right people working on AI."
+    },
+    {
+     "id": "f122d41812681f66",
+     "loc": 3126,
+     "theme": "ideas",
+     "text": "In much the same way that traditional GPUs marked an improvement over CPU-based computation because of their ability to handle a smaller subset of tasks more efficiently, Tensor Cores were an improvement over traditional GPUs because they were optimized to run an even more specialized subset of tasks at even higher efficiencies.",
+     "q": "How do Tensor Cores relate to traditional GPUs in the same way GPUs relate to CPUs?"
+    }
+   ]
+  },
+  {
+   "id": "the-personal-mba-master-the-art-of-business--josh-kaufman",
+   "title": "The Personal MBA: Master the Art of Business",
+   "author": "Josh Kaufman",
+   "subject": "the fundamental mental models and principles that underlie how every business works",
+   "total": 17,
+   "highlights": [
+    {
+     "id": "d2bfc05008973993",
+     "loc": 545,
+     "theme": "ideas",
+     "text": "that the human brain works in models. The trick is to have your brain work better than the other person’s brain because it understands the most fundamental models—the ones that do the most work. —CHARLES T. MUNGER, BILLIONAIRE BUSINESS",
+     "q": "According to Charles Munger, what is the trick to having your brain work better than another person's?"
+    },
+    {
+     "id": "ef6a347545af1601",
+     "loc": 598,
+     "theme": "work",
+     "text": "Every successful business (1) creates or provides something of value that (2) other people want or need (3) at a price they’re willing to pay, in a way that (4) satisfies the purchaser’s needs and expectations and (5) provides the business sufficient revenue to make it worthwhile for the owners to continue operation.",
+     "q": "What are the five things every successful business does?"
+    },
+    {
+     "id": "2708178605c042b8",
+     "loc": 608,
+     "theme": "work",
+     "text": "Every business fundamentally relies on two additional factors: people and systems.",
+     "q": "What two additional factors does every business fundamentally rely on?"
+    }
+   ]
+  },
+  {
+   "id": "the-surrender-experiment-my-journey-into-life-s-perfection--michael-a-singer",
+   "title": "The Surrender Experiment: My Journey into Life's Perfection",
+   "author": "Michael A. Singer",
+   "subject": "one man's experiment in letting go of personal will and surrendering to life's natural unfolding",
+   "total": 9,
+   "highlights": [
+    {
+     "id": "a77144e332025dec",
+     "loc": 127,
+     "theme": "mindfulness",
+     "text": "Life rarely unfolds exactly as we want it to. And if we stop and think about it, that makes perfect sense. The scope of life is universal, and the fact that we are not actually in control of life’s events should be self-evident.",
+     "q": "Why does Singer argue it makes perfect sense that life rarely unfolds exactly as we want?"
+    },
+    {
+     "id": "c6afbb8fb96d6ab2",
+     "loc": 133,
+     "theme": "mindfulness",
+     "text": "Each of us actually believes that things should be the way we want them, instead of being the natural result of all the forces of creation.",
+     "q": "What false belief does Singer say each of us holds about how things should be?"
+    },
+    {
+     "id": "790a703cc97f22e8",
+     "loc": 150,
+     "theme": "mindfulness",
+     "text": "If the natural unfolding of the process of life can create and take care of the entire universe, is it really reasonable for us to assume that nothing good will happen unless we force it to? It is to the exploration of this intriguing question that this book is devoted.",
+     "q": "What intriguing question does Singer say the book is devoted to exploring?"
+    },
+    {
+     "id": "ffa3d19c0c1ee140",
+     "loc": 158,
+     "theme": "mindfulness",
+     "text": "Am I better off making up an alternate reality in my mind and then fighting with reality to make it be my way, or am I better off letting go of what I want and serving the same forces of reality that managed to create the entire perfection of the universe around me?",
+     "q": "What choice does Singer frame between fighting reality and serving the forces of reality?"
+    },
+    {
+     "id": "63a0cdb1b6791e44",
+     "loc": 168,
+     "theme": "mindfulness",
+     "text": "My personal experience is that aligning one’s will with the natural forces unfolding around us leads to some surprisingly powerful results.",
+     "q": "What does Singer say aligning one's will with the natural forces around us leads to?"
+    },
+    {
+     "id": "ba90e8cbec9a3e82",
+     "loc": 200,
+     "theme": "mindfulness",
+     "text": "For the first time in my life, my mind and emotions were something I was watching instead of being. I know that it is difficult to put into words, but there was a complete sense of separation between my anxious mind, which was spewing out possible topics to talk about, and me, the one who was simply aware that my mind was doing this. It was like I was suddenly able to remain above my mind and quietly watch the thoughts being created. Believe it or not, that subtle shift in my seat of awareness became a tornado that rearranged my entire life.",
+     "q": "What subtle shift did Singer experience when he began watching his mind instead of being it?"
+    },
+    {
+     "id": "f667f579c44c4993",
+     "loc": 316,
+     "theme": "mindfulness",
+     "text": "What happened under that tree that day was so powerful that even now my body shivers and my eyes begin to tear just to think about"
+    },
+    {
+     "id": "fc03c7164051d11b",
+     "loc": 342,
+     "theme": "mindfulness",
+     "text": "It said very sternly: “DO YOU OR DO YOU NOT WANT TO KNOW WHAT IS BEYOND YOU?”"
+    }
+   ]
+  },
+  {
+   "id": "the-thinking-machine-jensen-huang-nvidia-and-the-world-s-most-coveted-microchip--stephen-witt",
+   "title": "The Thinking Machine: Jensen Huang, Nvidia, and the World's Most Coveted Microchip",
+   "author": "Stephen Witt",
+   "subject": "Jensen Huang's leadership of Nvidia and the rise of the GPU as the engine of the AI revolution",
+   "total": 2,
+   "highlights": [
+    {
+     "id": "f26d4c9709e7fde5",
+     "loc": 91,
+     "theme": "ideas",
+     "text": "In the late 1990s, seeking to better render the Quake series of games, Nvidia made a subtle change to the circuit architecture of its processors, allowing them to solve more than one problem at a time. This approach, known as “parallel computing,” was a radical gamble.",
+     "q": "What architectural change did Nvidia make in the late 1990s to render Quake, and what was that approach called?"
+    },
+    {
+     "id": "943ec8fde4b93b89",
+     "loc": 97,
+     "theme": "ideas",
+     "text": "Huang stuck with this bet, losing money on it for years, until in 2012 a group of dissident academics in Toronto purchased two consumer video game cards to train an exotic kind of artificial intelligence called a neural network.",
+     "q": "How did Nvidia's parallel-computing bet finally pay off in 2012?"
+    }
+   ]
+  },
+  {
+   "id": "the-tibetan-book-of-living-and-dying-the-spiritual-classic-international-bestsel--sogyal-rinpoche-patrick-d-gaffney-and-andrew-harvey",
+   "title": "The Tibetan Book of Living and Dying: The Spiritual Classic & International Bestseller: 30th Anniversary Edition",
+   "author": "Sogyal Rinpoche, Patrick D. Gaffney, and Andrew Harvey",
+   "subject": "the Tibetan Buddhist understanding of death, impermanence and the bardos as a spiritual path for living and dying",
+   "total": 39,
+   "highlights": [
+    {
+     "id": "acb67f365ebeca0e",
+     "loc": 255,
+     "theme": "mindfulness",
+     "text": "Immediately she turned to run out of the tent, but he caught her by the sleeve. “Where are you going?” he asked. “I’m going to call Rinpoche,” she replied. “Don’t bother him, there’s no need,” he smiled. “With the master, there’s no such thing as distance.” With that, he just gazed up into the sky and passed away. Khandro released herself from his grip and rushed out to call my master. I sat there, unable to move. I was amazed that anyone who was staring into the face of death could have that kind of confidence. Lama Tseten could have had his Lama there in person to help him—something anyone else would have longed for—but he had no need. I understand why now: He had already realized the presence of the master within himself. Jamyang Khyentse was there with him always, in his mind and heart; never for one moment did he feel any separation.",
+     "q": "According to Lama Tseten, why did he not need his master physically present as he died?"
+    },
+    {
+     "id": "aabd56745fc720aa",
+     "loc": 264,
+     "theme": "mindfulness",
+     "text": "He could see, I now understand, that Lama Tseten was doing one particular practice of meditation in which the practitioner merges the nature of his mind with the space of truth and can remain in that state for many days as he dies. “La Gen, we are travelers. We’re pilgrims. We don’t have the time to wait that long. Come on. I’ll guide you.” Transfixed, I watched what happened next, and if I hadn’t seen it myself I would never have believed it. Lama Tseten came back to life.",
+     "q": "What meditation practice does the book describe in which a dying practitioner merges the nature of mind with the space of truth and can remain in that state for days?"
+    },
+    {
+     "id": "fac6c3036771b698",
+     "loc": 273,
+     "theme": "mindfulness",
+     "text": "I understood, even as a child, that there was a striking difference between the death of Samten and that of Lama Tseten, and I realized that it was the difference between the death of a good monk who had practiced in his life and that of a much more realized practitioner. Samten died in an ordinary way and in pain, yet with the confidence of faith; Lama Tseten’s death was a display of spiritual mastery.",
+     "q": "What difference did the author observe between the death of Samten and that of Lama Tseten?"
+    },
+    {
+     "id": "4631209bdae7f9b0",
+     "loc": 285,
+     "theme": "mindfulness",
+     "text": "The most shattering death of all was yet to come—that of my master Jamyang Khyentse. Losing him I felt I had lost the ground of my existence. It was in 1959, the year of the fall of Tibet. For the Tibetans, my master’s death was a second devastating blow. And for Tibet, it marked the end of an era."
+    },
+    {
+     "id": "6a2c3dac5d44f4a4",
+     "loc": 303,
+     "theme": "ideas",
+     "text": "I have come to realize that the disastrous effects of the denial of death go far beyond the individual: They affect the whole planet. Believing fundamentally that this life is the only one, modern people have developed no long-term vision. So there is nothing to restrain them from plundering the planet for their own immediate ends and from living in a selfish way that could prove fatal for the future.",
+     "q": "According to the book, how does the denial of death affect the whole planet beyond the individual?"
+    },
+    {
+     "id": "f2348cb625a84eca",
+     "loc": 316,
+     "theme": "mindfulness",
+     "text": "It has often intrigued me how some Buddhist masters I know ask one simple question of people who approach them for teaching: Do you believe in a life after this one? They are not being asked whether they believe in it as a philosophical proposition, but whether they feel it deeply in their heart.",
+     "q": "What single question do some Buddhist masters ask people who approach them for teaching?"
+    },
+    {
+     "id": "4ba524292eec3811",
+     "loc": 360,
+     "theme": "mindfulness",
+     "text": "Death is a mirror in which the entire meaning of life is reflected."
+    },
+    {
+     "id": "e5b210bcedb22cad",
+     "loc": 362,
+     "theme": "ideas",
+     "text": "What I am seeking to do in this book is to explain and expand the Tibetan Book of the Dead, to cover not only death but life as well, and to fill out in detail the whole teaching of which the Tibetan Book of the Dead is only a part. In this wonderful teaching, we find the whole of life and death presented together as a series of constantly changing transitional realities known as bardos. The word “bardo” is commonly used to denote the intermediate state between death and rebirth, but in reality bardos are occurring continuously throughout both life and death, and are junctures when the possibility of liberation, or enlightenment, is heightened.",
+     "q": "What does the word 'bardo' denote, and why are bardos powerful for liberation?"
+    },
+    {
+     "id": "1a22c09ab7b482c9",
+     "loc": 367,
+     "theme": "mindfulness",
+     "text": "The bardos are particularly powerful opportunities for liberation because there are, the teachings show us, certain moments that are much more powerful than others and much more charged with potential, when whatever you do has a crucial and far-reaching effect. I think of a bardo as being like a moment when you step toward the edge of a precipice; such a moment, for example, is when a master introduces a disciple to the essential, original, and innermost nature of his or her mind. The greatest and most charged of these moments, however, is the moment of death.",
+     "q": "Which bardo does the book call the greatest and most charged moment for liberation?"
+    },
+    {
+     "id": "c5804b44635465d1",
+     "loc": 371,
+     "theme": "ideas",
+     "text": "So from the Tibetan Buddhist point of view, we can divide our entire existence into four continuously interlinked realities: (1) life, (2) dying and death, (3) after death, and (4) rebirth. These are known as the four bardos: (1) the natural bardo of this life, (2) the painful bardo of dying, (3) the luminous bardo of dharmata, and (4) the karmic bardo of becoming.",
+     "q": "What are the four bardos into which Tibetan Buddhism divides our entire existence?"
+    },
+    {
+     "id": "3cf5ff1dafdfa49c",
+     "loc": 378,
+     "theme": "mindfulness",
+     "text": "As Tibet’s famous poet saint, Milarepa, said: “My religion is to live—and die—without regret.”"
+    },
+    {
+     "id": "1fbd97cafe5eb4c9",
+     "loc": 415,
+     "theme": "mindfulness",
+     "text": "If we refuse to accept death now, while we are still alive, we will pay dearly throughout our lives, at the moment of death, and thereafter. The effects of this refusal will ravage this life and all the lives to come. We will not be able to live our lives fully; we will remain imprisoned in the very aspect of ourselves that has to die. This ignorance will rob us of the basis of the journey to enlightenment, and trap us endlessly in the realm of illusion, the uncontrolled cycle of birth and death, that ocean of suffering that we Buddhists call samsara.6",
+     "q": "According to the book, what does the Buddhist term samsara refer to?"
+    },
+    {
+     "id": "1b960e99332519b3",
+     "loc": 431,
+     "theme": "mindfulness",
+     "text": "To begin depriving death of its greatest advantage over us, let us adopt a way clean contrary to that common one; let us deprive death of its strangeness, let us frequent it, let us get used to it; let us have nothing more often in mind than death . . . We do not know where death awaits us: so let us wait for it everywhere. To practice death is to practice freedom. A man who has learned how to die has unlearned how to be a slave. MONTAIGNE1",
+     "q": "According to Montaigne, why should we frequent death and get used to it?"
+    },
+    {
+     "id": "d4de4a32a2003255",
+     "loc": 439,
+     "theme": "mindfulness",
+     "text": "Death is a vast mystery, but there are two things we can say about it: It is absolutely certain that we will die, and it is uncertain when or how we will die.",
+     "q": "What two things does the book say we can be certain of about death?"
+    },
+    {
+     "id": "6c457d6b4cb3d2f7",
+     "loc": 450,
+     "theme": "mindfulness",
+     "text": "Without our familiar props, we are faced with just ourselves, a person we do not know, an unnerving stranger with whom we have been living all the time but we never really wanted to meet. Isn’t that why we have tried to fill every moment of time with noise and activity, however boring or trivial, to ensure that we are never left in silence with this stranger on our own?",
+     "q": "Why, according to the book, do we fill every moment with noise and activity?"
+    },
+    {
+     "id": "6431d5e1e7f9c77c",
+     "loc": 470,
+     "theme": "mindfulness",
+     "text": "“Ah, yes,” he replied, “that’s true; this is such a civilized country. They have such marvelous houses for dead corpses. But haven’t you noticed? They have such wonderful houses for the living corpses too.”"
+    },
+    {
+     "id": "20a32e72853db698",
+     "loc": 502,
+     "theme": "mindfulness",
+     "text": "How many of us, like the man in the story, are swept away by what I have come to call an “active laziness”?"
+    },
+    {
+     "id": "daebda37335bbd8a",
+     "loc": 506,
+     "theme": "mindfulness",
+     "text": "Western laziness is quite different. It consists of cramming our lives with compulsive activity, so that there is no time at all to confront the real issues. If we look into our lives, we will see clearly how many unimportant tasks, so-called “responsibilities” accumulate to fill them up. One master compares them to “housekeeping in a dream.” We tell ourselves we want to spend time on the important things of life, but there never is any time.",
+     "q": "How does the book define 'Western laziness'?"
+    },
+    {
+     "id": "e9a3a2ac9dc9ba24",
+     "loc": 516,
+     "theme": "mindfulness",
+     "text": "I think of the Indian saint, Ramakrishna, who said to one of his disciples: “If you spent one-tenth of the time you devoted to distractions like chasing women or making money to spiritual practice, you would be enlightened in a few years!”",
+     "q": "What did Ramakrishna say would happen if a disciple spent one-tenth of his distraction time on spiritual practice?"
+    },
+    {
+     "id": "bccc423e3593e841",
+     "loc": 520,
+     "theme": "ideas",
+     "text": "In Tibetan the word for body is lü, which means “something you leave behind,” like baggage. Each time we say “lü,” it reminds us that we are only travelers, taking temporary refuge in this life and this body.",
+     "q": "What does the Tibetan word for body, lü, mean, and what does it remind us of?"
+    },
+    {
+     "id": "167c371e22d4e948",
+     "loc": 524,
+     "theme": "mindfulness",
+     "text": "Would anyone in their right mind think of fastidiously redecorating their hotel room every time they booked into one?"
+    },
+    {
+     "id": "d8e0c85d7368fe65",
+     "loc": 579,
+     "theme": "mindfulness",
+     "text": "Some masters try to wake us up to the fragility of life with even harsher images: They tell each of us to reflect on ourselves as a condemned prisoner taking our last walk from our cell, a fish struggling in the net, an animal lining up for its end in the slaughterhouse. Others encourage their students to imagine vivid scenarios of their own death, as part of a calm and structured contemplation: the sensations, the pain, the panic, the helplessness, the grief of their loved ones, the realization of what they have or have not done with their lives."
+    },
+    {
+     "id": "3b14aa6993fd670d",
+     "loc": 600,
+     "theme": "mindfulness",
+     "text": "Our task is to strike a balance, to find a middle way, to learn not to overstretch ourselves with extraneous activities and preoccupations, but to simplify our lives more and more. The key to finding a happy balance in modern lives is simplicity. In Buddhism this is what is really meant by discipline. In Tibetan, the term for discipline is tsul trim. Tsul means “appropriate or just,” and trim means “rule” or “way.” So discipline is to do what is appropriate or just; that is, in an excessively complicated age, to simplify our lives.",
+     "q": "What does the book say discipline (tsul trim) really means in an excessively complicated age?"
+    },
+    {
+     "id": "bc4c91cba80ea9a6",
+     "loc": 614,
+     "theme": "mindfulness",
+     "text": "And to realize that every single thing that you do in your life is recorded and that even though you pass it by not thinking at the time, it always comes up later."
+    },
+    {
+     "id": "d9a24b5228a1c004",
+     "loc": 624,
+     "theme": "mindfulness",
+     "text": "Whatever we have done with our lives makes us what we are when we die. And everything, absolutely everything, counts.",
+     "q": "According to the book, what determines what we are when we die?"
+    },
+    {
+     "id": "86d37bffe32b2310",
+     "loc": 637,
+     "theme": "mindfulness",
+     "text": "This existence of ours is as transient as autumn clouds. To watch the birth and death of beings is like looking at the movements of a dance. A lifetime is like a flash of lightning in the sky, Rushing by, like a torrent down a steep mountain."
+    },
+    {
+     "id": "ecedf93c584fa4c7",
+     "loc": 643,
+     "theme": "mindfulness",
+     "text": "One of the chief reasons we have so much anguish and difficulty facing death is that we ignore the truth of impermanence. We so desperately want everything to continue as it is that we have to believe that things will always stay the same. But this is only make-believe. And as we so often discover, belief has little or nothing to do with reality.",
+     "q": "What does the book say is a chief reason we have so much anguish facing death?"
+    },
+    {
+     "id": "64b1eecf7eac6a6a",
+     "loc": 649,
+     "theme": "mindfulness",
+     "text": "But, in fact, impermanence is like some of the people we meet in life—difficult and disturbing at first, but on deeper acquaintance far friendlier and less unnerving than we could have imagined."
+    },
+    {
+     "id": "c3bdf71ebe429ee6",
+     "loc": 651,
+     "theme": "mindfulness",
+     "text": "Reflect on this: The realization of impermanence is paradoxically the only thing we can hold onto, perhaps our only lasting possession. It is like the sky, or the earth. No matter how much everything around us may change or collapse, they endure. Say we go through a shattering emotional crisis . . . our whole life seems to be disintegrating . . . our husband or wife suddenly leaves us without warning. The earth is still there; the sky is still there. Of course, even the earth trembles now and again, just to remind us we cannot take anything for granted.",
+     "q": "What does the book call our only lasting possession, comparing it to the sky and earth?"
+    },
+    {
+     "id": "486881235bb3b50c",
+     "loc": 691,
+     "theme": "mindfulness",
+     "text": "Ask yourself these two questions: Do I remember at every moment that I am dying, and everyone and everything else is, and so treat all beings at all times with compassion? Has my understanding of death and impermanence become so keen and so urgent that I am devoting every second to the pursuit of enlightenment? If you can answer ‘yes’ to both of these, then you have really understood impermanence.”",
+     "q": "What two questions does the book pose to test whether you have truly understood impermanence?"
+    },
+    {
+     "id": "36983fc6437758a3",
+     "loc": 704,
+     "theme": "mindfulness",
+     "text": "Krisha Gotami felt elated and set off at once for the city. She stopped at the first house she saw and said: “I have been told by the Buddha to fetch a mustard seed from a house that has never known death.” “Many people have died in this house,” she was told. She went on to the next house. “There have been countless deaths in our family,” they said. And so to a third and a fourth house, until she had been all around the city and realized the Buddha’s condition could not be fulfilled. She took the body of her child to the charnel ground and said goodbye to him for the last time, then returned to the Buddha. “Did you bring the mustard seed?” he asked. “No,” she said. “I am beginning to understand the lesson you are trying to teach me. Grief made me blind and I thought that only I had suffered at the hands of death.” “Why have you come back?” asked the Buddha. “To ask you to teach me the truth,” she replied, “of what death is, what might lie behind and beyond death, and what in me, if anything, will not die.” The Buddha began to teach her: “If you want to know the truth of life and death, you must reflect continually on this: There is only one law in the universe that never changes—that all things change, and that all things are impermanent. The death of your child has helped you to see now that the realm we are in—samsara—is an ocean of unbearable suffering. There is one way, and one way only, out of samsara’s ceaseless round of birth and death, which is the path to liberation. Because pain has now made you ready to learn and your heart is opening to the truth, I will show it to you.”",
+     "q": "In the story of Krisha Gotami, what did the impossibility of finding a mustard seed from a house untouched by death teach her?"
+    },
+    {
+     "id": "a93cd8d441b55389",
+     "loc": 723,
+     "theme": "health",
+     "text": "Researchers have noted a startling range of aftereffects and changes: a reduced fear and deeper acceptance of death; an increased concern for helping others; an enhanced vision of the importance of love; less interest in materialistic pursuits; a growing belief in a spiritual dimension and the spiritual meaning of life; and, of course, a greater openness to belief in the afterlife.",
+     "q": "What aftereffects and changes do researchers report in people after near-death experiences?"
+    },
+    {
+     "id": "0b61e83fd76b2f76",
+     "loc": 735,
+     "theme": "mindfulness",
+     "text": "I developed a great compassion for people that were ill and facing death and I wanted so much to let them know, to somehow make them aware that the dying process was nothing more than an extension of one’s life.2"
+    },
+    {
+     "id": "342de897f97d029b",
+     "loc": 759,
+     "theme": "health",
+     "text": "Tibetan Buddhists believe that illnesses like cancer can be a warning, to remind us that we have been neglecting deep aspects of our being, such as our spiritual needs.",
+     "q": "How do Tibetan Buddhists interpret illnesses like cancer?"
+    },
+    {
+     "id": "dace98065b699fe4",
+     "loc": 774,
+     "theme": "mindfulness",
+     "text": "We may idealize freedom, but when it comes to our habits, we are completely enslaved."
+    },
+    {
+     "id": "9589a7c7117e0ad8",
+     "loc": 809,
+     "theme": "mindfulness",
+     "text": "The purpose of reflecting on death is to make a real change in the depths of your heart, and to come to learn how to avoid the “hole in the sidewalk,” and how to “walk down another street.”",
+     "q": "What does the book say is the purpose of reflecting on death?"
+    },
+    {
+     "id": "c19100725f5712a5",
+     "loc": 816,
+     "theme": "ideas",
+     "text": "Contemplation on death will bring you a deepening sense of what we call “renunciation,” in Tibetan ngé jung. Ngé means “actually” or “definitely,” and jung means to “come out,” “emerge,” or “be born.”",
+     "q": "What is the Tibetan term for renunciation, and what do its parts mean?"
+    }
+   ]
+  },
+  {
+   "id": "trillion-dollar-coach-the-leadership-playbook-of-silicon-valley-s-bill-campbell--eric-schmidt-jonathan-rosenberg-and-alan-eagle",
+   "title": "Trillion Dollar Coach: The Leadership Playbook of Silicon Valley's Bill Campbell",
+   "author": "Eric Schmidt, Jonathan Rosenberg, and Alan Eagle",
+   "subject": "how Bill Campbell coached executives and built teams, and why coaching is essential to good management",
+   "total": 25,
+   "highlights": [
+    {
+     "id": "ddc2448023631c30",
+     "loc": 49,
+     "theme": "work",
+     "text": "Trillion Dollar Coach reveals that to be a great manager, you have to be a great coach. After all, the higher you climb, the more your success depends on making other people successful. By definition, that’s what coaches do.",
+     "q": "According to Trillion Dollar Coach, what must you be to be a great manager, and why?"
+    },
+    {
+     "id": "9c05773f106be172",
+     "loc": 57,
+     "theme": "work",
+     "text": "The reality, though, is that a formal coach will see only a fraction of the moments where you could benefit from feedback and guidance. It’s up to all of us to coach our employees, our colleagues, and even sometimes our bosses.",
+     "q": "Why can't coaching be left solely to a formal coach?"
+    },
+    {
+     "id": "539c41b835b381f3",
+     "loc": 70,
+     "theme": "work",
+     "text": "That was my pitch in the talk: start treating teams, not individuals, as the fundamental building block of the organization. My Google colleagues did one better: they launched a major study, which they published as Project Aristotle, to identify the distinguishing characteristics of their most successful teams. The five key factors could have been taken right out of Bill Campbell’s playbook. Excellent teams at Google had psychological safety (people knew that if they took risks, their manager would have their back). The teams had clear goals, each role was meaningful, and members were reliable and confident that the team’s mission would make a difference.",
+     "q": "What five factors did Google's Project Aristotle find distinguished its most successful teams?"
+    },
+    {
+     "id": "9d22d4f8d2c86905",
+     "loc": 144,
+     "theme": "work",
+     "text": "His failure, though, wasn’t for lack of players. It was, according to Bill, for too much compassion. “There is something that I would say is called dispassionate toughness that you need [as a football coach], and I don’t think I have it. What you need to do is not worry about feelings. You’ve got to push everybody and everything harder and be almost insensitive about feelings. You replace a kid with another kid; you take an older guy and replace him with a younger guy. That is the nature of the game. Survival of the fittest. The best players play. In my case, I worried about that. I tried to make sure the kids understood what we were doing. I just think I wasn’t hard-edged enough.”6 Bill may have been correct in believing that success as a football coach depends on “dispassion,” but in business there is growing evidence that compassion is a key factor to success.*7 And as it turned out, this notion of bringing compassion to the team worked much better for Bill in the business world than on the football field.",
+     "q": "What did Bill say a football coach needs that he lacked, and how did that trait translate differently to business?"
+    },
+    {
+     "id": "2a0a1b16d498665b",
+     "loc": 299,
+     "theme": "work",
+     "text": "Bill Campbell was a trillion dollar coach. In fact, a trillion dollars understates the value he created. He worked side by side with Steve Jobs to build Apple from near bankruptcy to a market capitalization of several hundred billion dollars. He worked side by side with Larry Page, Sergey Brin, and Eric to build Google (now Alphabet) from a startup to a market capitalization that’s also several hundred billion dollars. So that’s well over a trillion dollars already, and doesn’t include the numerous other companies Bill advised. By that measure, Bill was the greatest executive coach the world has ever seen. And not an executive coach in the traditional mold, working solely to maximize the performance of individuals; Bill coached teams.",
+     "q": "Why is Bill Campbell called a 'trillion dollar coach' and how did his coaching differ from traditional executive coaching?"
+    },
+    {
+     "id": "29d442d7a8b9d0f2",
+     "loc": 316,
+     "theme": "work",
+     "text": "There is another, equally critical, factor for success in companies: teams that act as communities, integrating interests and putting aside differences to be individually and collectively obsessed with what’s good for the company. Research shows that when people feel like they are part of a supportive community at work, they are more engaged with their jobs and more productive. Conversely, a lack of community is a leading factor in job burnout.10",
+     "q": "What happens to engagement and productivity when teams act as supportive communities versus lacking community?"
+    },
+    {
+     "id": "ab93e497786eefce",
+     "loc": 327,
+     "theme": "work",
+     "text": "But teams of people who subordinate individual performance to that of the group will generally outperform teams that don’t. The trick, then, is to corral any such “team of rivals” into a community and get them aligned in marching toward a common goal. A 2013 paper presents a set of “design principles” for doing this, such as developing strong mechanisms for making decisions and resolving conflicts.12 But adhering to these principles is hard,",
+     "q": "What is the trick to making a 'team of rivals' outperform, according to the book?"
+    },
+    {
+     "id": "fd71b890d375aca7",
+     "loc": 333,
+     "theme": "work",
+     "text": "when you have all of these factors in play and a team of ambitious, opinionated, competitive, smart people, there is tremendous “tension in the machine.”"
+    },
+    {
+     "id": "6a11340787d42f76",
+     "loc": 336,
+     "theme": "work",
+     "text": "To balance the tension and mold a team into a community, you need a coach, someone who works not only with individuals but also with the team as a whole to smooth out the constant tension, continuously nurture the community, and make sure it is aligned around a common vision and set of goals.",
+     "q": "What role does a coach play in balancing tension and molding a team into a community?"
+    },
+    {
+     "id": "8d360bc019393434",
+     "loc": 355,
+     "theme": "work",
+     "text": "Coaching is the best way to mold effective people into powerful teams."
+    },
+    {
+     "id": "f55c67714caacaec",
+     "loc": 363,
+     "theme": "work",
+     "text": "Being a good coach is essential to being a good manager and leader. Coaching is no longer a specialty; you cannot be a good manager without being a good coach.",
+     "q": "What does the book say about the relationship between being a good coach and being a good manager?"
+    },
+    {
+     "id": "ad1a13d25f6c4145",
+     "loc": 367,
+     "theme": "work",
+     "text": "Many of the other skills of management can be delegated, but not coaching.",
+     "q": "Which management skill does the book say cannot be delegated?"
+    },
+    {
+     "id": "d5376ed25541088b",
+     "loc": 371,
+     "theme": "work",
+     "text": "We break the what and how into four sections: how Bill got the details right in management skills ranging from one-on-one and staff meetings to handling challenging employees; how he built trust with the people he worked with; how he built and created teams; and finally, how he made it okay to bring love into the workplace.",
+     "q": "What four sections does the book use to break down Bill's approach to coaching and management?"
+    }
+   ]
+  },
+  {
+   "id": "unwinding-anxiety-new-science-shows-how-to-break-the-cycles-of-worry-and-fear-to--judson-brewer-md-phd",
+   "title": "Unwinding Anxiety: New Science Shows How to Break the Cycles of Worry and Fear to Heal Your Mind",
+   "author": "Judson Brewer MD PhD",
+   "subject": "how anxiety operates as a fear-based habit loop and how to break it using mindfulness and reward-based learning",
+   "total": 66,
+   "highlights": [
+    {
+     "id": "65a69ac179751b86",
+     "loc": 131,
+     "theme": "health",
+     "text": "And that’s when everything changed. I had a lightbulb moment when I realized that one of the reasons so many people fail to see that they have anxiety is the way it hides in bad habits.",
+     "q": "According to Brewer, why do so many people fail to recognize that they have anxiety?",
+     "note": "bad vs dumb habits"
+    },
+    {
+     "id": "87bc02e3e4d65644",
+     "loc": 155,
+     "theme": "health",
+     "text": "As I learned more about my addicted patients’ struggles, I realized that they were talking about the same types of struggles that I had learned about in my own meditation training—those connected feelings of craving, clinging, grasping. To my surprise, I found we shared a language and a struggle.",
+     "q": "What language and struggle did Brewer find his addicted patients shared with meditation training?"
+    },
+    {
+     "id": "69cd22e5f3a5daf9",
+     "loc": 178,
+     "theme": "health",
+     "text": "I’ve been doing research for decades and I’ve loved learning and discovering new things. But I’d have to say, the single most interesting and important connection that I’ve made is the link between anxiety and habits—why we learn to get anxious, and how even that becomes a habit.",
+     "q": "What does Brewer call the single most important connection he has made in decades of research?"
+    },
+    {
+     "id": "7277da6f5ab38747",
+     "loc": 182,
+     "theme": "health",
+     "text": "You see, anxiety hides in people’s habits. It hides in their bodies as they learn to disconnect from these feelings through myriad different behaviors."
+    },
+    {
+     "id": "b4deb293d2ce2851",
+     "loc": 184,
+     "theme": "health",
+     "text": "procrastinating as a way to deal with anxiety. I could also help them see why they were struggling so much and failing to overcome both anxiety and their other habits. Anxiety would feed the other behaviors, which would then perpetuate their anxiety, until all would spiral out of control, landing them in my office.",
+     "q": "How does Brewer describe the self-perpetuating relationship between anxiety and other behaviors?"
+    },
+    {
+     "id": "ca6d8f3fb234eb60",
+     "loc": 212,
+     "theme": "health",
+     "text": "Part 1 is what happens once you understand what is going on. Part 0 is all about what happens before you are even conscious of being anxious.)",
+     "q": "What is the distinction between Part 0 and Part 1 of the book?"
+    },
+    {
+     "id": "192a1c037a9cb3e3",
+     "loc": 248,
+     "theme": "health",
+     "text": "The online dictionary defines anxiety as “a feeling of worry, nervousness, or unease, typically about an imminent event or something with an uncertain outcome.”",
+     "q": "How does the dictionary define anxiety?"
+    },
+    {
+     "id": "05231134f6533d11",
+     "loc": 253,
+     "theme": "health",
+     "text": "Some people wake up with anxiety in the morning, that nervousness prodding them awake like a hungry cat, followed by unshakable worry that spins them more and more awake (no coffee needed) and builds throughout the day because they can’t figure out why they are anxious. This is the case for my patients with Generalized Anxiety Disorder (GAD),",
+     "q": "How does Generalized Anxiety Disorder (GAD) typically present in the morning?"
+    },
+    {
+     "id": "9b7c932485a1001d",
+     "loc": 291,
+     "theme": "health",
+     "text": "Yes, this is a key characteristic of generalized anxiety: our mind picks an innocuous object and starts worrying about it.",
+     "q": "What is a key characteristic of generalized anxiety regarding what the mind worries about?"
+    },
+    {
+     "id": "75bf2843963600ee",
+     "loc": 301,
+     "theme": "health",
+     "text": "In contrast to the slow burn of generalized anxiety, some people have intermittent periods of panic."
+    },
+    {
+     "id": "2297acb3da78648f",
+     "loc": 321,
+     "theme": "health",
+     "text": "Once I knew what it was [panic attacks], I felt like I had more control. I would tell myself, “You feel like you’re going to die, but you won’t. This is your brain playing games with you. You decide what happens next.” I learned how to deep-breathe my way out of an attack and focus my thoughts intensely on the very act of calming down.",
+     "q": "How did naming panic attacks help this person regain a sense of control over them?"
+    },
+    {
+     "id": "0bf0fd6dddccf8d4",
+     "loc": 326,
+     "theme": "health",
+     "text": "And critically for both Emily and Mahri, it wasn’t until they could name their particular variety of anxiety that they could start working with it.",
+     "q": "According to Brewer, what must happen before someone can start working with their anxiety?"
+    },
+    {
+     "id": "5f533534f2148471",
+     "loc": 328,
+     "theme": "health",
+     "text": "We all get anxious—it’s a part of life—yet how we deal with it is critical. If we don’t know how anxiety shows up or why, we might get caught up in temporary distractions or short-term fixes that actually feed it, creating bad habits in the process (have you ever eaten ice cream or cookies when you’re stressed?). Or we might spend our whole lives adding to our anxiety by trying to cure it (why can’t I just find why I’m anxious and fix it?). That’s what this book is all about.",
+     "q": "How can short-term fixes or distractions make anxiety worse?"
+    },
+    {
+     "id": "f1fe5ebf35be7453",
+     "loc": 343,
+     "theme": "health",
+     "text": "BC—that is, before COVID-19—the Anxiety and Depression Association of America estimated that 264 million people worldwide had an anxiety disorder.",
+     "q": "Before COVID-19, how many people worldwide did the ADAA estimate had an anxiety disorder?"
+    },
+    {
+     "id": "deb333cb4990f59a",
+     "loc": 345,
+     "theme": "health",
+     "text": "2001 and 2003, the National Institute of Mental Health reported that 31 percent of U.S. adults experience an anxiety disorder sometime in their lives, and that 19 percent of the population had an anxiety disorder within the past year.",
+     "q": "What percentage of U.S. adults did the NIMH report experience an anxiety disorder at some point in their lives?"
+    },
+    {
+     "id": "e88bc87f5ffd5a31",
+     "loc": 359,
+     "theme": "health",
+     "text": "The authors opined that individual differences in the tendency to worry may show up more under conditions of relative wealth and stability found in high-income countries. Speculation proliferates as to why this is. For example, having our basic needs met may provide more idle time to let our survival brains look for something to be threatened by or worried about, leading some to dub this population the “worried well.” Yet people with GAD are far from healthy: half of the individuals in this study reported severe disability in one or more life domains.",
+     "q": "Why might worry tendencies show up more in high-income countries, giving rise to the term 'worried well'?"
+    },
+    {
+     "id": "e13b059ef3dee1cd",
+     "loc": 364,
+     "theme": "health",
+     "text": "With the emergence of the COVID-19 pandemic, early estimates report (surprise!) that anxiety levels skyrocketed. A cross-sectional survey of people in China from February 2020 found the prevalence of GAD to be 35.2 percent—and this was relatively early in the grand scheme of the pandemic. A report from the United Kingdom from late April 2020 reported that “mental health had deteriorated” compared with pre-COVID-19 trends. A study in the United States in April 2020 found that 13.6 percent of respondents reported severe psychological distress. That’s a whopping 250 percent increase compared to 2018, where only 3.9 percent reported this level of woe.",
+     "q": "What GAD prevalence did a February 2020 survey in China find early in the pandemic?"
+    },
+    {
+     "id": "b314e0026f676d52",
+     "loc": 380,
+     "theme": "health",
+     "text": "As a psychiatrist, I learned that anxiety and its close cousin, panic, are both born from fear.",
+     "q": "According to Brewer, from what are both anxiety and panic born?"
+    },
+    {
+     "id": "1079114bc60c61f2",
+     "loc": 381,
+     "theme": "health",
+     "text": "In fact, fear is the oldest survival mechanism we’ve got. Fear teaches us to avoid dangerous situations in the future through a brain process called negative reinforcement.",
+     "q": "Through what brain process does fear teach us to avoid dangerous situations?"
+    },
+    {
+     "id": "bc18e870cde56508",
+     "loc": 385,
+     "theme": "health",
+     "text": "So simple that we need only three elements in situations like this to learn: an environmental cue, a behavior, and a result.",
+     "q": "What three elements does the brain need in order to learn in situations like this?"
+    },
+    {
+     "id": "60756143a735ee03",
+     "loc": 388,
+     "theme": "ideas",
+     "text": "We share this survival tool with all animals. Even the sea slug, a creature with the most “primitive” nervous system known in science (twenty thousand neurons total, as opposed to roughly a hundred billion in the human brain), uses this same learning mechanism.",
+     "q": "What does the sea slug demonstrate about the reward/survival learning mechanism?"
+    },
+    {
+     "id": "722589cec94db616",
+     "loc": 390,
+     "theme": "health",
+     "text": "Sometime in the last million years, humans evolved a new layer on top of our more primitive survival brain; neuroscientists call this the prefrontal cortex (PFC). (From an anatomical perspective, this “newer” brain region is located just behind our eyes and forehead.) Involved in creativity and planning, the PFC helps us to think and plan for the future. The PFC predicts what will happen in the future based on our past experience. Yet critically, the PFC needs accurate information to make accurate predictions. If information is lacking, our PFC plays out different versions of what might happen to help us choose the best path forward. It does this by running simulations based on previous events in our lives that are most similar.",
+     "q": "What does the prefrontal cortex do, and what does it need to make accurate predictions?"
+    },
+    {
+     "id": "8ce6ab5860d5df88",
+     "loc": 396,
+     "theme": "health",
+     "text": "Anxiety is born when our PFCs don’t have enough information to accurately predict the future.",
+     "q": "According to Brewer, when is anxiety born?"
+    },
+    {
+     "id": "da483cdc9ff8548c",
+     "loc": 404,
+     "theme": "health",
+     "text": "Notice how fear itself does not equal anxiety. Fear is an adaptive learning mechanism that helps us survive. Anxiety, on the other hand, is maladaptive; our thinking and planning brain spins out of control when it doesn’t have enough information.",
+     "q": "How does Brewer distinguish fear from anxiety in terms of adaptiveness?"
+    },
+    {
+     "id": "90fda181f18f1b6d",
+     "loc": 409,
+     "theme": "health",
+     "text": "We can break it down into three very different time scales that differentiate reflexes from learning from anxiety: Immediate (milliseconds) Acute (seconds to minutes) Chronic (months to years)",
+     "q": "What three time scales does Brewer use to differentiate reflexes from learning from anxiety?"
+    },
+    {
+     "id": "53f1b1ac7693c0fb",
+     "loc": 417,
+     "theme": "health",
+     "text": "In other words, this fight/flight/freeze reaction keeps you alive long enough to get to the next phase and actually learn from it. Once you are safely out of harm’s way, that’s when you feel the acute adrenaline rush and start processing what just happened (acute learning).",
+     "q": "What is the purpose of the fight/flight/freeze reaction in relation to later learning?"
+    },
+    {
+     "id": "0ca0c7959c25d44d",
+     "loc": 421,
+     "theme": "health",
+     "text": "The unpleasantness of the fearful physiological reaction helps you learn: put your phone away and look both ways before crossing the street. Notice how quickly learning happens here. You don’t need to spend months in therapy"
+    },
+    {
+     "id": "e23ddd3ad441e96b",
+     "loc": 425,
+     "theme": "health",
+     "text": "(Notice how much more effective learning from experience is than extrapolating from a concept—our brains are really good at this.) Importantly, like zebras who jump and kick, or dogs who shake their bodies after surviving stressful situations, you need to learn how to safely discharge the excess energy associated with that “I almost died” adrenaline surge, so that it doesn’t lead to chronic or post-traumatic stress and anxiety. Simply talking to someone doesn’t count here; you may really have to do something physical, like shout, shake, dance, or engage in some type of physical exercise.",
+     "q": "Why does Brewer say you need to physically discharge adrenaline after a scare rather than just talk about it?"
+    },
+    {
+     "id": "d4a1ca5aaf678b6f",
+     "loc": 434,
+     "theme": "health",
+     "text": "This is all well and good as long as you have enough information to make a good prediction. The more certain you can be of what is about to happen, the more you can predict and plan ahead."
+    },
+    {
+     "id": "9d4f20048acd048b",
+     "loc": 435,
+     "theme": "health",
+     "text": "Like a seed needing fertile soil, the old survival brain creates the conditions for anxiety to sprout in your thinking brain (chronic). This is where anxiety is born. Fear + uncertainty = anxiety.",
+     "q": "What equation does Brewer give for how anxiety is born?"
+    },
+    {
+     "id": "b139ba8e9d8997b2",
+     "loc": 439,
+     "theme": "health",
+     "text": "In the absence of past experience and/or (accurate) information, you will find it really hard to shut off that worry switch and calmly plan for the future. Your thinking/planning brain doesn’t have an information switch such that when it runs low on information, it goes into sleep mode until more information is available. Quite the opposite. Anxiety urges you into action. “Go get me some information!” it screams in your ears (oddly, from inside your head).",
+     "q": "What does the thinking brain do when it runs low on information, rather than going into sleep mode?"
+    },
+    {
+     "id": "f31ece12ff7cf8ec",
+     "loc": 472,
+     "theme": "health",
+     "text": "With each bit of uncertain information, the brain spins out every conceivable what-if scenario. This is the planning brain trying to think through all of the contingencies in an effort to help out.",
+     "q": "Why does the planning brain spin out every what-if scenario when given uncertain information?",
+     "note": "Now we have more information inputs to be fearful, uncertain and thus anxious about."
+    },
+    {
+     "id": "69370f4174a72fb1",
+     "loc": 474,
+     "theme": "health",
+     "text": "When fear-based learning is paired with uncertainty, your well-intentioned PFC doesn’t wait for the rest of the ingredients (e.g., more information). Instead, it takes whatever it’s got in the moment, uses worry to whip it together, fires up the adrenaline oven, and bakes you a loaf of bread you didn’t ask for: a big hot loaf of anxiety. And in the process of making the loaf, your brain stores a bit of the dough—like sourdough starter—away for later. The next time you plan for something, your brain pulls that anxiety starter out of your mental pantry and adds it as an “essential ingredient” to the mix, to the point where that sour taste overpowers reason, patience, and the process of gathering more information.",
+     "q": "How does Brewer use the sourdough-starter metaphor to describe how past anxiety feeds future planning?"
+    },
+    {
+     "id": "45c8c739906034dc",
+     "loc": 482,
+     "theme": "health",
+     "text": "Our own anxiety can be cued/triggered simply by talking to someone else who is anxious.",
+     "q": "How can our own anxiety be triggered by other people?"
+    },
+    {
+     "id": "259b76435d8d6abb",
+     "loc": 487,
+     "theme": "health",
+     "text": "When we can’t control our anxiety, that emotional fever spikes into panic (defined online as “sudden uncontrollable fear or anxiety, often causing wildly unthinking behavior”).",
+     "q": "According to Brewer, what happens when we can't control our anxiety?"
+    },
+    {
+     "id": "ec63652d95d27036",
+     "loc": 493,
+     "theme": "health",
+     "text": "Too many times, I’ve seen my anxious clinic patients try to suppress or think themselves out of anxiety. Unfortunately, both willpower and reasoning rely on the PFC, which at these critical moments has shut down and isn’t available.",
+     "q": "Why do willpower and reasoning fail to overcome anxiety in critical moments?"
+    },
+    {
+     "id": "589232abddd6b922",
+     "loc": 502,
+     "theme": "mindfulness",
+     "text": "To hack our brains and break the anxiety cycle, we must become aware of two things: that we are getting anxious and/or panicking and what results from anxiety/panicking.",
+     "q": "What two things must we become aware of to hack the brain and break the anxiety cycle?"
+    },
+    {
+     "id": "d20961898476011a",
+     "loc": 504,
+     "theme": "health",
+     "text": "anxiety weakens us mentally and physically and also has more long-term health consequences. Becoming aware of these damaging effects helps our brain’s learning system determine the relative worth of behaviors: more valuable (rewarding) behaviors are placed higher in a reward hierarchy in our brain, and thus are more likely to be repeated in the future, while the less valuable (unrewarding) behaviors fall to the bottom (more on this in chapter 10). Once we are aware of how unrewarding anxiety is, we can then bring in the bigger, better offer, or BBO (more on this in chapter 15).",
+     "q": "How does becoming aware of anxiety's damaging effects influence the brain's reward hierarchy?",
+     "note": "Is this rralizing process mostly cognitive?"
+    },
+    {
+     "id": "afcd9b2d29e7f978",
+     "loc": 516,
+     "theme": "mindfulness",
+     "text": "Just by taking a moment to pause and ask such a question, you give your PFC a chance to come back online and do what it does best: think",
+     "q": "What does pausing to ask a question do for the PFC?"
+    },
+    {
+     "id": "57d232a06866a3e7",
+     "loc": 518,
+     "theme": "mindfulness",
+     "text": "Self-awareness also helps to foster good hygiene habits through reinforcement learning:"
+    },
+    {
+     "id": "0cfd3b77125a3868",
+     "loc": 526,
+     "theme": "mindfulness",
+     "text": "At times when your mind starts to spin out in your worry du jour, you can pause and take a deep breath while you wait for your PFC to come back online. Once it’s up and running again, you can then compare the feeling of anxiety to that of calmness and think clearly.",
+     "q": "What can you do when your mind starts spinning out in worry, and why does it help?"
+    },
+    {
+     "id": "a0dcb422ad11f346",
+     "loc": 535,
+     "theme": "health",
+     "text": "Hate to tell you this, but you’re addicted to something."
+    },
+    {
+     "id": "2db172b8e4d5ac4e",
+     "loc": 550,
+     "theme": "health",
+     "text": "That definition—and let’s hear it once again, in case we’re in any doubt: “continued use despite adverse consequences”—well, that could mean continued use of anything.",
+     "q": "What definition of addiction does Brewer emphasize could apply to almost anything?"
+    },
+    {
+     "id": "24476d89fbc5bc5e",
+     "loc": 554,
+     "theme": "health",
+     "text": "Could anxiety be a habit, or even an addiction? In other words, how obvious are the adverse consequences of anxiety? Can we get addicted to worrying?",
+     "q": "What provocative question does Brewer raise about anxiety and addiction?"
+    },
+    {
+     "id": "fe39638624859e82",
+     "loc": 564,
+     "theme": "ideas",
+     "text": "The rate of change in our world over the last twenty years far outstrips all the changes in the previous two hundred years. Our brains and bodies haven’t kept up, and it’s killing us.",
+     "q": "What does Brewer say about the rate of change in the world versus our brains and bodies?"
+    },
+    {
+     "id": "f7304ca014fb3fd3",
+     "loc": 587,
+     "theme": "health",
+     "text": "One example that I gave in chapter 2 was the fight/flight/freeze instinct. Another feature of the “old brain” that I briefly touched on previously is what’s known as the reward-based learning system. Reward-based learning is based on positive and negative reinforcement.",
+     "q": "On what is reward-based learning based?"
+    },
+    {
+     "id": "284e10877835c05d",
+     "loc": 603,
+     "theme": "health",
+     "text": "Hey, you can use this dopamine thing for more than remembering where food is. In fact, the next time you feel bad, you can try eating something good, and you’ll feel better!",
+     "q": "How does the dopamine reward system get co-opted into eating to feel better when we feel bad?"
+    },
+    {
+     "id": "78fecc36b6e075f5",
+     "loc": 611,
+     "theme": "health",
+     "text": "With the same brain mechanisms as that unnamed cave person, we modern geniuses have gone from learning to survive to literally killing ourselves with these habits. And it’s gotten exponentially worse in the last twenty years. Obesity and smoking are among the leading preventable causes of morbidity and mortality in the world. Undeterred by modern medicine, anxiety disorders top the charts as the most predominant psychiatric conditions.",
+     "q": "What are the leading preventable causes of morbidity and mortality, and which psychiatric conditions top the charts?"
+    },
+    {
+     "id": "51194ba687e0780e",
+     "loc": 618,
+     "theme": "health",
+     "text": "If you ever get caught up in a worry habit loop, you know what I mean: Trigger: Thought or emotion Behavior: Worrying Result/reward: Avoidance, overplanning, etc.",
+     "q": "What are the trigger, behavior, and result/reward in a worry habit loop?"
+    },
+    {
+     "id": "4d8214dde07e66d0",
+     "loc": 830,
+     "theme": "mindfulness",
+     "text": "Part 1 (first gear) will help you get started mapping out your own anxiety “habit loops.” Part 2 (second gear) will help you tap into your brain’s reward system to systematically work with anxiety (and other habits). Part 3 (third gear) will help you tap into your own natural neural capacities to step away from anxiety-related habits (e.g., worry, procrastination,",
+     "q": "In Brewer's three-gear framework, what is the purpose of first, second, and third gear?"
+    }
+   ]
+  },
+  {
+   "id": "warren-buffett-and-the-interpretation-of-financial-statements-the-search-for-the--mary-buffett-and-david-clark",
+   "title": "Warren Buffett and the Interpretation of Financial Statements: The Search for the Company with a Durable Competitive Advantage",
+   "author": "Mary Buffett and David Clark",
+   "subject": "how to read financial statements to identify companies with a durable competitive advantage, Buffett-style",
+   "total": 40,
+   "highlights": [
+    {
+     "id": "c7e9b0962a6e89bd",
+     "loc": 72,
+     "theme": "investing",
+     "text": "It is the purpose of this book to explore Warren’s two revelations— How do you identify an exceptional company with a durable competitive advantage? How do you value a company with a durable competitive advantage?",
+     "q": "What two questions does the book set out to answer about companies with a durable competitive advantage?"
+    },
+    {
+     "id": "459e91c86e25ff3a",
+     "loc": 121,
+     "theme": "investing",
+     "text": "Warren discovered that a handful of the companies he and Graham had purchased, then sold under Graham’s 50% rule, continued to prosper year after year; in the process he saw these companies’ stock prices soar far above where they had been when Graham unloaded them. It was as if they bought seats on a train ride to Easy Street but got off well before the train arrived at the station, because he had no insight as to where it was headed."
+    },
+    {
+     "id": "bb1e0ae4e69af875",
+     "loc": 126,
+     "theme": "investing",
+     "text": "What Warren learned was that these “superstars” all benefited from some kind of competitive advantage that created monopoly-like economics, allowing them either to charge more or to sell more of their products. In the process, they made a ton more money than their competitors. Warren also realized that if a company’s competitive advantage could be maintained for a long period of time—if it was “durable”—then the underlying value of the business would continue to increase year after year.",
+     "q": "According to Buffett, what did his 'superstar' companies all share that let them earn far more than competitors?"
+    },
+    {
+     "id": "9bccb0e7190ec9d3",
+     "loc": 141,
+     "theme": "investing",
+     "text": "To make things even easier, Warren realized that he no longer had to wait for Wall Street to serve up a bargain price. He could pay a fair price for one of these super businesses and still come out ahead, provided he held the investment long enough.",
+     "q": "Why did Warren realize he no longer had to wait for a Wall Street bargain price on super businesses?"
+    },
+    {
+     "id": "6b88ea8bad93e409",
+     "loc": 159,
+     "theme": "investing",
+     "text": "Warren has figured out that these super companies come in three basic business models: They sell either a unique product or a unique service, or they are the low-cost buyer and seller of a product or service that the public consistently needs.",
+     "q": "What three basic business models do Buffett's super companies fall into?"
+    },
+    {
+     "id": "50770bd2ca5a8729",
+     "loc": 176,
+     "theme": "investing",
+     "text": "The economics of selling a unique service can be phenomenal. A company doesn’t have to spend a lot of money on redesigning its products, nor does it have to spend a fortune building a production plant and warehousing its wares.",
+     "q": "Why can the economics of selling a unique service be phenomenal?"
+    },
+    {
+     "id": "a507b9de00a94e39",
+     "loc": 178,
+     "theme": "investing",
+     "text": "Being the low-cost buyer and seller of a product or service that the public has an ongoing need for: This is the world of Wal-Mart, Costco, Nebraska Furniture Mart, Borsheim’s Jewelers, and the Burlington Northern Santa Fe Railway."
+    },
+    {
+     "id": "f62e5a92c7b592f5",
+     "loc": 181,
+     "theme": "investing",
+     "text": "The key is to be both the low-cost buyer and the low-cost seller, which allows you to get your margins higher than your competitor’s and still be the low-cost seller of a product or service.",
+     "q": "What is the key to succeeding as a low-cost operator of a needed product or service?"
+    },
+    {
+     "id": "c792a46781a3077e",
+     "loc": 193,
+     "theme": "investing",
+     "text": "It is this consistency in the product that creates consistency in the company’s profits. If the company doesn’t have to keep changing its product, it won’t have to spend millions on research and development, nor will it have to spend billions retooling its plant to manufacture next year’s model. So the money piles up in the company’s coffers, which means that it doesn’t have to carry a lot of debt, which means that it doesn’t have to pay a lot in interest, which means that it ends up with lots of money to either expand its operations or buy back its stock, which will drive up earnings and the price of the company’s stock—which makes shareholders richer.",
+     "q": "How does consistency in a company's product ultimately make its shareholders richer?"
+    },
+    {
+     "id": "e0cfc3d345f149cc",
+     "loc": 287,
+     "theme": "investing",
+     "text": "Warren, the source of the earnings is always more important than the earnings themselves.",
+     "q": "For Warren, what matters more than the earnings themselves?"
+    },
+    {
+     "id": "eeae9ab98e7dd9cb",
+     "loc": 348,
+     "theme": "investing",
+     "text": "What he has found is that companies that have excellent long-term economics working in their favor tend to have consistently higher gross profit margins than those that don’t.",
+     "q": "What pattern in gross profit margins mark companies with excellent long-term economics?"
+    },
+    {
+     "id": "cd6cb04a60e8462b",
+     "loc": 360,
+     "theme": "investing",
+     "text": "As a very general rule (and there are exceptions): Companies with gross profit margins of 40% or better tend to be companies with some sort of durable competitive advantage. Companies with gross profit margins below 40% tend to be companies in highly competitive industries, where competition is hurting overall profit margins (there are exceptions here, too). Any gross profit margin of 20% and below is usually a good indicator of a fiercely competitive industry, where no one company can create a sustainable competitive advantage over the competition.",
+     "q": "What gross profit margin thresholds does Buffett use to gauge durable competitive advantage versus fierce competition?"
+    },
+    {
+     "id": "f7be360ed29a3229",
+     "loc": 367,
+     "theme": "investing",
+     "text": "Warren strongly emphasizes the word “durable,” and to be on the safe side we should track the annual gross profit margins for the last ten years to ensure that the “consistency” is there.",
+     "q": "Over how many years should you track gross profit margins to confirm consistency?"
+    },
+    {
+     "id": "bda43aef2bb61cca",
+     "loc": 369,
+     "theme": "investing",
+     "text": "Now there are a number of ways that a company with a high gross profit margin can go astray and be stripped of its long-term competitive advantage. One of these is high research costs, another is high selling and administrative costs, and a third is high interest costs on debt. Any one of these three costs can destroy the long-term economics of the business. These are called operating expenses, and they are the thorn in the side of every business.",
+     "q": "What three operating costs can strip a high-gross-margin company of its long-term competitive advantage?"
+    },
+    {
+     "id": "11482cb146466eb2",
+     "loc": 418,
+     "theme": "investing",
+     "text": "In the search for a company with a durable competitive advantage the lower the company’s SGA expenses, the better. If they can stay consistently low, all the better. In the world of business anything under 30% is considered fantastic. However, there are a number of companies with a durable competitive advantage that have SGA expenses in the 30% to 80% range. But if we see a company that is repetitively showing SGA expenses close to, or in excess of, 100%, we are probably dealing with a company in a highly competitive industry where no one entity has a sustainable competitive advantage.",
+     "q": "What SGA-expense levels signal a durable competitive advantage versus a fiercely competitive industry?"
+    },
+    {
+     "id": "7cba33e02d63dd24",
+     "loc": 448,
+     "theme": "investing",
+     "text": "What seems like a long-term competitive advantage is often an advantage bestowed upon the company by a patent or some technological advancement. If the competitive advantage is created by a patent, as with the pharmaceutical companies, at some point in time that patent will expire and the company’s competitive advantage will disappear.",
+     "q": "Why is a competitive advantage created by a patent not durable?"
+    },
+    {
+     "id": "6c34c48294f9ba18",
+     "loc": 463,
+     "theme": "investing",
+     "text": "Here then is Warren’s rule: Companies that have to spend heavily on R&D have an inherent flaw in their competitive advantage that will always put their long-term economics at risk, which means they are not a sure thing.",
+     "q": "What is Warren's rule about companies that must spend heavily on R&D?"
+    },
+    {
+     "id": "ed5d9dcf9d244cf2",
+     "loc": 504,
+     "theme": "investing",
+     "text": "What Warren has discovered is that companies that have a durable competitive advantage tend to have lower depreciation costs as a percentage of gross profit than companies that have to suffer the woes of intense competition.",
+     "q": "How do depreciation costs as a percentage of gross profit compare for durable-advantage companies versus their competitors?"
+    },
+    {
+     "id": "7704c6d340000a82",
+     "loc": 530,
+     "theme": "investing",
+     "text": "Companies with high interest payments relative to operating income tend to be one of two types: a company that is in a fiercely competitive industry, where large capital expenditures are required for it to stay competitive, or a company with excellent business economics that acquired the debt when the company was bought in a leveraged buyout. What Warren has figured out is that companies with a durable competitive advantage often carry little or no interest expense.",
+     "q": "What two types of companies tend to have high interest payments relative to operating income, and what do durable-advantage companies carry instead?"
+    },
+    {
+     "id": "0101baf2b6bbd62e",
+     "loc": 540,
+     "theme": "investing",
+     "text": "As a rule, Warren’s favorite durable competitive advantage holders in the consumer products category all have interest payouts of less than 15% of operating income.",
+     "q": "What interest-payout-to-operating-income level do Buffett's favorite consumer products companies have?"
+    },
+    {
+     "id": "537cff946d3ef65c",
+     "loc": 544,
+     "theme": "investing",
+     "text": "The ratio of interest payments to operating income can also be very informative as to the level of economic danger that a company is in."
+    },
+    {
+     "id": "8304ff54a61aafed",
+     "loc": 551,
+     "theme": "investing",
+     "text": "The rule here is real simple: In any given industry the company with the lowest ratio of interest payments to operating income is usually the company most likely to have the competitive advantage.",
+     "q": "Within an industry, which company is usually most likely to hold the competitive advantage based on interest payments?"
+    },
+    {
+     "id": "9d507ef420bfb102",
+     "loc": 658,
+     "theme": "investing",
+     "text": "What he has learned is that companies with a durable competitive advantage will report a higher percentage of net earnings to total revenues than their competitors will.",
+     "q": "How does the ratio of net earnings to total revenues differ for durable-advantage companies versus competitors?"
+    },
+    {
+     "id": "0488f0ef6d1b87ae",
+     "loc": 668,
+     "theme": "investing",
+     "text": "A simple rule (and there are exceptions) is that if a company is showing a net earnings history of more than 20% on total revenues, there is a real good chance that it is benefiting from some kind of long-term competitive advantage.",
+     "q": "What net-earnings-to-revenue threshold suggests a long-term competitive advantage?"
+    }
+   ]
+  },
+  {
+   "id": "why-zebras-don-t-get-ulcers-the-acclaimed-guide-to-stress-stress-related-disease--robert-m-sapolsky",
+   "title": "Why Zebras Don't Get Ulcers: The Acclaimed Guide to Stress, Stress-Related Diseases, and Coping (Third Edition)",
+   "author": "Robert M. Sapolsky",
+   "subject": "how the mammalian stress-response works and why chronic psychological stress causes disease in humans",
+   "total": 85,
+   "highlights": [
+    {
+     "id": "2d468397e5b9999d",
+     "loc": 134,
+     "theme": "health",
+     "text": "Put succinctly, we get different diseases and are likely to die in different ways from most of our ancestors (or from most humans currently living in the less privileged areas of this planet). Our nights are filled with worries about a different class of diseases; we are now living well enough and long enough to slowly fall apart. The diseases that plague us now are ones of slow accumulation of damage—heart disease, cancer, cerebrovascular disorders.",
+     "q": "According to Sapolsky, what kinds of diseases plague modern humans, and what do they have in common?"
+    },
+    {
+     "id": "0630cc0f0b446cff",
+     "loc": 142,
+     "theme": "health",
+     "text": "Put in the parlance with which we have grown familiar, stress can make us sick, and a critical shift in medicine has been the recognition that many of the damaging diseases of slow accumulation can be either caused or made far worse by stress.",
+     "q": "What critical shift in medicine has occurred regarding stress and the diseases of slow accumulation?"
+    },
+    {
+     "id": "1c882183fc0cdd34",
+     "loc": 147,
+     "theme": "health",
+     "text": "But since the twentieth century, the addition of rigorous science to these vague clinical perceptions has made stress physiology—the study of how the body responds to stressful events—a real discipline."
+    },
+    {
+     "id": "a6348415d3bf582b",
+     "loc": 153,
+     "theme": "health",
+     "text": "This book is a primer about stress, stress-related disease, and the mechanisms of coping with stress."
+    },
+    {
+     "id": "995775268993d2ee",
+     "loc": 163,
+     "theme": "health",
+     "text": "For animals like zebras, the most upsetting things in life are acute physical crises.",
+     "q": "For animals like zebras, what are the most upsetting things in life?"
+    },
+    {
+     "id": "d41342744db0b5dc",
+     "loc": 168,
+     "theme": "health",
+     "text": "An organism can also be plagued by chronic physical challenges."
+    },
+    {
+     "id": "81783f7220057ac9",
+     "loc": 170,
+     "theme": "health",
+     "text": "The body’s stress-responses are reasonably good at handling these sustained disasters."
+    },
+    {
+     "id": "d30208c036995acc",
+     "loc": 173,
+     "theme": "health",
+     "text": "Critical to this book is a third category of ways to get upset—psychological and social disruptions.",
+     "q": "What third category of ways to get upset is central to the book?"
+    },
+    {
+     "id": "dcc648a1ed7ed023",
+     "loc": 176,
+     "theme": "health",
+     "text": "Essentially, we humans live well enough and long enough, and are smart enough, to generate all sorts of stressful events purely in our heads.",
+     "q": "Why, according to Sapolsky, are humans uniquely able to generate stressful events?"
+    },
+    {
+     "id": "0c7a87cb75d2636b",
+     "loc": 178,
+     "theme": "health",
+     "text": "Viewed from the perspective of the evolution of the animal kingdom, sustained psychological stress is a recent invention, mostly limited to humans and other social primates. We can experience wildly strong emotions (provoking our bodies into an accompanying uproar) linked to mere thoughts.",
+     "q": "How does Sapolsky characterize sustained psychological stress in evolutionary terms?"
+    },
+    {
+     "id": "a564716acc8f6b54",
+     "loc": 186,
+     "theme": "health",
+     "text": "This is the critical point of this book: if you are that zebra running for your life, or that lion sprinting for your meal, your body’s physiological response mechanisms are superbly adapted for dealing with such short-term physical emergencies.",
+     "q": "What is the body's physiological response mechanism superbly adapted for?"
+    },
+    {
+     "id": "d7920e4c458c3586",
+     "loc": 190,
+     "theme": "health",
+     "text": "A large body of evidence suggests that stress-related disease emerges, predominantly, out of the fact that we so often activate a physiological system that has evolved for responding to acute physical emergencies, but we turn it on for months on end, worrying about mortgages, relationships, and promotions.",
+     "q": "According to Sapolsky, where does stress-related disease predominantly come from?"
+    },
+    {
+     "id": "39c2efac5f3a0905",
+     "loc": 198,
+     "theme": "health",
+     "text": "A stressor is anything in the outside world that knocks you out of homeostatic balance, and the stress-response is what your body does to reestablish homeostasis.",
+     "q": "How does Sapolsky define a stressor and the stress-response?"
+    },
+    {
+     "id": "12dd9c72afba917d",
+     "loc": 200,
+     "theme": "health",
+     "text": "A stressor can also be the anticipation of that happening. Sometimes we are smart enough to see things coming and, based only on anticipation, can turn on a stress-response as robust as if the event had actually occurred.",
+     "q": "Besides an actual event, what else can trigger a full stress-response?"
+    },
+    {
+     "id": "697e4011f6317df0",
+     "loc": 204,
+     "theme": "health",
+     "text": "But unlike less cognitively sophisticated species, we can turn on the stress-response by thinking about potential stressors that may throw us out of homeostatic balance far in the future.",
+     "q": "How do humans differ from less cognitively sophisticated species in activating the stress-response?"
+    },
+    {
+     "id": "8e7794eacbe56b21",
+     "loc": 216,
+     "theme": "health",
+     "text": "It is this generality of the stress-response that is the most surprising—a physiological system activated not only by all sorts of physical disasters but by just thinking about them as well. This generality was first appreciated about sixty-five years ago by one of the godfathers of stress physiology, Hans Selye.",
+     "q": "Who first appreciated the generality of the stress-response, and what is most surprising about it?"
+    },
+    {
+     "id": "7b39388ecb657c7e",
+     "loc": 239,
+     "theme": "health",
+     "text": "What Selye did was to formalize the concept with two ideas: The body has a surprisingly similar set of responses (which he called the general adaptation syndrome, but which we now call the stress-response) to a broad array of stressors. If stressors go on for too long, they can make you sick.",
+     "q": "What were Selye's two formalizing ideas about the general adaptation syndrome?"
+    },
+    {
+     "id": "8d2aa0181b2acbf5",
+     "loc": 248,
+     "theme": "health",
+     "text": "The original conception of homeostasis was grounded in two ideas. First, there is a single optimal level, number, amount for any given measure in the body.",
+     "q": "What is the first idea grounding the original conception of homeostasis?"
+    },
+    {
+     "id": "3e8cadf0ed77f085",
+     "loc": 253,
+     "theme": "health",
+     "text": "The second idea in homeostasis is that you reach that ideal set point through some local regulatory mechanism, whereas allostasis"
+    },
+    {
+     "id": "780447f3e85f4b6d",
+     "loc": 253,
+     "theme": "health",
+     "text": "recognizes that any given set point can be regulated in a zillion different ways, each with its own consequences.",
+     "q": "What does allostasis recognize about set points?"
+    },
+    {
+     "id": "69908bd4f641fb7c",
+     "loc": 259,
+     "theme": "health",
+     "text": "Homeostasis is about tinkering with this valve or that gizmo. Allostasis is about the brain coordinating body-wide changes, often including changes in behavior. A final feature of allostatic thinking dovetails beautifully with thinking about stressed humans. The body doesn’t pull off all this regulatory complexity only to correct some set point that has gone awry. It can also make allostatic changes in anticipation of a set point that is likely to go awry.",
+     "q": "How does allostasis differ from homeostasis in Sapolsky's account?"
+    },
+    {
+     "id": "01c0b0a9761f3dee",
+     "loc": 280,
+     "theme": "health",
+     "text": "For us vertebrates, the core of the stress-response is built around the fact that your muscles are going to work like crazy. And thus the muscles need energy, right now, in the most readily utilizable form, rather than stored away somewhere in your fat cells for some building project next spring. One of the hallmarks of the stress-response is the rapid mobilization of energy from storage sites and the inhibition of further storage.",
+     "q": "What is a hallmark of the stress-response regarding energy?"
+    },
+    {
+     "id": "aeed67f46d85120c",
+     "loc": 286,
+     "theme": "health",
+     "text": "Equally logical is another feature of the stress-response. During an emergency, it makes sense that your body halts long-term, expensive building projects.",
+     "q": "During an emergency, what happens to long-term building projects in the body?"
+    },
+    {
+     "id": "62c87497c557819d",
+     "loc": 292,
+     "theme": "health",
+     "text": "During stress, growth and tissue repair is curtailed, sexual drive decreases in both sexes; females are less likely to ovulate or to carry pregnancies to term, while males begin to have trouble with erections and secrete less testosterone. Along with these changes, immunity is also inhibited.",
+     "q": "What happens to growth, reproduction, and immunity during stress?"
+    },
+    {
+     "id": "eb862e0f4f2a8cc3",
+     "loc": 299,
+     "theme": "health",
+     "text": "With sufficiently sustained stress, our perception of pain can become blunted.",
+     "q": "What happens to pain perception with sufficiently sustained stress?"
+    },
+    {
+     "id": "80e37736d917d28b",
+     "loc": 304,
+     "theme": "health",
+     "text": "Finally, during stress, shifts occur in cognitive and sensory skills."
+    },
+    {
+     "id": "e15801e3885d9ca5",
+     "loc": 307,
+     "theme": "health",
+     "text": "Better memory, sharper detection of sensations—all quite adaptive and helpful."
+    },
+    {
+     "id": "0d6d3377fa08b885",
+     "loc": 323,
+     "theme": "health",
+     "text": "It is not so much that the stress-response runs out, but rather, with sufficient activation, that the stress-response can become more damaging than the stressor itself, especially when the stress is purely psychological.",
+     "q": "According to Sapolsky, when does the stress-response become more damaging than the stressor itself?"
+    },
+    {
+     "id": "8f92a278b17cf88f",
+     "loc": 335,
+     "theme": "health",
+     "text": "In females, menstrual cycles can become irregular or cease entirely; in males, sperm count and testosterone levels may decline. In both sexes, interest in sexual behavior decreases. But that is only the start of your problems in response to chronic or repeated stressors. If you suppress immune function too long and too much, you are now more likely to fall victim to a number of infectious diseases, and be less capable of combating them once you have them. Finally, the same systems of the brain that function more cleverly during stress can also be damaged by one class of hormones secreted during stress. As will be discussed, this may have something to do with how rapidly our brains lose cells during aging, and how much memory loss occurs with old age.",
+     "q": "What are the consequences of chronic or repeated stressors on reproduction, immunity, and the brain?"
+    },
+    {
+     "id": "ac133b88a0d59885",
+     "loc": 342,
+     "theme": "health",
+     "text": "Here’s a way to think about it: the “two elephants on a seesaw” model of stress-related disease."
+    },
+    {
+     "id": "2fc729c53cf1b042",
+     "loc": 347,
+     "theme": "health",
+     "text": "First, the enormous potential energies of the two elephants are consumed balancing the seesaw, instead of being able to do something more useful, like mowing the lawn or paying the bills."
+    },
+    {
+     "id": "b901ce5e1d23977b",
+     "loc": 350,
+     "theme": "health",
+     "text": "By using two elephants to do the job, damage will occur just because of how large, lumbering, and unsubtle elephants are."
+    },
+    {
+     "id": "5e7c894cf7ae540e",
+     "loc": 355,
+     "theme": "health",
+     "text": "And a long history of doing this produces wear and tear throughout the body, termed allostatic load.",
+     "q": "What term describes the wear and tear throughout the body from a long history of stress-responses?"
+    },
+    {
+     "id": "4a68d4072a8b6adb",
+     "loc": 357,
+     "theme": "health",
+     "text": "A final, subtle problem: when two elephants are balanced on a seesaw, it’s tough for them to get off. Either one hops off and the other comes crashing to the ground, or there’s the extremely delicate task of coordinating their delicate, lithe leaps at the same time."
+    },
+    {
+     "id": "953d71524370aab0",
+     "loc": 363,
+     "theme": "health",
+     "text": "The preceding pages should allow you to begin to appreciate the two punch lines of this book: The first is that if you plan to get stressed like a normal mammal, dealing with an acute physical challenge, and you cannot appropriately turn on the stress-response, you’re in big trouble.",
+     "q": "What is the first punch line of the book regarding the acute stress-response?"
+    },
+    {
+     "id": "f9bc97801c9dd284",
+     "loc": 366,
+     "theme": "health",
+     "text": "As will be explained in the coming chapters, two critical classes of hormones are secreted during stress. In one disorder, Addison’s disease, you are unable to secrete one class of these hormones. In another, called Shy-Drager syndrome, it is the secretion of the second class of hormones that is impaired.",
+     "q": "What are Addison's disease and Shy-Drager syndrome examples of regarding stress hormones?"
+    },
+    {
+     "id": "a7ed54cf232e372a",
+     "loc": 378,
+     "theme": "health",
+     "text": "If you repeatedly turn on the stress-response, or if you cannot turn off the stress-response at the end of a stressful event, the stress-response can eventually become damaging.",
+     "q": "When does the stress-response eventually become damaging?"
+    },
+    {
+     "id": "fb52ed6387ac6d8a",
+     "loc": 382,
+     "theme": "health",
+     "text": "It is actually more accurate to say that chronic or repeated stressors can potentially make you sick or can increase your risk of being sick. Stressors, even if massive, repetitive, or chronic in nature, do not automatically lead to illness. And the theme of the last section of this book is to make sense of why some people develop stress-related diseases more readily than others, despite the same stressor.",
+     "q": "Why does Sapolsky say stressors do not automatically lead to illness?"
+    },
+    {
+     "id": "b3bb67ab8b883a63",
+     "loc": 387,
+     "theme": "health",
+     "text": "Stress increases your risk of getting diseases that make you sick, or if you have such a disease, stress increases the risk of your defenses being overwhelmed by the disease. This distinction is important in a few ways. First, by putting more steps between a stressor and getting sick, there are more explanations for individual differences—why only some people wind up actually getting sick. Moreover, by clarifying the progression between stressors and illness, it becomes easier to design ways to intervene in the process. Finally, it begins to explain why the stress concept often seems so suspect or slippery to many medical practitioners—clinical medicine is traditionally quite good at being able to make statements like “You feel sick because you have disease X,” but is usually quite bad at being able to explain why you got disease X in the first place. Thus, medical practitioners often say, in effect, “You feel sick because you have disease X, not because of some nonsense having to do with stress”; however, this ignores the stressors’ role in bringing about or worsening the disease in the first place.",
+     "q": "Why is it important to put more steps between a stressor and getting sick?"
+    },
+    {
+     "id": "2f5c0ccddc1d8248",
+     "loc": 408,
+     "theme": "health",
+     "text": "Chapter 15 discusses what personality differences have to do with individual differences in patterns of stress-related disease. This is the world of anxiety disorders and Type A-ness, plus some surprises about unexpected links between personality and the stress-response. Chapter 16 considers a puzzling issue that lurks throughout reading this book—sometimes stress feels good, good enough that we’ll pay good money to be stressed by a scary movie or roller-coaster ride.",
+     "q": "What surprising issue does Sapolsky note about stress sometimes feeling good?"
+    },
+    {
+     "id": "959a086831c7a0d7",
+     "loc": 413,
+     "theme": "health",
+     "text": "Chapter 17 focuses above the level of the individual, looking at what your place in society, and the type of society in which you live, has to do with patterns of stress-related disease. If you plan to go no further, here’s one of the punch lines of that chapter: if you want to increase your chances of avoiding stress-related diseases, make sure you don’t inadvertently allow yourself to be born poor.",
+     "q": "What is the punch line about society and stress-related disease that Sapolsky states?"
+    },
+    {
+     "id": "6e01e890aeb2b67b",
+     "loc": 417,
+     "theme": "health",
+     "text": "The final chapter is meant to give some hope. Given the same external stressors, certain bodies and certain psyches deal with stress better than others."
+    },
+    {
+     "id": "9ec2212ff9903e20",
+     "loc": 6355,
+     "theme": "health",
+     "text": "One thing that is utterly reliable is that the amount of variability increases with age—the conditions of the elderly are always much more variable than those of the young subjects.",
+     "q": "What happens to physiological variability as people age?"
+    },
+    {
+     "id": "80bdb0bc3ed292cf",
+     "loc": 6375,
+     "theme": "health",
+     "text": "The studies show the same pattern: most people have massive stress-responses and a subset are physiologically unflustered.",
+     "q": "What pattern do studies show about individual differences in stress-responses?"
+    },
+    {
+     "id": "ba35c407e7d6fc85",
+     "loc": 6420,
+     "theme": "health",
+     "text": "Amid that good news, who are the people who age particularly successfully? As we saw in the last chapter, one factor is making sure you pick parents who were not poor."
+    },
+    {
+     "id": "a44eb25f323f7d84",
+     "loc": 6426,
+     "theme": "health",
+     "text": "Fortunately, Vaillant’s research gives us more to work with than that. Among this population, which subset has had the greatest health, contentment, and longevity in old age? A subset with an array of traits, apparent before age fifty: no smoking, minimal alcohol use, lots of exercise, normal body weight, absence of depression, a warm, stable marriage, and a mature, resilient coping style (which seems built around extroversion, social connectiveness, and low neuroticism).",
+     "q": "According to Vaillant's research, what pre-fifty traits predict the greatest health, contentment, and longevity in old age?"
+    },
+    {
+     "id": "61920e83e2f1971a",
+     "loc": 6436,
+     "theme": "health",
+     "text": "Another literature shows the tremendous gerontological benefits of being respected and needed in old age. This has been shown in many settings, but is best appreciated with our society’s equivalents of village elders—the dramatically successful aging of Supreme Court justices and conductors.",
+     "q": "According to Sapolsky, what does the successful aging of Supreme Court justices and conductors illustrate about gerontological outcomes?"
+    },
+    {
+     "id": "c3c2c66607aa8fb1",
+     "loc": 6448,
+     "theme": "health",
+     "text": "The investigators, in in-depth psychiatric interviews, explored which parents were holding up best to this horrible stressor, and identified a number of coping styles associated with lower glucocorticoid levels."
+    },
+    {
+     "id": "fef2e697e1a532b8",
+     "loc": 6450,
+     "theme": "health",
+     "text": "One important variable was the ability of parents to displace a major worry onto something less threatening.",
+     "q": "What coping variable did investigators find helped parents of critically ill children maintain lower glucocorticoid levels?"
+    },
+    {
+     "id": "4e21c67d261b9646",
+     "loc": 6454,
+     "theme": "health",
+     "text": "At the other extreme is the parent who can repackage the anxiety into something more manageable—“Well, I’m just worried that she’ll be lonely without me, that the nurses won’t have time to read her favorite stories.” The latter style was associated with lower glucocorticoid levels. A second variable had to do with denial.",
+     "q": "Which style of repackaging anxiety was associated with lower glucocorticoid levels in parents of sick children?"
+    },
+    {
+     "id": "32a0bf78cefee396",
+     "loc": 6461,
+     "theme": "health",
+     "text": "A final variable was whether the parent had a structure of religious rationalization to explain the illness."
+    },
+    {
+     "id": "59b923f1720b496d",
+     "loc": 6467,
+     "theme": "health",
+     "text": "Differences in Vulnerability to Learned Helplessness In chapter 14, I described the learned helplessness model and its relevance to depression. I emphasized how generalized the model appears to be: animals of many different species show some version of giving up on life in the face of something aversive and out of their control."
+    },
+    {
+     "id": "8ebeba8949128590",
+     "loc": 6474,
+     "theme": "health",
+     "text": "Why are some dogs relatively resistant to learned helplessness? An important clue: dogs born and raised in laboratories, bred only for research purposes, are more likely to succumb to learned helplessness than those who have come to the lab by way of the pound. Martin Seligman offers this explanation: if a dog has been out in the real world, experiencing life and fending for itself (as the dogs who wind up in a pound are likely to have done), it has learned about how many controllable things there are in life. When the experience with an uncontrollable stressor occurs, the dog, in effect, is more likely to conclude that “this is awful, but it isn’t the entire world.” It resists globalizing the stressor into learned helplessness. In a similar vein, humans with more of an internalized locus of control—the perception that they are the masters of their own destiny—are more resistant in experimental models of learned helplessness.",
+     "q": "Why does Seligman argue that pound-sourced dogs and people with an internal locus of control resist learned helplessness?"
+    },
+    {
+     "id": "604914396887788b",
+     "loc": 6527,
+     "theme": "health",
+     "text": "But a first thing to emphasize is that we can change the way we cope, both physiologically and psychologically. As the most obvious example, physical conditioning brought about by regular exercise will lower blood pressure and resting heart rate and increase lung capacity, just to mention a few of its effects. Among Type-A people, psychotherapy can change not only behaviors but also cholesterol profiles, risk of heart attack, and risk of dying, independent of changes in diet or other physiological regulators of cholesterol. As another example, the pain and stressfulness of childbirth can be modulated by relaxation techniques such as Lamaze.*",
+     "q": "What examples does Sapolsky give that we can change how we cope both physiologically and psychologically?"
+    },
+    {
+     "id": "62ccb2707b696799",
+     "loc": 6532,
+     "theme": "health",
+     "text": "Sheer repetition of certain activities can change the connection between your behavior and activation of your stress-response. In one classic study discussed earlier, Norwegian soldiers learning to parachute were examined over the course of months of training.",
+     "q": "What does the study of Norwegian parachute trainees show about repetition and the stress-response?"
+    },
+    {
+     "id": "cc2606eeff15edb3",
+     "loc": 6595,
+     "theme": "health",
+     "text": "These studies generate some simple answers to coping with stress that are far from simple to implement in everyday life. They emphasize the importance of manipulating feelings of control, predictability, outlets for frustration, social connectedness, and the perception of whether things are worsening or improving.",
+     "q": "What five factors does Sapolsky emphasize as key to coping with stress?"
+    },
+    {
+     "id": "b79ed8c89765d71e",
+     "loc": 6639,
+     "theme": "health",
+     "text": "Exercise   I start with exercise because this is the stress reduction approach I rely on frequently, and I’m deeply hoping that putting it first will mean that I’ll live to be very old and healthy."
+    },
+    {
+     "id": "c91f6329629e47dd",
+     "loc": 6642,
+     "theme": "health",
+     "text": "First, it decreases your risk of various metabolic and cardiovascular diseases, and therefore decreases the opportunity for stress to worsen those diseases. Next, exercise generally makes you feel good.",
+     "q": "What are two of the ways Sapolsky says exercise reduces stress-related harm?"
+    },
+    {
+     "id": "33afb5aca7223e23",
+     "loc": 6645,
+     "theme": "health",
+     "text": "This probably has something to do with exercise causing the secretion of beta-endorphin. In addition, there’s the sense of self-efficacy and achievement,",
+     "q": "What hormone does Sapolsky link to exercise making you feel good?"
+    },
+    {
+     "id": "5b3ec727cd0d8ffd",
+     "loc": 6647,
+     "theme": "health",
+     "text": "And most of all, the stress-response is about preparing your body for a sudden explosion of muscular activity. You reduce tension if you actually turn on the stress-response for that purpose, instead of merely stewing in the middle of some time-wasting meeting. Finally, there’s some evidence that exercise makes for a smaller stress-response to various psychological stressors.",
+     "q": "Why does Sapolsky say actually engaging in muscular activity like exercise reduces tension compared with stewing in a meeting?"
+    },
+    {
+     "id": "0069ad8402929f41",
+     "loc": 6650,
+     "theme": "health",
+     "text": "Now for some qualifiers: Exercise enhances mood and blunts the stress-response only for a few hours to a day after the exercise session. Exercise is stress reducing so long as it is something you actually want to do.",
+     "q": "How long do exercise's mood-enhancing and stress-blunting effects last, and what condition must it meet to be stress-reducing?"
+    },
+    {
+     "id": "7af9ce60b52a41a1",
+     "loc": 6654,
+     "theme": "health",
+     "text": "The studies are quite clear that aerobic exercise is better than anaerobic exercise for health (aerobic exercise is the sustained type that, while you’re doing it, doesn’t leave you so out of breath that you can’t talk).",
+     "q": "According to Sapolsky, which type of exercise is better for health, and how does he define it?"
+    },
+    {
+     "id": "db30f919534c7361",
+     "loc": 6656,
+     "theme": "health",
+     "text": "Exercise needs to occur on a regular basis and for a sustained period."
+    },
+    {
+     "id": "74eab545dc72af03",
+     "loc": 6657,
+     "theme": "health",
+     "text": "it’s pretty clear that you need to exercise a minimum of twenty or thirty minutes at a time, a few times a week, to really get the health benefits.",
+     "q": "What minimum amount of exercise does Sapolsky say is needed to get the health benefits?"
+    },
+    {
+     "id": "9635f35035c10956",
+     "loc": 6660,
+     "theme": "mindfulness",
+     "text": "Meditation   When done on a regular, sustained basis (that is to say, something close to daily, for fifteen, thirty minutes at a time), meditation seems to be pretty good for your health, decreasing glucocorticoid levels, sympathetic tone, and all the bad stuff that too much of either can cause. Now the caveats: First, the studies are clear in showing physiological benefits while someone is meditating. It’s less clear that those good effects (for example, lowering blood pressure) persist for long afterward. Next, when the good effects of meditation do persist, there may be a subject bias going.",
+     "q": "What physiological benefits does meditation provide, and what caveat does Sapolsky raise about their persistence?"
     }
    ]
   },
@@ -405,6 +3154,115 @@ window.ANKI = {
      "theme": "investing",
      "text": "If you’re looking to avoid putting all your eggs in one basket, this broader type of diversification, over varying asset classes, will accomplish that goal more effectively than merely diversifying your stock portfolio. In other words, don’t screw up a perfectly good stock-market strategy by diversifying your way into mediocre returns.",
      "q": "What type of diversification does the book say more effectively avoids putting all your eggs in one basket than merely diversifying a stock portfolio?"
+    }
+   ]
+  },
+  {
+   "id": "your-money-or-your-life-9-steps-to-transforming-your-relationship-with-money-and--vicki-robin-joe-dominguez-and-mr-money-mustache",
+   "title": "Your Money or Your Life: 9 Steps to Transforming Your Relationship with Money and Achieving Financial Independence: Fully Revised and Updated for 2018",
+   "author": "Vicki Robin, Joe Dominguez, and Mr. Money Mustache",
+   "subject": "transforming your relationship with money to achieve financial independence by valuing life energy over consumption",
+   "total": 28,
+   "highlights": [
+    {
+     "id": "ad7803e22a908ed4",
+     "loc": 485,
+     "theme": "work",
+     "text": "We take our identity and our self-worth from our jobs. Our jobs have replaced family, neighborhood, civic affairs, church, and even partners as our primary allegiance, our principal source of love and site of self-expression.",
+     "q": "According to the authors, what have our jobs replaced as our primary source of identity, love, and self-expression?"
+    },
+    {
+     "id": "7360a3df8dd2709a",
+     "loc": 493,
+     "theme": "work",
+     "text": "Along with racism and sexism, our society has a hidden hierarchy based on what you do for money. That’s called jobism, and it pervades our interactions with one another on the job, in social settings, and even at home.",
+     "q": "What do the authors call the hidden social hierarchy based on what you do for money?"
+    },
+    {
+     "id": "f843a95da7002d23",
+     "loc": 4021,
+     "theme": "work",
+     "text": "So here we are in the twenty-first century. Our paid employment has taken on myriad roles. Our jobs now serve the function that traditionally belonged to religion: They are the place where we seek answers to the perennial questions “Who am I?” and “Why am I here?” and “What’s it all for?” They also serve the function of families, giving answers to the questions “Who are my people?” and “Where do I belong?”",
+     "q": "What traditional functions of religion and family do the authors say paid employment now serves?"
+    },
+    {
+     "id": "e5ae30c781765b21",
+     "loc": 4086,
+     "theme": "work",
+     "text": "The original question was: What is the purpose served by paid employment? In reality, there is only one purpose served by paid employment: getting paid. That is the only real link between work and money. The other “purposes” of paid employment are other types of rewards, which are certainly desirable but not directly related to getting paid.",
+     "q": "According to the authors, what is the only real purpose served by paid employment?"
+    },
+    {
+     "id": "8ffb0049202127d7",
+     "loc": 4092,
+     "theme": "work",
+     "text": "Growth potential, communication channels, interest in work, and recognition make a job satisfying—not pay. What if we removed most of these expectations from our paid employment and recognized that all purposes for work other than earning money could be fulfilled by unpaid activities?",
+     "q": "What factors do the authors say actually make a job satisfying, if not pay?"
+    },
+    {
+     "id": "4b6573be39c9c117",
+     "loc": 4101,
+     "theme": "work",
+     "text": "The real problem with work, then, is not that our expectations are too high. It’s that we have confused work with paid employment. Redefining “work” as simply any productive or purposeful activity, with paid employment being just one activity among many, frees us from the false assumption that what we do to put food on the table and a roof over our heads should also provide us with our sense of meaning, purpose, and fulfillment.",
+     "q": "What do the authors identify as the real problem with work, and how do they redefine 'work'?"
+    },
+    {
+     "id": "91af4c7701409073",
+     "loc": 4104,
+     "theme": "work",
+     "text": "Our fulfillment as human beings lies not in our jobs but in the whole picture of our lives—in our inner sense of what life is about, our connectedness with others, and our yearning for meaning and purpose."
+    },
+    {
+     "id": "4fca239e34d547f5",
+     "loc": 4115,
+     "theme": "work",
+     "text": "Breaking the link between work and wages has as much power in our lives as the recognition that money is simply something we trade our life energy for."
+    },
+    {
+     "id": "6c28cc16b1031eb5",
+     "loc": 4119,
+     "theme": "work",
+     "text": "By breaking the link, we can redefine work simply as whatever we do in alignment with our purpose in life. By breaking the link, we get our life back.",
+     "q": "How do the authors define work once the link between work and wages is broken?"
+    },
+    {
+     "id": "4404d80a726be7b1",
+     "loc": 4150,
+     "theme": "work",
+     "text": "When you’re asked what you do, you can affirm, “I am a teacher, but currently I’m writing computer programs to make money.”"
+    },
+    {
+     "id": "7b49d23a78069711",
+     "loc": 4166,
+     "theme": "work",
+     "text": "“What would you do if you didn’t have to work for money?”"
+    },
+    {
+     "id": "2c6cb7b83223ebad",
+     "loc": 4218,
+     "theme": "work",
+     "text": "Retirement doesn’t mean you stop working. It means you can stop working for money.",
+     "q": "How do the authors redefine retirement?"
+    },
+    {
+     "id": "14a1a84f00350b1f",
+     "loc": 4251,
+     "theme": "work",
+     "text": "Separating work from wages reminds us to work with focus while at work and focus fully on our chosen activities when our time is our own."
+    },
+    {
+     "id": "6a5f7ceb28f8b19c",
+     "loc": 4253,
+     "theme": "work",
+     "text": "“Right livelihood” is the ideal of finding a way for your true work or vocation to be your paid work as well.",
+     "q": "What do the authors mean by 'right livelihood'?"
+    },
+    {
+     "id": "d2353ffadbe9bac1",
+     "loc": 4260,
+     "theme": "work",
+     "text": "By giving up the expectation that you will be paid to do the work you are passionate about, you can do both things with more integrity. You can make money to cover your expenses, and you can follow your heart without compromise.",
+     "q": "What does giving up the expectation of being paid for your passion allow you to do, according to the authors?"
     }
    ]
   }
