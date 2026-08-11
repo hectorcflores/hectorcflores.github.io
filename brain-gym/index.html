@@ -346,13 +346,31 @@
     }
 
     const NEW_PER_SESSION = 20;
-    // A card counts as due when its timestamp has passed; cards never seen
-    // are drip-fed at NEW_PER_SESSION per deck.
+
+    // New cards are drawn in a different order every session. With a fixed
+    // order, opening the app without grading anything always lands on the
+    // same card, which makes a deck of a hundred feel like a deck of one.
+    // Reviews stay strictly oldest-due-first, the way Anki orders them.
+    const shuffle = (arr) => {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    };
+    let newOrder = {};                       // theme -> shuffled ids, per session
     function dueCards(theme) {
       const now = Date.now();
       const pool = cards.filter(c => theme === "all" || c.theme === theme);
-      const due = pool.filter(c => srs[c.id] && srs[c.id].due <= now);
-      const fresh = pool.filter(c => !srs[c.id]).slice(0, NEW_PER_SESSION);
+      const due = pool.filter(c => srs[c.id] && srs[c.id].due <= now)
+        .sort((a, b) => srs[a.id].due - srs[b.id].due);
+      const unseen = pool.filter(c => !srs[c.id]);
+      if (!newOrder[theme]) newOrder[theme] = shuffle(unseen.map(c => c.id));
+      const rank = new Map(newOrder[theme].map((id, i) => [id, i]));
+      const fresh = unseen
+        .sort((a, b) => (rank.get(a.id) ?? 0) - (rank.get(b.id) ?? 0))
+        .slice(0, NEW_PER_SESSION);
       return [...due, ...fresh];
     }
 
