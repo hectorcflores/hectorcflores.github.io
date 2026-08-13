@@ -1,0 +1,57 @@
+rules_version = '2';
+
+// Deploy in the Firebase console: Firestore Database -> Rules -> paste -> Publish.
+// Uses the SAME no-account pattern as my-reading-list: tenancy is a SHA-256
+// hash of a private sync key the client keeps, never a signed-in user.
+//
+// The review log is append-only by design (see brain-gym/README.md): every
+// grade is a permanent fact, never edited or deleted, so a wiped device (or a
+// future scheduler change) can always be rebuilt by replaying it. `meta/baseline`
+// is the one exception to "append-only" in spirit, but not in practice --
+// it's a single document written once (create-only; update/delete stay
+// forbidden), used to carry a device's pre-sync local state into the log the
+// first time sync is turned on.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /brain_gym/{syncKeyHash}/reviews/{reviewId} {
+      allow read: if isSyncHash(syncKeyHash);
+      allow create: if isSyncHash(syncKeyHash) && isValidReview();
+      allow update, delete: if false;
+    }
+
+    match /brain_gym/{syncKeyHash}/meta/{docId} {
+      allow read: if isSyncHash(syncKeyHash);
+      // Write-once: the first device to enable sync sets the baseline: every
+      // device after that only ever reads it. docId is fixed rather than
+      // free-form so the rule can name it directly instead of trusting the
+      // client not to spam arbitrary meta documents.
+      allow create: if isSyncHash(syncKeyHash) && docId == 'baseline' && isValidBaseline();
+      allow update, delete: if false;
+    }
+
+    function isSyncHash(syncKeyHash) {
+      return syncKeyHash.matches('^[a-f0-9]{64}$');
+    }
+
+    function isValidReview() {
+      return request.resource.data.keys().hasOnly(['cardId', 'grade', 'reviewedAt', 'clientId', 'createdAt'])
+        && request.resource.data.cardId is string
+        && request.resource.data.cardId.matches('^[a-f0-9]{16}$')
+        && request.resource.data.grade is int
+        && request.resource.data.grade >= 0 && request.resource.data.grade <= 3
+        && request.resource.data.reviewedAt is timestamp
+        && request.resource.data.clientId is string
+        && request.resource.data.clientId.size() > 0 && request.resource.data.clientId.size() <= 64
+        // Server-assigned, not client-supplied, so it can be trusted as a
+        // sync cursor: a client cannot backdate or forge its position in the log.
+        && request.resource.data.createdAt == request.time;
+    }
+
+    function isValidBaseline() {
+      return request.resource.data.keys().hasOnly(['state', 'takenAt', 'createdAt'])
+        && request.resource.data.state is map
+        && request.resource.data.takenAt is timestamp
+        && request.resource.data.createdAt == request.time;
+    }
+  }
+}

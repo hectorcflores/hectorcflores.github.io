@@ -1,6 +1,6 @@
 // Offline cache for Brain Gym. Bump CACHE when shipping new content —
 // old caches are dropped on activate, so a deploy never serves a stale deck.
-const CACHE = "brain-gym-v9";
+const CACHE = "brain-gym-v10";
 const ASSETS = [
   "./",
   "./index.html",
@@ -38,10 +38,21 @@ self.addEventListener("activate", (e) => {
 // cache as the offline fallback. Same-origin requests skip the HTTP cache for
 // the same reason install does — otherwise "network-first" can still be served
 // a ten-minute-old page and it looks like the deploy never happened.
+//
+// Cross-origin requests (Firestore sync, once enabled) are left alone
+// entirely — not routed through this handler at all. Two reasons, not one:
+// this cache has no business storing someone else's API responses, and the
+// offline-fallback path below (`hit || caches.match("./index.html")`) is
+// actively dangerous for a JSON API call. A failed cross-origin GET would
+// resolve to a *successful-looking* 200 response whose body is this app's
+// own index.html — indistinguishable from a real reply until whatever parses
+// it as JSON throws. Sync's own fetch() calls handle their own failures
+// (queue and retry); routing them through the cache here would only add a
+// way for a real failure to masquerade as a fake success.
 self.addEventListener("fetch", (e) => {
   if (e.request.method !== "GET") return;
-  const sameOrigin = new URL(e.request.url).origin === self.location.origin;
-  const req = sameOrigin ? new Request(e.request, { cache: "reload" }) : e.request;
+  if (new URL(e.request.url).origin !== self.location.origin) return;
+  const req = new Request(e.request, { cache: "reload" });
   e.respondWith(
     fetch(req)
       .then((res) => {

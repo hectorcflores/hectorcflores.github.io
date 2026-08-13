@@ -190,6 +190,7 @@
     .done .big { font-size: 2.4rem; }
     .done h2 { margin: 0; font-size: 1.2rem; letter-spacing: -0.02em; }
     .done p { margin: 0; color: var(--muted-foreground); font-size: 0.85rem; }
+    .done .wait-time { font-size: 1.6rem; font-weight: 650; font-variant-numeric: tabular-nums; color: var(--foreground); }
     .foot-note { margin: 0; padding-top: 0.9rem; color: var(--muted-foreground); font-size: 0.7rem; text-align: center; line-height: 1.6; }
   </style>
 </head>
@@ -295,8 +296,15 @@
     }
 
     function applyGrade(id, g) {
-      srs[id] = schedule(srs[id], g, Date.now());
+      const now = Date.now();
+      srs[id] = schedule(srs[id], g, now);
+      // Sync-only bookkeeping, not part of the scheduling model: the latest
+      // reviewedAt this device has folded into this card, own or foreign. See
+      // pullReviews() for why it matters — schedule() itself never reads it,
+      // and just carries it through unchanged on every future call.
+      srs[id].__lastReviewAt = Math.max(srs[id].__lastReviewAt ?? -Infinity, now);
       saveSrs(srs);
+      enqueueReview(id, g, now);   // no-op until sync is enabled; never awaited here
       return srs[id];
     }
 
@@ -353,13 +361,391 @@
       return [...due, ...fresh];
     }
 
+    // ---- Optional multi-device sync (Firestore) ----
+    //
+    // Off by default: `srs` stays exactly what it always was, one localStorage
+    // blob, and the app is fully usable with zero network calls. Turning sync
+    // on (opening the app once with a #fb_api_key=...&fb_project_id=...&sync_key=...
+    // fragment — see README) adds an append-only log of every grade, synced
+    // across devices, so the schedule shown on your phone and your laptop is
+    // the same schedule rather than two that quietly drift apart.
+    //
+    // Design: the log, not `srs` itself, is the thing that syncs. A grade is a
+    // fact ("Good on card X at 9:14pm") that gets appended once and never
+    // edited; `srs` is just the fold of every fact through the pure
+    // schedule() above, cached locally for instant reads. This is the same
+    // shape Anki's own revlog uses, and it's what makes three things work for
+    // free: two devices grading the same card in the same window both count
+    // (a "last write wins" table would silently drop one); a wiped phone
+    // recovers completely by replaying the log; and a future scheduler change
+    // (different constants, FSRS, whatever) can replay history under the new
+    // rules instead of starting blind.
+    //
+    // No accounts — tenancy is a SHA-256 hash of a private key you keep,
+    // exactly the pattern already used by my-pomodoro (Supabase) and
+    // my-reading-list (this same Firestore approach). Talks to Firestore over
+    // its plain REST API via fetch(), not the gstatic SDK: this app self-hosts
+    // its own font rather than reaching a CDN, and pulling in a remote ESM
+    // module for sync would be the one exception to that.
+    const SYNC_CONFIG_KEY = "brain-gym.sync.v1";
+    const OUTBOX_KEY = "brain-gym.outbox.v1";
+    const CURSOR_KEY = "brain-gym.cursor.v1";
+    const CLIENT_ID_KEY = "brain-gym.client.v1";
+    const MIGRATED_KEY = "brain-gym.migrated.v1";
+    const REVIEW_PAGE_SIZE = 300;
+
+    function getClientId() {
+      let id = localStorage.getItem(CLIENT_ID_KEY);
+      if (!id) { id = crypto.randomUUID(); localStorage.setItem(CLIENT_ID_KEY, id); }
+      return id;
+    }
+
+    async function sha256Hex(text) {
+      const bytes = new TextEncoder().encode(text);
+      const digest = await crypto.subtle.digest("SHA-256", bytes);
+      return Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, "0")).join("");
+    }
+
+    function loadSyncConfig() {
+      try { return JSON.parse(localStorage.getItem(SYNC_CONFIG_KEY)) || null; } catch { return null; }
+    }
+    function saveSyncConfig(cfg) { localStorage.setItem(SYNC_CONFIG_KEY, JSON.stringify(cfg)); }
+    function isSyncEnabled(cfg) { return Boolean(cfg && cfg.apiKey && cfg.projectId && cfg.syncKeyHash); }
+
+    // One-time setup: open the app once with a URL fragment carrying the
+    // Firebase web-app config and a private sync key (README has the exact
+    // format). A fragment never leaves the browser — it's not sent in the
+    // request that loads the page — and is stripped from the visible URL
+    // immediately after being read, the same as my-reading-list's setup flow.
+    async function bootstrapSyncConfig() {
+      const hashParams = new URLSearchParams(location.hash.replace(/^#/, ""));
+      const apiKey = hashParams.get("fb_api_key");
+      const projectId = hashParams.get("fb_project_id");
+      const syncKey = hashParams.get("sync_key");
+      if (!apiKey || !projectId || !syncKey) return loadSyncConfig();
+
+      const cfg = { apiKey, projectId, syncKeyHash: await sha256Hex(syncKey) };
+      saveSyncConfig(cfg);
+      history.replaceState({}, document.title, location.pathname + location.search);
+      return cfg;
+    }
+
+    // ---- Firestore REST: minimal typed-value encode/decode ----
+    // Firestore's REST API wants every value wrapped as e.g. {stringValue:…}
+    // or {integerValue:"5"} (integers are strings on the wire), not plain
+    // JSON. This is the whole of what's needed for the two document shapes
+    // this app writes and reads — no SDK required for that.
+    function fsValue(v) {
+      if (v === null || v === undefined) return { nullValue: null };
+      if (typeof v === "string") return { stringValue: v };
+      if (typeof v === "boolean") return { booleanValue: v };
+      if (v instanceof Date) return { timestampValue: v.toISOString() };
+      if (typeof v === "number") return Number.isInteger(v) ? { integerValue: String(v) } : { doubleValue: v };
+      if (Array.isArray(v)) return { arrayValue: { values: v.map(fsValue) } };
+      if (typeof v === "object") return { mapValue: { fields: fsFields(v) } };
+      throw new Error("fsValue: unsupported type " + typeof v);
+    }
+    function fsFields(obj) {
+      const out = {};
+      for (const k of Object.keys(obj)) out[k] = fsValue(obj[k]);
+      return out;
+    }
+    function fsDecode(v) {
+      if (!v) return null;
+      if ("stringValue" in v) return v.stringValue;
+      if ("integerValue" in v) return parseInt(v.integerValue, 10);
+      if ("doubleValue" in v) return v.doubleValue;
+      if ("booleanValue" in v) return v.booleanValue;
+      if ("timestampValue" in v) return v.timestampValue;   // kept as an ISO string
+      if ("mapValue" in v) return fsDecodeFields(v.mapValue.fields || {});
+      if ("arrayValue" in v) return (v.arrayValue.values || []).map(fsDecode);
+      return null;
+    }
+    function fsDecodeFields(fields) {
+      const out = {};
+      for (const k of Object.keys(fields)) out[k] = fsDecode(fields[k]);
+      return out;
+    }
+    function fsBase(cfg) {
+      return `https://firestore.googleapis.com/v1/projects/${cfg.projectId}/databases/(default)/documents`;
+    }
+
+    // Creates a document that must not already exist, with `createdAt` set to
+    // the server's write time rather than anything the client claims. Both
+    // properties come from the same feature — Firestore's `:commit` endpoint,
+    // via `currentDocument.exists: false` (create-only: a retried flush of the
+    // same id gets a clean "already exists" rather than silently overwriting)
+    // and `updateTransforms` with `setToServerValue: "REQUEST_TIME"` (a value
+    // the client cannot forge, which is what makes it trustworthy as a sync
+    // cursor). The simpler createDocument REST method doesn't support that
+    // transform, which is the whole reason this uses :commit instead.
+    async function fsCreateDoc(cfg, relPath, fields) {
+      const name = `projects/${cfg.projectId}/databases/(default)/documents/${relPath}`;
+      const res = await fetch(`${fsBase(cfg)}:commit?key=${encodeURIComponent(cfg.apiKey)}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          writes: [{
+            update: { name, fields: fsFields(fields) },
+            updateTransforms: [{ fieldPath: "createdAt", setToServerValue: "REQUEST_TIME" }],
+            currentDocument: { exists: false },
+          }],
+        }),
+      });
+      if (res.status === 409) return { created: false };   // already there: idempotent no-op
+      if (!res.ok) throw new Error(`fsCreateDoc ${relPath}: HTTP ${res.status}`);
+      return { created: true };
+    }
+
+    async function fsGetDoc(cfg, relPath) {
+      const res = await fetch(`${fsBase(cfg)}/${relPath}?key=${encodeURIComponent(cfg.apiKey)}`);
+      if (res.status === 404) return null;
+      if (!res.ok) throw new Error(`fsGetDoc ${relPath}: HTTP ${res.status}`);
+      const doc = await res.json();
+      return fsDecodeFields(doc.fields || {});
+    }
+
+    // One page of the review log after `afterIso` (exclusive), oldest first.
+    // Ordering by (createdAt, __name__) rather than createdAt alone is the
+    // standard Firestore pattern for a stable pagination cursor when a field
+    // isn't guaranteed unique — kept here for that reason even though, for one
+    // person's review log, two documents sharing the same microsecond is
+    // vanishingly unlikely to matter in practice.
+    async function fsQueryReviews(cfg, afterIso) {
+      const structuredQuery = {
+        from: [{ collectionId: "reviews" }],
+        orderBy: [
+          { field: { fieldPath: "createdAt" }, direction: "ASCENDING" },
+          { field: { fieldPath: "__name__" }, direction: "ASCENDING" },
+        ],
+        limit: REVIEW_PAGE_SIZE,
+      };
+      if (afterIso) {
+        structuredQuery.where = {
+          fieldFilter: { field: { fieldPath: "createdAt" }, op: "GREATER_THAN", value: { timestampValue: afterIso } },
+        };
+      }
+      const parent = `${fsBase(cfg)}/brain_gym/${cfg.syncKeyHash}`;
+      const res = await fetch(`${parent}:runQuery?key=${encodeURIComponent(cfg.apiKey)}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ structuredQuery }),
+      });
+      if (!res.ok) throw new Error(`fsQueryReviews: HTTP ${res.status}`);
+      const rows = await res.json();
+      // The document's own createTime (not the round-tripped `createdAt`
+      // field) is the cursor value — it's metadata Firestore always sets
+      // correctly, rather than trusting a field the client also wrote.
+      return rows.filter(r => r.document)
+        .map(r => ({ ...fsDecodeFields(r.document.fields || {}), createdAt: r.document.createTime }));
+    }
+
+    // Every review for one card, unordered (see pullReviews() for why this
+    // is needed). Filtered by equality only, deliberately — an equality
+    // filter needs no composite index in Firestore, an orderBy on a
+    // different field would, and that's a Firebase-console step this app
+    // has no business requiring for a path that's rare by design.
+    async function fsQueryReviewsForCard(cfg, cardId) {
+      const structuredQuery = {
+        from: [{ collectionId: "reviews" }],
+        where: { fieldFilter: { field: { fieldPath: "cardId" }, op: "EQUAL", value: { stringValue: cardId } } },
+      };
+      const parent = `${fsBase(cfg)}/brain_gym/${cfg.syncKeyHash}`;
+      const res = await fetch(`${parent}:runQuery?key=${encodeURIComponent(cfg.apiKey)}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ structuredQuery }),
+      });
+      if (!res.ok) throw new Error(`fsQueryReviewsForCard: HTTP ${res.status}`);
+      const rows = await res.json();
+      return rows.filter(r => r.document).map(r => fsDecodeFields(r.document.fields || {}));
+    }
+
+    // ---- Outbox: grades queue here first, sync is never on the critical
+    // path of answering a card, online or off ----
+    function loadOutbox() { try { return JSON.parse(localStorage.getItem(OUTBOX_KEY)) || []; } catch { return []; } }
+    function saveOutbox(rows) { localStorage.setItem(OUTBOX_KEY, JSON.stringify(rows)); }
+
+    function enqueueReview(cardId, grade, atMs) {
+      if (!isSyncEnabled(syncConfig)) return;
+      const rows = loadOutbox();
+      rows.push({ id: crypto.randomUUID(), cardId, grade, reviewedAt: new Date(atMs).toISOString() });
+      saveOutbox(rows);
+      flushOutbox();   // fire-and-forget
+    }
+
+    let flushing = false;
+    async function flushOutbox() {
+      if (!isSyncEnabled(syncConfig) || flushing) return;
+      flushing = true;
+      try {
+        let rows = loadOutbox();
+        while (rows.length) {
+          const row = rows[0];
+          try {
+            await fsCreateDoc(syncConfig, `brain_gym/${syncConfig.syncKeyHash}/reviews/${row.id}`, {
+              cardId: row.cardId, grade: row.grade,
+              reviewedAt: new Date(row.reviewedAt), clientId: getClientId(),
+            });
+          } catch (e) {
+            console.warn("Brain Gym sync: flush paused, will retry", e);
+            break;   // leave the rest queued; next trigger (open/online/grade) retries
+          }
+          rows = rows.slice(1);
+          saveOutbox(rows);
+        }
+      } finally {
+        flushing = false;
+      }
+    }
+
+    function loadCursor() { return localStorage.getItem(CURSOR_KEY) || null; }
+    function saveCursor(iso) { localStorage.setItem(CURSOR_KEY, iso); }
+
+    // Pulls everything since the last cursor and folds it into `srs` — rows
+    // this device itself wrote are skipped for folding (already applied
+    // locally the instant they were graded), so this normally only has work
+    // to do after a review made on ANOTHER device.
+    //
+    // One thing has to be handled carefully: this device's own grade is
+    // applied to `srs` the instant it happens, for a responsive UI — it
+    // can't wait for a round trip. That's fine as long as every foreign
+    // review folded in afterwards is chronologically LATER than whatever
+    // this device already applied to that card. It usually is. The one case
+    // it isn't: the same card graded on two devices before either had
+    // synced. Folding the earlier-but-late-arriving review on top of the
+    // already-applied later one would apply both in the wrong order —
+    // `__lastReviewAt` (set in applyGrade and below, every time a review is
+    // folded) is how that's detected, per card, and `needsRebuild` collects
+    // the few cards where it's needed for a proper replay from full history
+    // instead of a wrong incremental patch.
+    async function pullReviews() {
+      if (!isSyncEnabled(syncConfig)) return;
+      const myClientId = getClientId();
+      let cursor = loadCursor();
+      let appliedAny = false;
+      const needsRebuild = new Set();
+      for (;;) {
+        const page = await fsQueryReviews(syncConfig, cursor);
+        if (!page.length) break;
+        for (const row of page) {
+          const ts = new Date(row.reviewedAt).getTime();
+          const lastApplied = srs[row.cardId]?.__lastReviewAt ?? -Infinity;
+          if (row.clientId === myClientId) {
+            if (srs[row.cardId]) srs[row.cardId].__lastReviewAt = Math.max(lastApplied, ts);
+          } else if (ts >= lastApplied) {
+            srs[row.cardId] = schedule(srs[row.cardId], row.grade, ts);
+            srs[row.cardId].__lastReviewAt = ts;
+            appliedAny = true;
+          } else {
+            needsRebuild.add(row.cardId);
+          }
+          cursor = row.createdAt;
+        }
+        saveCursor(cursor);
+        if (page.length < REVIEW_PAGE_SIZE) break;
+      }
+      // Rare path: a full, correctly-ordered replay for just the cards where
+      // an out-of-order arrival was detected above, using every review for
+      // that card (own and foreign alike) rather than trusting whatever
+      // state happened to already be sitting in `srs`.
+      for (const cardId of needsRebuild) {
+        const rows = await fsQueryReviewsForCard(syncConfig, cardId);
+        rows.sort((a, b) => new Date(a.reviewedAt) - new Date(b.reviewedAt));
+        let state;
+        for (const row of rows) state = schedule(state, row.grade, new Date(row.reviewedAt).getTime());
+        if (state) state.__lastReviewAt = new Date(rows[rows.length - 1].reviewedAt).getTime();
+        srs[cardId] = state;
+        appliedAny = true;
+      }
+      if (appliedAny) {
+        saveSrs(srs);
+        session = newSession(activeTheme);
+        render();
+      }
+    }
+
+    // New device, or localStorage wiped: start from the shared baseline (or
+    // nothing, if sync was never turned on anywhere yet) and replay the whole
+    // log on top of it.
+    async function rebuildFromLog() {
+      const baseline = await fsGetDoc(syncConfig, `brain_gym/${syncConfig.syncKeyHash}/meta/baseline`);
+      srs = baseline ? { ...baseline.state } : {};
+      localStorage.removeItem(CURSOR_KEY);
+      await pullReviews();
+    }
+
+    // Runs once, the first time sync is enabled on this device. A device that
+    // already has local review history becomes the baseline everyone else
+    // replays from; a brand-new device just rebuilds from whatever's already
+    // there. Note: if two devices both have independent pre-sync history and
+    // enable sync at the same cold moment, only the first to reach the server
+    // becomes the baseline — the loser's un-synced history stays local-only.
+    // In practice this doesn't come up: turn sync on for one device, use it
+    // a little, then open the setup link on the next one.
+    async function migrateOrRebuild() {
+      if (localStorage.getItem(MIGRATED_KEY)) { await pullReviews(); return; }
+      if (Object.keys(srs).length === 0) {
+        await rebuildFromLog();
+      } else {
+        try {
+          await fsCreateDoc(syncConfig, `brain_gym/${syncConfig.syncKeyHash}/meta/baseline`,
+            { state: srs, takenAt: new Date() });
+        } catch (e) {
+          console.warn("Brain Gym sync: baseline write failed, will retry next launch", e);
+          return;   // don't mark migrated — try again on next open
+        }
+        await pullReviews();
+      }
+      localStorage.setItem(MIGRATED_KEY, "1");
+    }
+
+    let syncConfig = loadSyncConfig();
+
     // ---- App state: the review IS the app ----
     let activeTheme = "all";
     let session = newSession("all");
 
+    // Moves any pending card whose `due` has actually arrived into the
+    // visible queue. Called at the top of every render and after grading, so
+    // a card promised "back in 6m" can never reappear before that time
+    // really passes — the bug the positional splice() used to have.
+    function promotePending(s) {
+      const now = Date.now();
+      const ready = [];
+      s.pending = s.pending.filter(c => {
+        if (srs[c.id] && srs[c.id].due <= now) { ready.push(c); return false; }
+        return true;
+      });
+      s.queue.push(...ready);
+    }
+
+    // Live countdown while waiting on a step delay: mm:ss under an hour
+    // (the only case that occurs — learning/relearn steps top out at 10m),
+    // hours:minutes beyond that as a defensive fallback.
+    function fmtCountdown(ms) {
+      const s = Math.max(0, Math.ceil(ms / 1000));
+      const m = Math.floor(s / 60), r = s % 60;
+      if (m < 60) return `${m}:${String(r).padStart(2, "0")}`;
+      const h = Math.floor(m / 60);
+      return `${h}h ${m % 60}m`;
+    }
+
+    // Armed only while the "waiting" screen (queue empty, pending non-empty)
+    // is on screen, so the countdown ticks and the app transitions to the
+    // next card the moment it's actually due — cleared everywhere else so
+    // an idle open never runs a timer for nothing.
+    let waitTimer = null;
+    function clearWaitTimer() {
+      if (waitTimer) { clearInterval(waitTimer); waitTimer = null; }
+    }
+
     function newSession(theme) {
       const queue = dueCards(theme);
-      return { queue, done: 0, total: queue.length, revealed: false };
+      // `pending` holds cards graded this session that didn't graduate (still
+      // "lrn"/"rel"). They wait here — not in `queue` — until their own
+      // `srs[id].due` timestamp actually arrives; see promotePending().
+      return { queue, pending: [], done: 0, total: queue.length, revealed: false };
     }
     function setTheme(theme) {
       activeTheme = theme;
@@ -387,6 +773,29 @@
 
     function render() {
       const s = session;
+      clearWaitTimer();
+      promotePending(s);
+
+      if (!s.queue.length && s.pending.length) {
+        // Everything left this session is a card that was graded Again/Hard
+        // and genuinely has to wait out its own step delay — not a fixed
+        // number of other cards, its real `due` timestamp. Ticks itself so
+        // the app moves on the moment that time arrives, with no polling
+        // once you navigate away (setTheme() starts a fresh session, and
+        // clearWaitTimer() above always tears this down first).
+        const soonest = Math.min(...s.pending.map(c => srs[c.id].due));
+        app.innerHTML = `
+          ${headerHtml(`${s.done} / ${s.total} · waiting`)}
+          <div class="progress"><div style="width:${Math.round(100 * s.done / s.total)}%"></div></div>
+          <div class="done">
+            <div class="wait-time" id="waitTime">${fmtCountdown(soonest - Date.now())}</div>
+            <p>${s.pending.length} card${s.pending.length === 1 ? "" : "s"} due back shortly —<br>this is the real wait, not a shortcut.</p>
+          </div>
+          <p class="foot-note">${books.length} books · ${cards.length} cards in the deck</p>`;
+        bindPills();
+        waitTimer = setInterval(() => render(), 1000);
+        return;
+      }
 
       if (!s.queue.length) {
         app.innerHTML = `
@@ -441,10 +850,10 @@
         const next = applyGrade(c.id, Number(b.dataset.g));
         s.queue.shift();
         // A card that graduated to review is finished for today. One still in
-        // a learning step comes back later this session, a few cards down, so
-        // you get spacing rather than an immediate re-show.
+        // a learning step goes to `pending` and only comes back once its own
+        // due timestamp really arrives — see promotePending().
         if (next.st === "rev") s.done += 1;
-        else s.queue.splice(Math.min(3, s.queue.length), 0, c);
+        else s.pending.push(c);
         s.revealed = false;
         render();
       }));
@@ -460,6 +869,22 @@
     if ("serviceWorker" in navigator) {
       addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
     }
+
+    // Sync starts after the first paint, deliberately: the app is fully
+    // interactive offline before any of this runs, and stays that way if
+    // sync was never configured (bootstrapSyncConfig() just returns null).
+    (async function initSync() {
+      syncConfig = await bootstrapSyncConfig();
+      if (!isSyncEnabled(syncConfig)) return;
+      await flushOutbox();
+      await migrateOrRebuild();
+      session = newSession(activeTheme);
+      render();
+      addEventListener("online", () => flushOutbox());
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") { flushOutbox(); pullReviews(); }
+      });
+    })().catch(e => console.warn("Brain Gym sync: startup failed", e));
   </script>
 </body>
 </html>
