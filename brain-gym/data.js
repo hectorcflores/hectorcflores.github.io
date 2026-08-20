@@ -14,15 +14,45 @@ window.ANKI = {
    "label": "Ideas"
   },
   {
-   "id": "mindfulness",
-   "label": "Mindfulness"
-  },
-  {
    "id": "investing",
    "label": "Investing"
+  },
+  {
+   "id": "mindfulness",
+   "label": "Mindfulness"
   }
  ],
  "books": [
+  {
+   "id": "anything-you-want-40-lessons-for-a-new-kind-of-entrepreneur--derek-sivers",
+   "title": "Anything You Want: 40 lessons for a new kind of entrepreneur",
+   "author": "Derek Sivers",
+   "subject": "a musician-turned-founder's contrarian lessons on building a business that serves people rather than chasing growth",
+   "total": 3,
+   "highlights": [
+    {
+     "id": "e3bf36970dd521c4",
+     "loc": 178,
+     "theme": "work",
+     "text": "The only business I’ve ever done is the co-op / sharing model. It goes like this: You have something that people want. It might be something you own, something you’ve learned how to do, or access to resources, space, or people. Find a way to share it with everyone who needs it. Not necessarily for profit, but just because it’s what you’d do for friends, and it’s the right thing to do. If it takes some effort for you to share it, charge a little something for your effort, to ensure that this giving can continue.",
+     "q": "What is the sharing model Sivers says is the only kind of business he's ever done?"
+    },
+    {
+     "id": "d5f3495fc3e41a46",
+     "loc": 196,
+     "theme": "work",
+     "text": "None of these things looked like a business venture, at first. All of them were just sharing something I already had. People often ask me if I have any suggestions for what kind of business they should get into. I tell them the only thing I know how to recommend: Start by sharing whatever you’ve got.",
+     "q": "What is Sivers' only recommendation for what kind of business to start?"
+    },
+    {
+     "id": "ba76d22fea3ed70e",
+     "loc": 228,
+     "theme": "work",
+     "text": "Instead, imagine if you designed your business to have no big clients, just lots of little clients. You don’t need to change what you do to please one client — only the majority (or yourself). If one client needs to leave, it’s OK. You can sincerely wish them well. Because no one client can demand you do what they say, you are your own boss. Just keep clients happy in general. You hear hundreds of people’s opinions, and stay in touch with what the majority of people want.",
+     "q": "According to Sivers, why does having many little clients instead of a few big ones make you your own boss?"
+    }
+   ]
+  },
   {
    "id": "ciudad-abierta-narrativa-del-acantilado-no-31-spanish-edition--teju-cole-and-marcelo-cohen-de-levis",
    "title": "Ciudad abierta (Narrativa del Acantilado nº 31) (Spanish Edition)",
@@ -1366,6 +1396,207 @@ window.ANKI = {
      "theme": "work",
      "text": "The first part in understanding how you lead is to know your strengths—the things you’re talented at and love to do. This is crucial because great management typically comes from playing to your strengths rather than from fixing your weaknesses. There are some useful frameworks for understanding your strengths, like StrengthsFinder 2.0 by Tom Rath or StandOut by Marcus Buckingham.",
      "q": "Why does Zhuo say great management comes from playing to strengths rather than fixing weaknesses, and what tools does she recommend?"
+    }
+   ]
+  },
+  {
+   "id": "the-most-important-thing-uncommon-sense-for-the-thoughtful-investor-columbia-bus--howard-marks",
+   "title": "The Most Important Thing: Uncommon Sense for the Thoughtful Investor (Columbia Business School Publishing)",
+   "author": "Howard Marks",
+   "subject": "value investing philosophy and the disciplines of second-level thinking, risk, and market cycles",
+   "total": 38,
+   "highlights": [
+    {
+     "id": "43f985539a2c43fa",
+     "loc": 74,
+     "theme": "investing",
+     "text": "I like to say, “Experience is what you got when you didn’t get what you wanted.” Good times teach only bad lessons: that investing is easy, that you know its secrets, and that you needn’t worry about risk. The most valuable lessons are learned in tough times.",
+     "q": "According to Marks, why do good times teach only bad lessons and where are the most valuable lessons learned?"
+    },
+    {
+     "id": "140e4017f4a5b310",
+     "loc": 126,
+     "theme": "investing",
+     "text": "But successful investors want more. They want to beat the market. In my view, that’s the definition of successful investing: doing better than the market and other investors.",
+     "q": "How does Marks define successful investing?"
+    },
+    {
+     "id": "019243978cbfb403",
+     "loc": 146,
+     "theme": "investing",
+     "text": "What is second-level thinking? • First-level thinking says, “It’s a good company; let’s buy the stock.” Second-level thinking says, “It’s a good company, but everyone thinks it’s a great company, and it’s not. So the stock’s overrated and overpriced; let’s sell.” • First-level thinking says, “The outlook calls for low growth and rising inflation. Let’s dump our stocks.” Second-level thinking says, “The outlook stinks, but everyone else is selling in panic. Buy!” • First-level thinking says, “I think the company’s earnings will fall; sell.” Second-level thinking says, “I think the company’s earnings will fall less than people expect, and the pleasant surprise will lift the stock; buy.”",
+     "q": "How does second-level thinking differ from first-level thinking when evaluating a good company?"
+    },
+    {
+     "id": "54cbb125aa5b7bb9",
+     "loc": 156,
+     "theme": "investing",
+     "text": "Second-level thinking is deep, complex and convoluted. The second-level thinker takes a great many things into account: • What is the range of likely future outcomes? • Which outcome do I think will occur? • What’s the probability I’m right? • What does the consensus think? • How does my expectation differ from the consensus? • How does the current price for the asset comport with the consensus view of the future, and with mine? • Is the consensus psychology that’s incorporated in the price too bullish or bearish? • What will happen to the asset’s price if the consensus turns out to be right, and what if I’m right?",
+     "q": "What kinds of questions does the second-level thinker take into account?"
+    },
+    {
+     "id": "5ef88ded80bb4ccd",
+     "loc": 180,
+     "theme": "investing",
+     "text": "The problem is that extraordinary performance comes only from correct nonconsensus forecasts, but nonconsensus forecasts are hard to make, hard to make correctly and hard to act on.",
+     "q": "Why is extraordinary performance so difficult to achieve, according to Marks?"
+    },
+    {
+     "id": "44aa6aa79c8b093a",
+     "loc": 200,
+     "theme": "investing",
+     "text": "For your performance to diverge from the norm, your expectations—and thus your portfolio—have to diverge from the norm, and you have to be more right than the consensus. Different and better: that’s a pretty good description of second-level thinking.",
+     "q": "What two conditions must your expectations and portfolio meet for your performance to diverge from the norm?"
+    },
+    {
+     "id": "a1beec1c3b26c354",
+     "loc": 643,
+     "theme": "investing",
+     "text": "because none of us can know the future with certainty, risk is inescapable. Thus, dealing with risk is an essential—I think the essential—element in investing. It’s not hard to find investments that might go up. If you can find enough of these, you’ll have moved in the right direction. But you’re unlikely to succeed for long if you haven’t dealt explicitly with risk. The first step consists of understanding it. The second step is recognizing when it’s high. The critical final step is controlling it.",
+     "q": "What are the three steps Marks gives for dealing with risk in investing?"
+    },
+    {
+     "id": "053e2e8474197741",
+     "loc": 659,
+     "theme": "investing",
+     "text": "risk. Clearly, return tells just half of the story, and risk assessment is required.",
+     "q": "Why does return tell just half the story when evaluating an investment?"
+    },
+    {
+     "id": "ca6bae225ca5d20f",
+     "loc": 663,
+     "theme": "investing",
+     "text": "Surely investors who get their statements and find that their accounts made 10 percent for the year don’t know whether their money managers did a good job or a bad one. In order to reach a conclusion,"
+    },
+    {
+     "id": "202726971b309eaf",
+     "loc": 664,
+     "theme": "investing",
+     "text": "they have to have some idea about how much risk their managers took. In other words, they have to have a feeling for “risk-adjusted return.”",
+     "q": "What must investors understand to judge whether a 10 percent return reflects a good or bad job by their manager?"
+    },
+    {
+     "id": "56461e487b75e553",
+     "loc": 682,
+     "theme": "investing",
+     "text": "Riskier investments are those for which the outcome is less certain. That is, the probability distribution of returns is wider.",
+     "q": "How does Marks characterize riskier investments in terms of their probability distribution of returns?"
+    },
+    {
+     "id": "ed9e55f78779e975",
+     "loc": 708,
+     "theme": "investing",
+     "text": "Rather than volatility, I think people decline to make investments primarily because they’re worried about a loss of capital or an unacceptably low return. To me, “I need more upside potential because I’m afraid I could lose money” makes an awful lot more sense than “I need more upside potential because I’m afraid the price may fluctuate.” No, I’m sure “risk” is—first and foremost—the likelihood of losing money.",
+     "q": "What does Marks argue risk is first and foremost, rather than volatility?"
+    },
+    {
+     "id": "5a2419e2d4fb27e0",
+     "loc": 715,
+     "theme": "investing",
+     "text": "Investment risk comes in many forms. Many risks matter to some investors but not to others, and they may make a given investment seem safe for some investors but risky for others."
+    },
+    {
+     "id": "156a171ce39bb20a",
+     "loc": 725,
+     "theme": "investing",
+     "text": "In fact, since many of the best investors stick most strongly to their approach—and since no approach will work all the time—the best investors can have some of the greatest periods of underperformance. Specifically, in crazy times, disciplined investors willingly accept the risk of not taking",
+     "q": "Why can the best investors experience some of the greatest periods of underperformance?"
+    },
+    {
+     "id": "91466b02b182c8c9",
+     "loc": 727,
+     "theme": "investing",
+     "text": "enough risk to keep up. (See Warren Buffett and Julian Robertson in 1999. That year, underperformance was a badge of courage because it denoted a refusal to participate in the tech bubble.)"
+    },
+    {
+     "id": "634ac3911021ff6c",
+     "loc": 753,
+     "theme": "investing",
+     "text": "But pragmatic value investors feel just the opposite: They believe high return and low risk can be achieved simultaneously by buying things for less than they’re worth. In the same way, overpaying implies both low return and high risk.",
+     "q": "How do pragmatic value investors believe high return and low risk can be achieved simultaneously?"
+    },
+    {
+     "id": "6e7eb4f640c86c22",
+     "loc": 1228,
+     "theme": "investing",
+     "text": "The more time I spend in the world of investing, the more I appreciate the underlying cyclicality of things. In November 2001 I devoted an entire memo to the subject. I titled it “You Can’t Predict. You Can Prepare,” borrowing the advertising tagline of MassMutual Life Insurance Company because I agree wholeheartedly with their theme: we never know what lies ahead, but we can prepare for the possibilities and reduce their sting.",
+     "q": "What is the message of Marks's memo 'You Can't Predict. You Can Prepare'?"
+    },
+    {
+     "id": "e493534c834df72c",
+     "loc": 1232,
+     "theme": "investing",
+     "text": "However, there are two concepts we can hold to with confidence: • Rule number one: most things will prove to be cyclical. • Rule number two: some of the greatest opportunities for gain and loss come when other people forget rule number one.",
+     "q": "What are Marks's two rules about cyclicality?"
+    },
+    {
+     "id": "0d1a9db2fb110f16",
+     "loc": 1239,
+     "theme": "investing",
+     "text": "The basic reason for the cyclicality in our world is the involvement of humans.",
+     "q": "What does Marks identify as the basic reason for cyclicality in the world?"
+    },
+    {
+     "id": "3589d8e9558a5104",
+     "loc": 1241,
+     "theme": "investing",
+     "text": "results are variable and cyclical. The main reason for this, I think, is that people are emotional and inconsistent, not steady and clinical.",
+     "q": "Why are results variable and cyclical, according to Marks?"
+    },
+    {
+     "id": "79da229ce05ad592",
+     "loc": 1334,
+     "theme": "investing",
+     "text": "The next time you’re approached with a deal predicated on cycles having ceased to occur, remember that invariably that’s a losing bet.",
+     "q": "What does Marks say about deals predicated on cycles having ceased to occur?"
+    },
+    {
+     "id": "4f4a6703a4b8f57e",
+     "loc": 1342,
+     "theme": "investing",
+     "text": "The mood swings of the securities markets resemble the movement of a pendulum. Although the midpoint of its arc best describes the location of the pendulum “on average,” it actually spends very little of its time there. Instead, it is almost always swinging toward or away from the extremes of its arc. But whenever the pendulum is near either extreme, it is inevitable that it will move back toward the",
+     "q": "To what does Marks compare the mood swings of securities markets, and where does the pendulum spend little of its time?"
+    },
+    {
+     "id": "b7a7f16889d983b8",
+     "loc": 1345,
+     "theme": "investing",
+     "text": "midpoint sooner or later. In fact, it is the movement toward an extreme itself that supplies the energy for the swing back.",
+     "q": "According to Marks, what supplies the energy for the pendulum's swing back toward the midpoint?"
+    },
+    {
+     "id": "853c4ff9c0909411",
+     "loc": 1350,
+     "theme": "investing",
+     "text": "This oscillation is one of the most dependable features of the investment world, and investor psychology seems to spend much more time at the extremes than it does at a “happy medium.”"
+    },
+    {
+     "id": "b35c5ab452d290a1",
+     "loc": 1684,
+     "theme": "investing",
+     "text": "So at the extremes, which are created by what “most people” believe, most people are wrong.",
+     "q": "Why does Marks conclude that most people are wrong at the extremes?"
+    },
+    {
+     "id": "2570bfbf9364a869",
+     "loc": 1720,
+     "theme": "investing",
+     "text": "You must do things not just because they’re the opposite of what the crowd is doing, but because you know why the crowd is wrong. Only then will you be able to hold firmly to your views and perhaps buy more as your positions take on the appearance of mistakes and as losses accrue rather than gains.",
+     "q": "Why must a contrarian know why the crowd is wrong, not merely do the opposite of the crowd?"
+    },
+    {
+     "id": "e3c2aec96d5a2daf",
+     "loc": 1742,
+     "theme": "investing",
+     "text": "The very coalescing of popular opinion behind an investment tends to eliminate its profit potential.... Take, for example, the investment that “everyone” believes to be a great idea. In my view by definition it simply cannot be so.",
+     "q": "Why does Marks say an investment that 'everyone' believes to be a great idea cannot be one?"
+    },
+    {
+     "id": "5edc4f4764fa0a1c",
+     "loc": 1745,
+     "theme": "investing",
+     "text": "Actually, it’s more likely that outstanding performance to date has borrowed from the future and thus presages subpar performance from here on out.",
+     "q": "What does Marks suggest outstanding performance to date has likely done regarding future returns?"
     }
    ]
   },
