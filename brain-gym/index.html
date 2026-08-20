@@ -181,6 +181,14 @@
     .grade.g0 b { color: var(--again); } .grade.g1 b { color: var(--hard); }
     .grade.g2 b { color: var(--good); } .grade.g3 b { color: var(--easy); }
 
+    .sync-chip {
+      border: 1px solid var(--input); background: var(--background); color: var(--muted-foreground);
+      border-radius: 999px; padding: 0.15rem 0.6rem;
+      font: inherit; font-size: 0.68rem; font-weight: 600; cursor: pointer;
+    }
+    .sync-chip.in { border-color: transparent; background: none; color: var(--good); font-size: 0.8rem; padding: 0.1rem 0.2rem; }
+    .sync-chip.off { cursor: default; opacity: 0.6; }
+
     /* ---- Deck-clear state ---- */
     .done {
       flex: 1;
@@ -381,13 +389,22 @@
     // (different constants, FSRS, whatever) can replay history under the new
     // rules instead of starting blind.
     //
-    // No accounts — tenancy is a SHA-256 hash of a private key you keep,
-    // exactly the pattern already used by my-pomodoro (Supabase) and
-    // my-reading-list (this same Firestore approach). Talks to Firestore over
-    // its plain REST API via fetch(), not the gstatic SDK: this app self-hosts
-    // its own font rather than reaching a CDN, and pulling in a remote ESM
-    // module for sync would be the one exception to that.
-    const SYNC_CONFIG_KEY = "brain-gym.sync.v1";
+    // Tenancy is the signed-in Google account's uid — sign in once per
+    // device and the review log follows the account. Firestore is still
+    // spoken to over its plain REST API via fetch() (this app self-hosts its
+    // font and keeps CDN reach minimal); only Firebase Auth comes from the
+    // gstatic SDK, loaded by the module script at the bottom, because a
+    // hand-rolled OAuth flow is the one thing not worth owning. The web
+    // config below is public by design — access control lives in Firestore
+    // rules keyed to request.auth.uid, not in these values.
+    const FIREBASE = {
+      apiKey: "AIzaSyA5_DhdTdqjCVDeOgklUFcnJ1lwfESiP8Y",
+      authDomain: "my-reading-list-3fa75.firebaseapp.com",
+      projectId: "my-reading-list-3fa75",
+      appId: "1:101190488885:web:f0401ddd67b862f163b27c",
+    };
+    const LEGACY_CONFIG_KEY = "brain-gym.sync.v1";
+    const AUTH_MIGRATED_KEY = "brain-gym.auth-migrated.v1";
     const OUTBOX_KEY = "brain-gym.outbox.v1";
     const CURSOR_KEY = "brain-gym.cursor.v1";
     const CLIENT_ID_KEY = "brain-gym.client.v1";
@@ -406,28 +423,14 @@
       return Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, "0")).join("");
     }
 
-    function loadSyncConfig() {
-      try { return JSON.parse(localStorage.getItem(SYNC_CONFIG_KEY)) || null; } catch { return null; }
+    function loadLegacyConfig() {
+      try { return JSON.parse(localStorage.getItem(LEGACY_CONFIG_KEY)) || null; } catch { return null; }
     }
-    function saveSyncConfig(cfg) { localStorage.setItem(SYNC_CONFIG_KEY, JSON.stringify(cfg)); }
-    function isSyncEnabled(cfg) { return Boolean(cfg && cfg.apiKey && cfg.projectId && cfg.syncKeyHash); }
-
-    // One-time setup: open the app once with a URL fragment carrying the
-    // Firebase web-app config and a private sync key (README has the exact
-    // format). A fragment never leaves the browser — it's not sent in the
-    // request that loads the page — and is stripped from the visible URL
-    // immediately after being read, the same as my-reading-list's setup flow.
-    async function bootstrapSyncConfig() {
-      const hashParams = new URLSearchParams(location.hash.replace(/^#/, ""));
-      const apiKey = hashParams.get("fb_api_key");
-      const projectId = hashParams.get("fb_project_id");
-      const syncKey = hashParams.get("sync_key");
-      if (!apiKey || !projectId || !syncKey) return loadSyncConfig();
-
-      const cfg = { apiKey, projectId, syncKeyHash: await sha256Hex(syncKey) };
-      saveSyncConfig(cfg);
-      history.replaceState({}, document.title, location.pathname + location.search);
-      return cfg;
+    function isSyncEnabled() { return Boolean(authUser); }
+    function liveCfg() { return { projectId: FIREBASE.projectId, apiKey: FIREBASE.apiKey, tenant: authUser.uid, auth: true }; }
+    function legacyCfg(old) { return { projectId: old.projectId, apiKey: old.apiKey, tenant: old.syncKeyHash, auth: false }; }
+    async function cfgHeaders(cfg) {
+      return cfg.auth && authUser ? { Authorization: "Bearer " + await authUser.getToken() } : {};
     }
 
     // ---- Firestore REST: minimal typed-value encode/decode ----
@@ -483,7 +486,7 @@
       const name = `projects/${cfg.projectId}/databases/(default)/documents/${relPath}`;
       const res = await fetch(`${fsBase(cfg)}:commit?key=${encodeURIComponent(cfg.apiKey)}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...(await cfgHeaders(cfg)) },
         body: JSON.stringify({
           writes: [{
             update: { name, fields: fsFields(fields) },
@@ -498,7 +501,7 @@
     }
 
     async function fsGetDoc(cfg, relPath) {
-      const res = await fetch(`${fsBase(cfg)}/${relPath}?key=${encodeURIComponent(cfg.apiKey)}`);
+      const res = await fetch(`${fsBase(cfg)}/${relPath}?key=${encodeURIComponent(cfg.apiKey)}`, { headers: await cfgHeaders(cfg) });
       if (res.status === 404) return null;
       if (!res.ok) throw new Error(`fsGetDoc ${relPath}: HTTP ${res.status}`);
       const doc = await res.json();
@@ -525,10 +528,10 @@
           fieldFilter: { field: { fieldPath: "createdAt" }, op: "GREATER_THAN", value: { timestampValue: afterIso } },
         };
       }
-      const parent = `${fsBase(cfg)}/brain_gym/${cfg.syncKeyHash}`;
+      const parent = `${fsBase(cfg)}/brain_gym/${cfg.tenant}`;
       const res = await fetch(`${parent}:runQuery?key=${encodeURIComponent(cfg.apiKey)}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...(await cfgHeaders(cfg)) },
         body: JSON.stringify({ structuredQuery }),
       });
       if (!res.ok) throw new Error(`fsQueryReviews: HTTP ${res.status}`);
@@ -537,7 +540,7 @@
       // field) is the cursor value — it's metadata Firestore always sets
       // correctly, rather than trusting a field the client also wrote.
       return rows.filter(r => r.document)
-        .map(r => ({ ...fsDecodeFields(r.document.fields || {}), createdAt: r.document.createTime }));
+        .map(r => ({ ...fsDecodeFields(r.document.fields || {}), createdAt: r.document.createTime, __id: r.document.name.split("/").pop() }));
     }
 
     // Every review for one card, unordered (see pullReviews() for why this
@@ -550,10 +553,10 @@
         from: [{ collectionId: "reviews" }],
         where: { fieldFilter: { field: { fieldPath: "cardId" }, op: "EQUAL", value: { stringValue: cardId } } },
       };
-      const parent = `${fsBase(cfg)}/brain_gym/${cfg.syncKeyHash}`;
+      const parent = `${fsBase(cfg)}/brain_gym/${cfg.tenant}`;
       const res = await fetch(`${parent}:runQuery?key=${encodeURIComponent(cfg.apiKey)}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...(await cfgHeaders(cfg)) },
         body: JSON.stringify({ structuredQuery }),
       });
       if (!res.ok) throw new Error(`fsQueryReviewsForCard: HTTP ${res.status}`);
@@ -567,8 +570,7 @@
     function saveOutbox(rows) { localStorage.setItem(OUTBOX_KEY, JSON.stringify(rows)); }
 
     function enqueueReview(cardId, grade, atMs) {
-      if (!isSyncEnabled(syncConfig)) return;
-      const rows = loadOutbox();
+      const rows = loadOutbox();   // always queue — flushes once signed in
       rows.push({ id: crypto.randomUUID(), cardId, grade, reviewedAt: new Date(atMs).toISOString() });
       saveOutbox(rows);
       flushOutbox();   // fire-and-forget
@@ -576,14 +578,14 @@
 
     let flushing = false;
     async function flushOutbox() {
-      if (!isSyncEnabled(syncConfig) || flushing) return;
+      if (!isSyncEnabled() || flushing) return;
       flushing = true;
       try {
         let rows = loadOutbox();
         while (rows.length) {
           const row = rows[0];
           try {
-            await fsCreateDoc(syncConfig, `brain_gym/${syncConfig.syncKeyHash}/reviews/${row.id}`, {
+            await fsCreateDoc(liveCfg(), `brain_gym/${authUser.uid}/reviews/${row.id}`, {
               cardId: row.cardId, grade: row.grade,
               reviewedAt: new Date(row.reviewedAt), clientId: getClientId(),
             });
@@ -619,14 +621,15 @@
     // folded) is how that's detected, per card, and `needsRebuild` collects
     // the few cards where it's needed for a proper replay from full history
     // instead of a wrong incremental patch.
-    async function pullReviews() {
-      if (!isSyncEnabled(syncConfig)) return;
+    async function pullReviews(cfgOverride = null) {
+      if (!isSyncEnabled()) return;
+      const cfg = cfgOverride || liveCfg();
       const myClientId = getClientId();
       let cursor = loadCursor();
       let appliedAny = false;
       const needsRebuild = new Set();
       for (;;) {
-        const page = await fsQueryReviews(syncConfig, cursor);
+        const page = await fsQueryReviews(cfg, cursor);
         if (!page.length) break;
         for (const row of page) {
           const ts = new Date(row.reviewedAt).getTime();
@@ -650,7 +653,7 @@
       // that card (own and foreign alike) rather than trusting whatever
       // state happened to already be sitting in `srs`.
       for (const cardId of needsRebuild) {
-        const rows = await fsQueryReviewsForCard(syncConfig, cardId);
+        const rows = await fsQueryReviewsForCard(cfg, cardId);
         rows.sort((a, b) => new Date(a.reviewedAt) - new Date(b.reviewedAt));
         let state;
         for (const row of rows) state = schedule(state, row.grade, new Date(row.reviewedAt).getTime());
@@ -669,7 +672,7 @@
     // nothing, if sync was never turned on anywhere yet) and replay the whole
     // log on top of it.
     async function rebuildFromLog() {
-      const baseline = await fsGetDoc(syncConfig, `brain_gym/${syncConfig.syncKeyHash}/meta/baseline`);
+      const baseline = await fsGetDoc(liveCfg(), `brain_gym/${authUser.uid}/meta/baseline`);
       srs = baseline ? { ...baseline.state } : {};
       localStorage.removeItem(CURSOR_KEY);
       await pullReviews();
@@ -689,7 +692,7 @@
         await rebuildFromLog();
       } else {
         try {
-          await fsCreateDoc(syncConfig, `brain_gym/${syncConfig.syncKeyHash}/meta/baseline`,
+          await fsCreateDoc(liveCfg(), `brain_gym/${authUser.uid}/meta/baseline`,
             { state: srs, takenAt: new Date() });
         } catch (e) {
           console.warn("Brain Gym sync: baseline write failed, will retry next launch", e);
@@ -700,7 +703,62 @@
       localStorage.setItem(MIGRATED_KEY, "1");
     }
 
-    let syncConfig = loadSyncConfig();
+    let authUser = null;        // { uid, email, getToken() } once signed in
+    let authApi = null;         // { signIn, signOutUser } from the module script
+    let authState = "loading";  // loading | out | in | unavailable
+
+    // Advance the pull cursor past everything currently in the account's log
+    // WITHOUT folding it — used right after the legacy import on a device
+    // whose local `srs` is already the fold of everything it just copied.
+    async function advanceCursorToTip() {
+      let cursor = loadCursor();
+      for (;;) {
+        const page = await fsQueryReviews(liveCfg(), cursor);
+        if (!page.length) break;
+        cursor = page[page.length - 1].createdAt;
+        saveCursor(cursor);
+        if (page.length < REVIEW_PAGE_SIZE) break;
+      }
+    }
+
+    // One-time, per device: copy the bookmark-era tenant (keyed by the old
+    // sync-key hash, possibly in a different Firebase project) into the
+    // signed-in account. Create-only writes with preserved review ids make
+    // the copy idempotent even if two devices race to do it.
+    async function importLegacyTenant() {
+      if (localStorage.getItem(AUTH_MIGRATED_KEY)) return;
+      const old = loadLegacyConfig();
+      if (old && old.apiKey && old.projectId && old.syncKeyHash) {
+        const src = legacyCfg(old);
+        try { await pullReviews(src); } catch (e) { console.warn("Brain Gym sync: legacy pull failed", e); }
+        const baseline = await fsGetDoc(src, `brain_gym/${src.tenant}/meta/baseline`);
+        if (baseline) {
+          await fsCreateDoc(liveCfg(), `brain_gym/${authUser.uid}/meta/baseline`,
+            { state: baseline.state, takenAt: new Date(baseline.takenAt) });
+        }
+        let cursor = null;
+        for (;;) {
+          const page = await fsQueryReviews(src, cursor);
+          for (const row of page) {
+            await fsCreateDoc(liveCfg(), `brain_gym/${authUser.uid}/reviews/${row.__id}`, {
+              cardId: row.cardId, grade: row.grade,
+              reviewedAt: new Date(row.reviewedAt), clientId: row.clientId,
+            });
+            cursor = row.createdAt;
+          }
+          if (page.length < REVIEW_PAGE_SIZE) break;
+        }
+        if (Object.keys(srs).length > 0) {
+          // Local state is already the fold of everything copied above.
+          localStorage.setItem(MIGRATED_KEY, "1");
+          await advanceCursorToTip();
+        } else {
+          localStorage.removeItem(MIGRATED_KEY);
+          localStorage.removeItem(CURSOR_KEY);
+        }
+      }
+      localStorage.setItem(AUTH_MIGRATED_KEY, "1");
+    }
 
     // ---- App state: the review IS the app ----
     let activeTheme = "all";
@@ -762,11 +820,18 @@
       return `<div class="pills" role="group" aria-label="Deck" style="--n:${decks.length}">${pills}</div>`;
     }
 
+    function syncChipHtml() {
+      if (authState === "out") return `<button class="sync-chip" id="syncChip">Sign in</button>`;
+      if (authState === "in") return `<button class="sync-chip in" id="syncChip" title="${esc((authUser && authUser.email) || "Signed in")} — tap to sign out">●</button>`;
+      if (authState === "unavailable") return `<span class="sync-chip off" title="Google sign-in unreachable — reviews stay on this device">offline</span>`;
+      return "";
+    }
+
     function headerHtml(pos) {
       return `
         <div class="bar">
           <h1>Brain Gym</h1>
-          <span class="pos">${pos}</span>
+          <span style="display:inline-flex;align-items:center;gap:0.55rem">${syncChipHtml()}<span class="pos">${pos}</span></span>
         </div>
         ${pillsHtml()}`;
     }
@@ -862,6 +927,14 @@
     function bindPills() {
       document.querySelectorAll(".pill").forEach(p =>
         p.addEventListener("click", () => setTheme(p.dataset.theme)));
+      const chip = document.getElementById("syncChip");
+      if (chip) chip.addEventListener("click", async () => {
+        if (authState === "out") {
+          try { await authApi.signIn(); } catch (e) { console.warn("Brain Gym sync: sign-in failed", e); }
+        } else if (authState === "in" && confirm("Sign out of sync on this device?")) {
+          authApi.signOutUser();
+        }
+      });
     }
 
     render();
@@ -871,20 +944,78 @@
     }
 
     // Sync starts after the first paint, deliberately: the app is fully
-    // interactive offline before any of this runs, and stays that way if
-    // sync was never configured (bootstrapSyncConfig() just returns null).
-    (async function initSync() {
-      syncConfig = await bootstrapSyncConfig();
-      if (!isSyncEnabled(syncConfig)) return;
-      await flushOutbox();
-      await migrateOrRebuild();
-      session = newSession(activeTheme);
-      render();
-      addEventListener("online", () => flushOutbox());
-      document.addEventListener("visibilitychange", () => {
-        if (document.visibilityState === "visible") { flushOutbox(); pullReviews(); }
-      });
-    })().catch(e => console.warn("Brain Gym sync: startup failed", e));
+    // interactive offline before any of this runs, and stays fully usable
+    // signed out — grades queue locally and follow the account once the
+    // Sign in chip is used. The module script below builds the real
+    // Firebase Auth services and calls start(); tests can pass fakes.
+    window.BrainGymSync = {
+      firebaseConfig: FIREBASE,
+      start(api) {
+        authApi = api;
+        api.onAuthChange(async (user) => {
+          authUser = user;
+          authState = user ? "in" : "out";
+          render();
+          if (!user) return;
+          try {
+            await importLegacyTenant();
+            await flushOutbox();
+            await migrateOrRebuild();
+            session = newSession(activeTheme);
+            render();
+          } catch (e) {
+            console.warn("Brain Gym sync: startup failed", e);
+          }
+        });
+      },
+      unavailable(e) {
+        console.warn("Brain Gym sync: auth unavailable", e);
+        authState = "unavailable";
+        render();
+      },
+    };
+    addEventListener("online", () => flushOutbox());
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible" && isSyncEnabled()) { flushOutbox(); pullReviews(); }
+    });
+  </script>
+  <script type="module">
+    (async () => {
+      try {
+        const [{ initializeApp }, auth] = await Promise.all([
+          import("https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js"),
+          import("https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js"),
+        ]);
+        const app = initializeApp(window.BrainGymSync.firebaseConfig);
+        const instance = auth.getAuth(app);
+        const provider = new auth.GoogleAuthProvider();
+        auth.getRedirectResult(instance).catch((e) => console.warn(e));
+        window.BrainGymSync.start({
+          onAuthChange(cb) {
+            auth.onAuthStateChanged(instance, (u) => {
+              cb(u ? { uid: u.uid, email: u.email, getToken: () => u.getIdToken() } : null);
+            });
+          },
+          async signIn() {
+            try {
+              await auth.signInWithPopup(instance, provider);
+            } catch (e) {
+              const popupIssues = [
+                "auth/popup-blocked",
+                "auth/popup-closed-by-user",
+                "auth/cancelled-popup-request",
+                "auth/operation-not-supported-in-this-environment",
+              ];
+              if (popupIssues.includes(e.code)) await auth.signInWithRedirect(instance, provider);
+              else throw e;
+            }
+          },
+          signOutUser: () => auth.signOut(instance),
+        });
+      } catch (e) {
+        window.BrainGymSync.unavailable(e);
+      }
+    })();
   </script>
 </body>
 </html>
