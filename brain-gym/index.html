@@ -317,7 +317,11 @@
     // `seed` feeds fuzzIvl; callers pass hash(card.id) so the fuzz is stable
     // per card per rep.
     function schedule(prev, g, now, seed = 0) {
-      const s = { ...(prev || freshState()) };
+      // `intro` is the moment a card was first graded. It lives in the card
+      // state so it rides the sync log like everything else — that's what
+      // lets the daily new-card budget be shared across devices instead of
+      // each one quietly opening its own 20.
+      const s = prev ? { ...prev } : { ...freshState(), intro: now };
       const fz = (n) => fuzzIvl(n, seed + s.reps);
       const days = (n) => { s.due = now + n * DAY; s.ivl = n; };
       const mins = (ms) => { s.due = now + ms; };
@@ -369,11 +373,7 @@
 
     function applyGrade(id, g) {
       const now = Date.now();
-      const isFirstGrade = !srs[id];
       srs[id] = schedule(srs[id], g, now, hash(id));
-      // The daily new-card budget burns when a new card is first *graded*,
-      // not when it's shown — looking without answering costs nothing.
-      if (isFirstGrade) bumpNewIntroduced();
       // Sync-only bookkeeping, not part of the scheduling model: the latest
       // reviewedAt this device has folded into this card, own or foreign. See
       // pullReviews() for why it matters — schedule() itself never reads it,
@@ -410,25 +410,34 @@
     }
 
     // Anki's default: 20 new cards per calendar day, TOTAL — not per deck,
-    // and not per session. The count lives in localStorage keyed to the
-    // local date, so closing and reopening the app can't refill the budget.
-    // Per-device on purpose (it doesn't ride the Firestore sync): worst case
-    // two devices each introduce 20 on the same day, same as before.
+    // not per session, and not per device. The count is derived from the
+    // card states themselves (every card carries the `intro` timestamp of
+    // its first grade), so it's the same number on every device once the
+    // sync log has folded in: 20 today means 20 across phone and laptop
+    // together, not 20 each. Nothing is stored separately for it, so
+    // reopening the app can't refill the budget either.
     const NEW_PER_DAY = 20;
-    const NEWCOUNT_KEY = "brain-gym.newcount.v1";
-    const todayStr = () => {
-      const d = new Date();
+    const dateStr = (ms) => {
+      const d = new Date(ms);
       return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
     };
     function newIntroducedToday() {
-      try {
-        const v = JSON.parse(localStorage.getItem(NEWCOUNT_KEY));
-        return (v && v.date === todayStr()) ? v.count : 0;
-      } catch { return 0; }
+      const today = dateStr(Date.now());
+      let n = 0;
+      for (const c of cards) {
+        const st = srs[c.id];
+        if (st && st.intro && dateStr(st.intro) === today) n += 1;
+      }
+      return n;
     }
-    function bumpNewIntroduced() {
-      localStorage.setItem(NEWCOUNT_KEY, JSON.stringify({ date: todayStr(), count: newIntroducedToday() + 1 }));
+    // One-time backfill for states written before `intro` existed: the best
+    // available guess is the card's last review. Only wrong for an old card
+    // that also happened to be reviewed today, and only for today.
+    for (const id of Object.keys(srs)) {
+      const st = srs[id];
+      if (st && st.intro == null && st.__lastReviewAt) st.intro = st.__lastReviewAt;
     }
+    localStorage.removeItem("brain-gym.newcount.v1");   // the per-device counter this replaces
 
     // New cards are drawn in a different order every session. With a fixed
     // order, opening the app without grading anything always lands on the
