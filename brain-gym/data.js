@@ -14,12 +14,12 @@ window.ANKI = {
    "label": "Ideas"
   },
   {
-   "id": "investing",
-   "label": "Investing"
-  },
-  {
    "id": "mindfulness",
    "label": "Mindfulness"
+  },
+  {
+   "id": "investing",
+   "label": "Investing"
   }
  ],
  "books": [
@@ -50,6 +50,124 @@ window.ANKI = {
      "theme": "work",
      "text": "Instead, imagine if you designed your business to have no big clients, just lots of little clients. You don’t need to change what you do to please one client — only the majority (or yourself). If one client needs to leave, it’s OK. You can sincerely wish them well. Because no one client can demand you do what they say, you are your own boss. Just keep clients happy in general. You hear hundreds of people’s opinions, and stay in touch with what the majority of people want.",
      "q": "According to Sivers, why does having many little clients instead of a few big ones make you your own boss?"
+    }
+   ]
+  },
+  {
+   "id": "bad-blood-secrets-and-lies-in-a-silicon-valley-startup--john-carreyrou",
+   "title": "Bad Blood: Secrets and Lies in a Silicon Valley Startup",
+   "author": "John Carreyrou",
+   "subject": "the rise and fraudulent collapse of Theranos, Elizabeth Holmes's blood-testing startup",
+   "total": 28,
+   "highlights": [
+    {
+     "id": "bd4d57417c1393fc",
+     "loc": 183,
+     "theme": "work",
+     "text": "Well, there was a reason it always seemed to work, Shaunak said. The image on the computer screen showing the blood flowing through the cartridge and settling into the little wells was real. But you never knew whether you were going to get a result or not. So they’d recorded a result from one of the times it worked. It was that recorded result that was displayed at the end of each demo.",
+     "q": "How did Theranos fake successful investor demos of its blood-testing device?"
+    },
+    {
+     "id": "65a0d9176f39bb2c",
+     "loc": 203,
+     "theme": "ideas",
+     "text": "The pharmaceutical companies were going to use Theranos’s blood-testing system to monitor patients’ response to new drugs. The cartridges and readers would be placed in patients’ homes during clinical trials. Patients would prick their fingers several times a day and the readers would beam their blood-test results to the trial’s sponsor. If the results indicated a bad reaction to the drug, the drug’s maker would be able to lower the dosage immediately rather than wait until the end of the trial. This would reduce pharmaceutical companies’ research costs by as much as 30 percent. Or so the slide deck said.",
+     "q": "How did Theranos pitch pharmaceutical companies on using its blood-testing system in clinical trials?"
+    },
+    {
+     "id": "6004eac7be83b421",
+     "loc": 351,
+     "theme": "ideas",
+     "text": "The compromise was a cartridge-and-reader system that blended the fields of microfluidics and biochemistry. The patient would prick her finger to draw a small sample of blood and place it in a cartridge that looked like a thick credit card. The cartridge would slot into a bigger machine called a reader. Pumps inside the reader would push the blood through tiny channels in the cartridge and into little wells coated with proteins known as antibodies. On its way to the wells, a filter would separate the blood’s solid elements, its red and white blood cells, from the plasma and let only the plasma through. When the plasma came into contact with the antibodies, a chemical reaction would produce a signal that would be “read” by the reader and translated into a result.",
+     "q": "How was the early Theranos cartridge-and-reader system supposed to work?"
+    },
+    {
+     "id": "faa53d6c2530ee7d",
+     "loc": 525,
+     "theme": "ideas",
+     "text": "This blood-testing technique was known as a chemiluminescent immunoassay. (In laboratory speak, the word “assay” is synonymous with “blood test.”) The technique was not new: it had been pioneered in the early 1980s by a professor at Cardiff University. But Tony had automated it inside a machine that, though bigger than the toaster-size Theranos 1.0, was still small enough to make Elizabeth’s vision of placing it in patients’ homes possible. And it only required about 50 microliters of blood. That was more than the 10 microliters Elizabeth initially insisted upon, but it still amounted to just a drop. By September 2007, four months after he’d started building it, Tony had a functioning prototype.",
+     "q": "What was the chemiluminescent immunoassay technique and who pioneered it?"
+    },
+    {
+     "id": "eb6f2c32de202a53",
+     "loc": 535,
+     "theme": "work",
+     "text": "The decision to abandon the microfluidic system in favor of the Edison was ironic given that Theranos had just filed a lawsuit to protect the intellectual property underpinning the former. It was also bad news for Ed Ku."
+    },
+    {
+     "id": "dea105fe3f91d7c1",
+     "loc": 1276,
+     "theme": "work",
+     "text": "Chelsea was fluent in Spanish, so it was decided that she would head down to Mexico with Sunny. Getting authorization to use an experimental medical device in a foreign country is usually no easy thing, but Elizabeth was able to leverage the family connections of a wealthy Mexican student at Stanford. He got Chelsea and Sunny an audience with high-ranking officials at the Mexican Social Security Institute, the agency that runs the country’s public health-care system. IMSS approved the shipment of two dozen Edison readers to a hospital in Mexico City. The hospital, a sprawling facility called Hospital General de México, was located in Colonia Doctores, one of the city’s most crime-ridden neighborhoods.",
+     "q": "How did Theranos get its Edison readers deployed for testing in Mexico?"
+    },
+    {
+     "id": "35e332c691f7a4b9",
+     "loc": 1486,
+     "theme": "ideas",
+     "text": "Now, Theranos was changing its tune and saying the tests it would be offering in Walgreens stores were “laboratory-developed tests.” It was a big difference: laboratory-developed tests lay in a gray zone between the FDA and another federal health regulator, the Centers for Medicare and Medicaid Services. CMS, as the latter agency was known, exercised oversight of clinical laboratories under CLIA, while the FDA regulated the diagnostic equipment that laboratories bought and used for their testing. But no one closely regulated tests that labs fashioned with their own methods.",
+     "q": "What regulatory gray zone did Theranos exploit by calling its offerings 'laboratory-developed tests'?"
+    },
+    {
+     "id": "6f149d979a1ff06e",
+     "loc": 1587,
+     "theme": "ideas",
+     "text": "The truth was that the Edison system could only do immunoassays, a type of test that uses antibodies to measure substances in the blood. Immunoassays included some commonly ordered lab tests such as tests to measure vitamin D or to detect prostate cancer. But many other routine blood tests, ranging from cholesterol to blood sugar, required completely different laboratory techniques.",
+     "q": "What was the fundamental limitation of the Edison system's testing capability?"
+    },
+    {
+     "id": "629acae313fd1183",
+     "loc": 1600,
+     "theme": "ideas",
+     "text": "In addition to the Edison’s photomultiplier tube, the new device would need to cram three other laboratory instruments in one small space: a spectrophotometer, a cytometer, and an isothermal amplifier.",
+     "q": "Which four laboratory instruments did the new miniLab device need to cram into one small space?"
+    },
+    {
+     "id": "7689a04ef6ebae31",
+     "loc": 1608,
+     "theme": "ideas",
+     "text": "Rather, the miniLab’s value would lie in the miniaturization of existing lab technology. While that might not amount to groundbreaking science, it made sense in the context of Elizabeth’s vision of taking blood testing out of central laboratories and bringing it to drugstores, supermarkets, and, eventually, people’s homes.",
+     "q": "Where did the miniLab's real value lie according to Elizabeth's vision?"
+    },
+    {
+     "id": "33b942c6c2959be8",
+     "loc": 2074,
+     "theme": "ideas",
+     "text": "He made sure to emphasize that the scenario Shoemaker had described in his email to Sally Hojvat—experimental blood analyzers operated remotely from one CLIA-certified mother base—was out of the question. If Theranos intended to eventually roll its devices out to other locations, those places would need CLIA certificates too. Either that or, better yet, the devices themselves would need to be approved by the FDA.",
+     "q": "What did regulators say Theranos would need if it rolled its devices out to other locations?"
+    },
+    {
+     "id": "45d6b140ce7ec7a7",
+     "loc": 2664,
+     "theme": "work",
+     "text": "For instance, she insisted that the miniLab cartridges remain a certain size but kept wanting to add more assays to them. Arnav didn’t see why the cartridges couldn’t grow by half an inch since consumers wouldn’t see them."
+    },
+    {
+     "id": "ead582830da9197e",
+     "loc": 2671,
+     "theme": "ideas",
+     "text": "four major classes of blood tests: immunoassays, general chemistry assays, hematology assays, and assays that relied on the amplification of DNA.",
+     "q": "What are the four major classes of blood tests Elizabeth insisted the miniLab perform?"
+    },
+    {
+     "id": "01382cf703535478",
+     "loc": 2683,
+     "theme": "ideas",
+     "text": "Compared to big commercial blood analyzers, another one of the miniLab’s glaring weaknesses was that it could process only one blood sample at a time. Commercial machines were bulky for a reason: they were designed to process hundreds of samples simultaneously. In industry jargon, this was known as having a “high throughput.” If the Theranos wellness centers attracted a lot of patients, the miniLab’s low throughput would result in long wait times and make a joke of the company’s promise of fast test results.",
+     "q": "Why was the miniLab's low throughput a glaring weakness compared to commercial blood analyzers?"
+    },
+    {
+     "id": "c8e82e8858e3eea4",
+     "loc": 2912,
+     "theme": "ideas",
+     "text": "But it had remained beyond reach for a few basic reasons. The main one was that different classes of blood tests required vastly different methods. Once you’d used your micro blood sample to perform an immunoassay, there usually wasn’t enough blood left for the completely different set of lab techniques a general chemistry or hematology assay required. Another was that, while microfluidic chips could handle very small volumes, no one had yet figured out how to avoid losing some of the sample during its transfer to the chip.",
+     "q": "Why had running many different blood tests from a single tiny sample remained technically beyond reach?"
+    },
+    {
+     "id": "6a71045a98f9d427",
+     "loc": 4618,
+     "theme": "work",
+     "text": "Like her idol Steve Jobs, she emitted a reality distortion field that forced people to momentarily suspend disbelief."
     }
    ]
   },
@@ -917,6 +1035,29 @@ window.ANKI = {
      "loc": 3486,
      "theme": "work",
      "text": "I couldn’t bring myself to look Cale in the eye. Here we were, a dozen years out of Stanford, and while he was an eminently successful businessman, I was still struggling to keep my head above water."
+    }
+   ]
+  },
+  {
+   "id": "super-pumped-the-battle-for-uber--mike-isaac",
+   "title": "Super Pumped: The Battle for Uber",
+   "author": "Mike Isaac",
+   "subject": "the rise and scandal-ridden downfall of Travis Kalanick as CEO of Uber",
+   "total": 5,
+   "highlights": [
+    {
+     "id": "e4c548d709061c60",
+     "loc": 371,
+     "theme": "work",
+     "text": "“Super pumpedness is all about moving the team forward, working long hours—pretty much a do-whatever-it-takes attitude to move the company in the right direction,” as one Uber employee explained the term.",
+     "q": "What did being 'super pumped' mean to Uber employees?"
+    },
+    {
+     "id": "f4d2b82b4a2efacb",
+     "loc": 637,
+     "theme": "work",
+     "text": "“There are forces all around you when you run a company, . . . ready to take you out,” Kalanick said. “The [CEOs] that survive are the ones that are supposed to be there.”",
+     "q": "According to Kalanick, which CEOs survive the forces trying to take them out?"
     }
    ]
   },
@@ -2785,6 +2926,102 @@ window.ANKI = {
      "theme": "investing",
      "text": "A simple rule (and there are exceptions) is that if a company is showing a net earnings history of more than 20% on total revenues, there is a real good chance that it is benefiting from some kind of long-term competitive advantage.",
      "q": "What net-earnings-to-revenue threshold suggests a long-term competitive advantage?"
+    }
+   ]
+  },
+  {
+   "id": "why-buddhism-is-true-the-science-and-philosophy-of-meditation-and-enlightenment--robert-wright",
+   "title": "Why Buddhism is True: The Science and Philosophy of Meditation and Enlightenment",
+   "author": "Robert Wright",
+   "subject": "how meditation and Buddhist ideas about the mind align with evolutionary psychology and modern science",
+   "total": 16,
+   "highlights": [
+    {
+     "id": "0f759dccbed5fcda",
+     "loc": 98,
+     "theme": "mindfulness",
+     "text": "No, at the most basic level the answer is “The kinds of thoughts and feelings and perceptions that helped our ancestors get genes into the next generation.” Whether those thoughts and feelings and perceptions give us a true view of reality is, strictly speaking, beside the point. As a result, they sometimes don’t. Our brains are designed to, among other things, delude us.",
+     "q": "According to evolutionary logic, what kinds of thoughts and feelings did natural selection design our brains to have, and why can they delude us?"
+    },
+    {
+     "id": "b286530974b2c676",
+     "loc": 127,
+     "theme": "mindfulness",
+     "text": "Indeed, though the Buddha is famous for asserting that life is pervaded by suffering, some scholars say that’s an incomplete rendering of his message and that the word translated as “suffering,” dukkha, could, for some purposes, be translated as “unsatisfactoriness.”",
+     "q": "What alternative translation do some scholars offer for dukkha instead of 'suffering'?"
+    },
+    {
+     "id": "34c8c94753ac83a9",
+     "loc": 130,
+     "theme": "mindfulness",
+     "text": "There are different illusions associated with different pursuits, but for now we can focus on one illusion that’s common to these things: the overestimation of how much happiness they’ll bring.",
+     "q": "What common illusion does Wright say accompanies many of our pursuits?"
+    },
+    {
+     "id": "82352370dda20145",
+     "loc": 153,
+     "theme": "mindfulness",
+     "text": "The animal’s brain should focus more on (1), the fact that pleasure will accompany the reaching of a goal, than on (2), the fact that the pleasure will dissipate shortly thereafter. After all, if you focus on (1), you’ll pursue things like food and sex and social status with unalloyed gusto, whereas if you focus on (2), you could start feeling ambivalence.",
+     "q": "Why should an animal's brain focus on the anticipation of pleasure rather than its dissipation?"
+    },
+    {
+     "id": "bec597272cf06553",
+     "loc": 160,
+     "theme": "mindfulness",
+     "text": "Natural selection doesn’t “want” us to be happy, after all; it just “wants” us to be productive, in its narrow sense of productive. And the way to make us productive is to make the anticipation of pleasure very strong but the pleasure itself not very long-lasting.",
+     "q": "How does natural selection make us productive through the structure of pleasure and its anticipation?"
+    },
+    {
+     "id": "5c6ec20f01eaf81b",
+     "loc": 195,
+     "theme": "mindfulness",
+     "text": "Yongey Mingyur Rinpoche, a meditation teacher in the Tibetan Buddhist tradition, has said, “Ultimately, happiness comes down to choosing between the discomfort of becoming aware of your mental afflictions and the discomfort of being ruled by them.” What he meant is that if you want to liberate yourself from the parts of the mind that keep you from realizing true happiness, you have to first become aware of them, which can be unpleasant.",
+     "q": "According to Yongey Mingyur Rinpoche, between which two discomforts does happiness ultimately come down to choosing?"
+    },
+    {
+     "id": "c9f80e83403e183b",
+     "loc": 268,
+     "theme": "mindfulness",
+     "text": "In sum: you can best achieve success at meditation by not pursuing success, and achieving this success may mean caring less about success, at least as success is conventionally defined.",
+     "q": "What paradox does Wright describe about how best to achieve success at meditation?"
+    },
+    {
+     "id": "e598b887a6bcd0fb",
+     "loc": 343,
+     "theme": "mindfulness",
+     "text": "I remember thinking something like, “Yes, the grinding sensation is still there—the sensation I typically define as unpleasant. But that sensation is down there in my jaw, and that’s not where I am. I’m up here in my head.” I was no longer identifying with the feeling; I was viewing it objectively, I guess you could say. In the space of a moment it had entirely lost its grip on me. It was a very strange thing to have an unpleasant feeling cease to be unpleasant without really going away."
+    },
+    {
+     "id": "ba806b59e96d233c",
+     "loc": 362,
+     "theme": "mindfulness",
+     "text": "Imagine if our negative feelings, or at least lots of them, turned out to be illusions, and we could dispel them by just contemplating them from a particular vantage point."
+    },
+    {
+     "id": "6647b3213ccf21ca",
+     "loc": 385,
+     "theme": "mindfulness",
+     "text": "Taking the red pill means asking basic questions about the relationship of the perceiver to the perceived and examining the underpinnings of our normal view of reality.",
+     "q": "According to Wright, what does 'taking the red pill' mean in terms of perception and reality?"
+    },
+    {
+     "id": "46d6ba4f922f94d7",
+     "loc": 392,
+     "theme": "ideas",
+     "text": "Buddhism began to split into different schools of interpretation not long after it arose, around the middle of the first millennium BCE."
+    },
+    {
+     "id": "b8a7e37a170d99a1",
+     "loc": 395,
+     "theme": "ideas",
+     "text": "It is within the Mahayana lineage (to which Quang Duc belonged) that you find the most radically broad conception of illusion. Some Mahayana Buddhists even subscribe to a “mind-only” doctrine that, in its more extreme incarnations, dismisses the things we “perceive” via consciousness as, pretty literally, figments of our imagination.",
+     "q": "What 'mind-only' doctrine within the Mahayana lineage represents the most radically broad conception of illusion?"
+    },
+    {
+     "id": "c9c95f389acdefea",
+     "loc": 416,
+     "theme": "mindfulness",
+     "text": "Why, and in what particular ways, are human beings naturally deluded? How exactly does the delusion work? How does delusion make us suffer? How does it make us make other people suffer? Why would the Buddhist prescription for dispelling the delusion—in particular, the meditative part of that prescription—work? And what would it mean for it to work fully?"
     }
    ]
   },
