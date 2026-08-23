@@ -76,9 +76,10 @@
     }
 
     /* ---- Header ---- */
-    .bar { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; }
+    .bar { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
     .bar h1 { margin: 0; font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; }
-    .bar .pos { color: var(--muted-foreground); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+    .bar .pos { color: var(--muted-foreground); font-size: 0.8rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .bar h1 { white-space: nowrap; }
 
     /* A segmented control rather than a scrolling row of pills: the decks are
        laid into equal columns sized to the screen, so nothing overflows and
@@ -189,13 +190,62 @@
     .grade.g0 b { color: var(--again); } .grade.g1 b { color: var(--hard); }
     .grade.g2 b { color: var(--good); } .grade.g3 b { color: var(--easy); }
 
-    .sync-chip {
-      border: 1px solid var(--input); background: var(--background); color: var(--muted-foreground);
-      border-radius: 999px; padding: 0.15rem 0.6rem;
-      font: inherit; font-size: 0.68rem; font-weight: 600; cursor: pointer;
+    /* ---- Shared account + sync controls (identical across Pomodoro,
+       Reading List and Brain Gym; literal hex so it doesn't depend on each
+       app's own token names). Identity and sync health are deliberately two
+       separate controls: one answers "who am I", the other "are my data
+       safe". ---- */
+    .account-bar { display: inline-flex; align-items: center; gap: 0.35rem; }
+    .account {
+      display: inline-flex; align-items: center; gap: 7px;
+      min-height: 0; padding: 3px 10px 3px 4px;
+      border: 1px solid #27272a; border-radius: 999px;
+      background: transparent; color: #fafafa;
+      font: inherit; font-size: 12px; font-weight: 500; line-height: 1.3;
+      cursor: pointer;
     }
-    .sync-chip.in { border-color: transparent; background: none; color: var(--good); font-size: 0.8rem; padding: 0.1rem 0.2rem; }
-    .sync-chip.off { cursor: default; opacity: 0.6; }
+    .account .av {
+      width: 20px; height: 20px; border-radius: 999px;
+      background: #27272a; color: #fafafa;
+      font-size: 11px; font-weight: 600;
+      display: grid; place-items: center;
+    }
+    .account.out {
+      padding: 3px 11px; border-color: transparent;
+      background: #fafafa; color: #18181b; font-weight: 600;
+    }
+    .account.off { cursor: default; opacity: 0.6; color: #a1a1aa; }
+    .account:focus-visible, .sync-status:focus-visible { outline: 2px solid #52525b; outline-offset: 2px; }
+
+    .sync-status {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 3px 10px;
+      border: 1px solid #27272a; border-radius: 999px;
+      color: #a1a1aa;
+      font: inherit; font-size: 12px; font-weight: 500; line-height: 1.3;
+      font-variant-numeric: tabular-nums; white-space: nowrap;
+    }
+    .sync-status::before {
+      content: ""; width: 6px; height: 6px; border-radius: 999px;
+      background: #52525b; flex: 0 0 auto;
+    }
+    .sync-status[data-status="synced"]::before { background: #4ade80; }
+    .sync-status[data-status="syncing"]::before { background: #4ade80; animation: sync-pulse 1.1s ease-in-out infinite; }
+    .sync-status[data-status="pending"] { color: #fbbf24; }
+    .sync-status[data-status="pending"]::before { background: #fbbf24; }
+    .sync-status[data-status="issue"] { color: #f87171; }
+    .sync-status[data-status="issue"]::before { background: #f87171; }
+    @keyframes sync-pulse {
+      0%, 100% { opacity: 0.35; transform: scale(0.82); }
+      50%      { opacity: 1;    transform: scale(1.16); }
+    }
+    @media (prefers-reduced-motion: reduce) { .sync-status::before { animation: none !important; } }
+    /* Brain Gym's column is a fixed 27rem and the bar already carries a deck
+       counter, so the account here is avatar-only at every width — the email
+       lives in its tooltip and in the sign-out confirm. The sibling apps have
+       wider headers and show the name. */
+    .account .nm { display: none; }
+    .account { padding: 3px 4px; }
 
     /* ---- Deck-clear state ---- */
     .done {
@@ -678,6 +728,8 @@
     async function flushOutbox() {
       if (!isSyncEnabled() || flushing) return;
       flushing = true;
+      let ok = true;
+      setSyncStatus("syncing");
       try {
         let rows = loadOutbox();
         while (rows.length) {
@@ -689,6 +741,7 @@
             });
           } catch (e) {
             console.warn("Brain Gym sync: flush paused, will retry", e);
+            ok = false;
             break;   // leave the rest queued; next trigger (open/online/grade) retries
           }
           rows = rows.slice(1);
@@ -696,6 +749,7 @@
         }
       } finally {
         flushing = false;
+        settleSyncStatus(ok);
       }
     }
 
@@ -721,6 +775,16 @@
     // instead of a wrong incremental patch.
     async function pullReviews(cfgOverride = null) {
       if (!isSyncEnabled()) return;
+      setSyncStatus("syncing");
+      try {
+        await pullReviewsInner(cfgOverride);
+      } catch (e) {
+        settleSyncStatus(false);
+        throw e;        // callers still decide what a failed pull means
+      }
+      settleSyncStatus(true);
+    }
+    async function pullReviewsInner(cfgOverride) {
       const cfg = cfgOverride || liveCfg();
       const myClientId = getClientId();
       let cursor = loadCursor();
@@ -925,18 +989,83 @@
       return `<div class="pills" role="group" aria-label="Deck" style="--n:${decks.length}">${pills}</div>`;
     }
 
-    function syncChipHtml() {
-      if (authState === "out") return `<button class="sync-chip" id="syncChip">Sign in</button>`;
-      if (authState === "in") return `<button class="sync-chip in" id="syncChip" title="${esc((authUser && authUser.email) || "Signed in")} — tap to sign out">●</button>`;
-      if (authState === "unavailable") return `<span class="sync-chip off" title="Google sign-in unreachable — reviews stay on this device">offline</span>`;
+    // ---- The two shared controls ----
+    // Identity and sync health are separate on purpose: "Sign in" answers who
+    // you are, the status pill answers whether today's grades actually left
+    // this device. The old single green dot conflated them, which is exactly
+    // what made a phone-vs-laptop mismatch impossible to diagnose.
+    function accountHtml() {
+      if (authState === "in") {
+        const email = (authUser && authUser.email) || "Signed in";
+        const name = email.split("@")[0];
+        return `<button class="account" id="accountBtn" type="button" title="${esc(email)} — sign out">`
+             + `<span class="av">${esc(name.slice(0, 1).toUpperCase())}</span><span class="nm">${esc(name)}</span></button>`;
+      }
+      if (authState === "unavailable") return `<span class="account off" title="Google sign-in unreachable — reviews stay on this device">offline</span>`;
+      if (authState === "out") return `<button class="account out" id="accountBtn" type="button">Sign in</button>`;
       return "";
+    }
+
+    const LASTSYNC_KEY = "brain-gym.lastsync.v1";
+    let syncState = "local";   // local | syncing | synced | pending | offline | issue
+    let agoTimer = null;
+
+    // "just now" under a minute, then 4m / 3h / 2d.
+    function syncAgo(ts) {
+      if (!ts) return "";
+      const s = (Date.now() - ts) / 1000;
+      if (s < 60) return "just now";
+      const m = s / 60;
+      if (m < 60) return Math.round(m) + "m";
+      const h = m / 60;
+      if (h < 24) return Math.round(h) + "h";
+      return Math.round(h / 24) + "d";
+    }
+    const loadLastSync = () => Number(localStorage.getItem(LASTSYNC_KEY)) || 0;
+
+    function syncLabel() {
+      if (syncState === "syncing") return "Syncing";
+      if (syncState === "pending") return loadOutbox().length + " pending";
+      if (syncState === "offline") return "Offline";
+      if (syncState === "issue") return "Sync issue";
+      if (syncState === "synced") {
+        const ago = syncAgo(loadLastSync());
+        return ago ? `Synced · ${ago}` : "Synced";
+      }
+      return "Local only";
+    }
+    function syncStatusHtml() {
+      return `<div class="sync-status" id="syncStatus" data-status="${syncState}" aria-live="polite">${syncLabel()}</div>`;
+    }
+    // Patches the pill in place rather than re-rendering the app: a status
+    // change must never yank the card you're mid-answer out from under you.
+    function setSyncStatus(state) {
+      syncState = state;
+      const el = document.getElementById("syncStatus");
+      if (el) { el.dataset.status = state; el.textContent = syncLabel(); }
+      if (agoTimer) { clearInterval(agoTimer); agoTimer = null; }
+      // Keep the "· 2m" honest while the tab stays open, cheaply.
+      if (state === "synced") agoTimer = setInterval(() => {
+        const e = document.getElementById("syncStatus");
+        if (e && syncState === "synced") e.textContent = syncLabel();
+      }, 60e3);
+    }
+    // Called after any sync attempt settles: the outbox is the source of truth
+    // for whether anything is still owed to the server.
+    function settleSyncStatus(ok) {
+      if (!isSyncEnabled()) return setSyncStatus("local");
+      if (!navigator.onLine) return setSyncStatus("offline");
+      if (!ok) return setSyncStatus("issue");
+      if (loadOutbox().length) return setSyncStatus("pending");
+      localStorage.setItem(LASTSYNC_KEY, String(Date.now()));
+      setSyncStatus("synced");
     }
 
     function headerHtml(pos) {
       return `
         <div class="bar">
           <h1>Brain Gym</h1>
-          <span style="display:inline-flex;align-items:center;gap:0.55rem">${syncChipHtml()}<span class="pos">${pos}</span></span>
+          <span class="account-bar">${syncStatusHtml()}${accountHtml()}<span class="pos">${pos}</span></span>
         </div>
         ${pillsHtml()}`;
     }
@@ -1035,8 +1164,8 @@
     function bindPills() {
       document.querySelectorAll(".pill").forEach(p =>
         p.addEventListener("click", () => setTheme(p.dataset.theme)));
-      const chip = document.getElementById("syncChip");
-      if (chip) chip.addEventListener("click", async () => {
+      const acct = document.getElementById("accountBtn");
+      if (acct) acct.addEventListener("click", async () => {
         if (authState === "out") {
           try { await authApi.signIn(); } catch (e) { console.warn("Brain Gym sync: sign-in failed", e); }
         } else if (authState === "in" && confirm("Sign out of sync on this device?")) {
@@ -1063,28 +1192,33 @@
         api.onAuthChange(async (user) => {
           authUser = user;
           authState = user ? "in" : "out";
+          if (!user) { setSyncStatus("local"); render(); return; }
+          syncState = navigator.onLine ? "syncing" : "offline";
           render();
-          if (!user) return;
           try {
             await importLegacyTenant();
             await flushOutbox();
             await migrateOrRebuild();
             session = newSession(activeTheme);
             render();
+            settleSyncStatus(true);
           } catch (e) {
             console.warn("Brain Gym sync: startup failed", e);
+            settleSyncStatus(false);
           }
         });
       },
       unavailable(e) {
         console.warn("Brain Gym sync: auth unavailable", e);
         authState = "unavailable";
+        setSyncStatus("offline");
         render();
       },
     };
-    addEventListener("online", () => flushOutbox());
+    addEventListener("online", () => { if (isSyncEnabled()) { flushOutbox(); pullReviews().catch(() => {}); } });
+    addEventListener("offline", () => { if (isSyncEnabled()) setSyncStatus("offline"); });
     document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "visible" && isSyncEnabled()) { flushOutbox(); pullReviews(); }
+      if (document.visibilityState === "visible" && isSyncEnabled()) { flushOutbox(); pullReviews().catch(() => {}); }
     });
   </script>
   <script type="module">

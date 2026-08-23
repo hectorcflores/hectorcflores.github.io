@@ -90,17 +90,108 @@
       outline: none;
       box-shadow: 0 0 0 1px hsl(var(--background)), 0 0 0 3px hsl(var(--ring));
     }
+
+    /* Shared account control — same markup and hex values as the three apps.
+       The session is one session: all four pages are on this origin and share
+       the Firebase project, so signing in here signs you into every app. */
+    .head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .account {
+      display: inline-flex; align-items: center; gap: 7px;
+      min-height: 0; padding: 3px 10px 3px 4px;
+      border: 1px solid #27272a; border-radius: 999px;
+      background: transparent; color: #fafafa;
+      font: inherit; font-size: 12px; font-weight: 500; line-height: 1.3;
+      cursor: pointer;
+    }
+    .account .av {
+      width: 20px; height: 20px; border-radius: 999px;
+      background: #27272a; color: #fafafa;
+      font-size: 11px; font-weight: 600;
+      display: grid; place-items: center;
+    }
+    .account.out {
+      padding: 3px 11px; border-color: transparent;
+      background: #fafafa; color: #18181b; font-weight: 600;
+    }
+    .account.off { cursor: default; opacity: 0.6; color: #a1a1aa; }
+    .account:focus-visible { outline: 2px solid #52525b; outline-offset: 2px; }
   </style>
 </head>
 <body>
   <main class="card">
-    <h1>Apps</h1>
-    <p class="subtitle">Sign in with Google inside any app to sync.</p>
+    <div class="head">
+      <h1>Apps</h1>
+      <span id="account"></span>
+    </div>
+    <p class="subtitle" id="subtitle">One sign-in covers all three.</p>
     <nav>
       <a class="app-button" href="https://hectorcflores.github.io/my-pomodoro/app/index.html">Pomodoro</a>
       <a class="app-button" href="https://hectorcflores.github.io/my-reading-list/app/index.html">Reading List</a>
       <a class="app-button" href="https://hectorcflores.github.io/brain-gym/">Brain Gym</a>
     </nav>
   </main>
+  <script type="module">
+    const FIREBASE = {
+      apiKey: "AIzaSyA5_DhdTdqjCVDeOgklUFcnJ1lwfESiP8Y",
+      authDomain: "my-reading-list-3fa75.firebaseapp.com",
+      projectId: "my-reading-list-3fa75",
+      appId: "1:101190488885:web:f0401ddd67b862f163b27c",
+    };
+    const slot = document.getElementById("account");
+    const subtitle = document.getElementById("subtitle");
+    (async () => {
+      try {
+        const [{ initializeApp }, auth] = await Promise.all([
+          import("https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js"),
+          import("https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js"),
+        ]);
+        const instance = auth.getAuth(initializeApp(FIREBASE));
+        await auth.setPersistence(instance, auth.browserLocalPersistence);
+        const provider = new auth.GoogleAuthProvider();
+        auth.getRedirectResult(instance).catch((e) => console.warn(e));
+
+        auth.onAuthStateChanged(instance, (user) => {
+          slot.textContent = "";
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = user ? "account" : "account out";
+          if (user) {
+            const name = (user.email || "Signed in").split("@")[0];
+            const av = document.createElement("span");
+            av.className = "av";
+            av.textContent = name.slice(0, 1).toUpperCase();
+            btn.append(av, document.createTextNode(name));
+            btn.title = `${user.email || "Signed in"} — sign out`;
+            subtitle.textContent = "Signed in — all three apps are in sync.";
+          } else {
+            btn.textContent = "Sign in";
+            subtitle.textContent = "One sign-in covers all three.";
+          }
+          btn.addEventListener("click", async () => {
+            if (!user) {
+              try {
+                await auth.signInWithPopup(instance, provider);
+              } catch (e) {
+                const popupIssues = [
+                  "auth/popup-blocked",
+                  "auth/popup-closed-by-user",
+                  "auth/cancelled-popup-request",
+                  "auth/operation-not-supported-in-this-environment",
+                ];
+                if (popupIssues.includes(e.code)) await auth.signInWithRedirect(instance, provider);
+                else console.warn(e);
+              }
+            } else if (confirm("Sign out of sync on this device?")) {
+              auth.signOut(instance);
+            }
+          });
+          slot.append(btn);
+        });
+      } catch (e) {
+        console.warn("Apps: auth unavailable", e);
+        subtitle.textContent = "Sign in with Google inside any app to sync.";
+      }
+    })();
+  </script>
 </body>
 </html>
