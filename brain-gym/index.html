@@ -489,6 +489,34 @@
     }
     localStorage.removeItem("brain-gym.newcount.v1");   // the per-device counter this replaces
 
+    // The header progress count, same idea as newIntroducedToday(): derived
+    // from __lastReviewAt (set on every grade, local AND folded in from
+    // another device — see applyGrade and pullReviewsInner) rather than kept
+    // as in-memory session state. A count that lives only in `session` gets
+    // silently zeroed the moment a sync pull rebuilds the session, which is
+    // exactly what happens every time the OTHER device's grades arrive. This
+    // way "12 / 24" means 12 cards touched today across every device, and it
+    // survives a session rebuild because it isn't stored in the session.
+    function reviewedTodayCard(c) {
+      const st = srs[c.id];
+      return !!(st && st.__lastReviewAt && dateStr(st.__lastReviewAt) === dateStr(Date.now()));
+    }
+    function reviewedToday(theme) {
+      const pool = theme === "all" ? cards : cards.filter(c => c.theme === theme);
+      let n = 0;
+      for (const c of pool) if (reviewedTodayCard(c)) n += 1;
+      return n;
+    }
+    // { done, total } for the header/progress bar. `done` is today's real,
+    // cross-device count; `total` adds whatever's still queued that hasn't
+    // been touched today yet, so it grows/shrinks with the actual queue
+    // instead of being a frozen snapshot from session start.
+    function progress(s) {
+      const done = reviewedToday(activeTheme);
+      const remaining = s.queue.filter(c => !reviewedTodayCard(c)).length;
+      return { done, total: done + remaining };
+    }
+
     // New cards are drawn in a different order every session. With a fixed
     // order, opening the app without grading anything always lands on the
     // same card, which makes a deck of a hundred feel like a deck of one.
@@ -825,7 +853,7 @@
       }
       if (appliedAny) {
         saveSrs(srs);
-        session = newSession(activeTheme);
+        session = newSession(activeTheme, session.queue[0]?.id);
         render();
       }
     }
@@ -960,12 +988,22 @@
       if (waitTimer) { clearInterval(waitTimer); waitTimer = null; }
     }
 
-    function newSession(theme) {
+    // `keepCardId`, when given, pulls that card back to the front of the
+    // fresh queue if it's still there — so a sync pull landing mid-answer
+    // (the other device just graded something) doesn't yank the question out
+    // from under you. Only used when rebuilding an in-progress session, never
+    // on an intentional theme switch.
+    function newSession(theme, keepCardId) {
       const queue = dueCards(theme);
+      if (keepCardId) {
+        const idx = queue.findIndex(c => c.id === keepCardId);
+        if (idx > 0) queue.unshift(queue.splice(idx, 1)[0]);
+      }
       // `pending` holds cards graded this session that didn't graduate (still
       // "lrn"/"rel"). They wait here — not in `queue` — until their own
       // `srs[id].due` timestamp actually arrives; see promotePending().
-      return { queue, pending: [], done: 0, total: queue.length, revealed: false };
+      // No `done`/`total` here on purpose — see progress().
+      return { queue, pending: [], revealed: false };
     }
     function setTheme(theme) {
       activeTheme = theme;
@@ -1083,9 +1121,10 @@
         // once you navigate away (setTheme() starts a fresh session, and
         // clearWaitTimer() above always tears this down first).
         const soonest = Math.min(...s.pending.map(c => srs[c.id].due));
+        const { done: wDone, total: wTotal } = progress(s);
         app.innerHTML = `
-          ${headerHtml(`${s.done} / ${s.total} · waiting`)}
-          <div class="progress"><div style="width:${Math.round(100 * s.done / s.total)}%"></div></div>
+          ${headerHtml(`${wDone} / ${wTotal} · waiting`)}
+          <div class="progress"><div style="width:${Math.round(100 * wDone / wTotal)}%"></div></div>
           <div class="done">
             <div class="wait-time" id="waitTime">${fmtCountdown(soonest - Date.now())}</div>
             <p>${s.pending.length} card${s.pending.length === 1 ? "" : "s"} due back shortly —<br>this is the real wait, not a shortcut.</p>
@@ -1097,14 +1136,15 @@
       }
 
       if (!s.queue.length) {
+        const doneToday = reviewedToday(activeTheme);
         app.innerHTML = `
           ${headerHtml("")}
           <div class="progress"><div style="width:100%"></div></div>
           <div class="done">
             <div class="big">✓</div>
-            <h2>${s.done ? "Deck clear" : "Nothing due"}</h2>
-            <p>${s.done
-              ? `${s.done} card${s.done === 1 ? "" : "s"} reviewed${activeTheme === "all" ? "" : " in " + esc(THEME[activeTheme])}.<br>The schedule takes it from here.`
+            <h2>${doneToday ? "Deck clear" : "Nothing due"}</h2>
+            <p>${doneToday
+              ? `${doneToday} card${doneToday === 1 ? "" : "s"} reviewed today${activeTheme === "all" ? "" : " in " + esc(THEME[activeTheme])}.<br>The schedule takes it from here.`
               : `No ${activeTheme === "all" ? "" : esc(THEME[activeTheme]) + " "}cards due today.<br>Pick another theme or come back tomorrow.`}</p>
           </div>
           <p class="foot-note">${books.length} books · ${cards.length} cards in the deck${footSuspended()}</p>`;
@@ -1115,7 +1155,8 @@
       const c = s.queue[0];
       const st = srs[c.id];
       const isQ = !!c.q;
-      const pct = Math.round(100 * s.done / s.total);
+      const { done, total } = progress(s);
+      const pct = Math.round(100 * done / total);
 
       const front = isQ
         ? `<span class="prompt-label">Recall · ${esc(shortTitle(c.book.title))}</span>
@@ -1134,7 +1175,7 @@
         `<button class="grade g${g}" data-g="${g}"><b>${label}</b><span>${delayLabel(st, g, c.id)}</span></button>`).join("");
 
       app.innerHTML = `
-        ${headerHtml(`${s.done + 1} / ${s.total}${st ? "" : " · new"}`)}
+        ${headerHtml(`${done} / ${total}${st ? "" : " · new"}`)}
         <div class="progress"><div style="width:${pct}%"></div></div>
         <div class="stage">${front}${back}</div>
         <div class="controls">
@@ -1148,14 +1189,13 @@
       document.querySelectorAll(".grade").forEach(b => b.addEventListener("click", () => {
         const next = applyGrade(c.id, Number(b.dataset.g));
         s.queue.shift();
-        // A card that graduated to review is finished for today. One still in
-        // a learning step goes to `pending` and only comes back once its own
-        // due timestamp really arrives — see promotePending(). A card whose
-        // lapse just crossed the leech threshold is suspended on the spot
-        // instead of cycling through relearning one more time.
-        if (next.st === "rev") s.done += 1;
-        else if (next.leech) s.done += 1;
-        else s.pending.push(c);
+        // Progress is derived from __lastReviewAt now (see progress()), so
+        // grading this card already counted it — every grade, including a
+        // Good on a new card that isn't done for today yet. A card that
+        // graduated to review or just got suspended as a leech is finished;
+        // one still in a learning step goes to `pending` and only comes back
+        // once its own due timestamp really arrives — see promotePending().
+        if (next.st !== "rev" && !next.leech) s.pending.push(c);
         s.revealed = false;
         render();
       }));
@@ -1199,7 +1239,7 @@
             await importLegacyTenant();
             await flushOutbox();
             await migrateOrRebuild();
-            session = newSession(activeTheme);
+            session = newSession(activeTheme, session.queue[0]?.id);
             render();
             settleSyncStatus(true);
           } catch (e) {
