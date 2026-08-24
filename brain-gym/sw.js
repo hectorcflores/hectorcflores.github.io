@@ -1,6 +1,6 @@
 // Offline cache for Brain Gym. Bump CACHE when shipping new content —
 // old caches are dropped on activate, so a deploy never serves a stale deck.
-const CACHE = "brain-gym-202608231521";
+const CACHE = "brain-gym-202608241412";
 const ASSETS = [
   "./",
   "./index.html",
