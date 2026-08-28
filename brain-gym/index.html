@@ -316,7 +316,7 @@
 
     // Bumped by hand alongside sw.js's CACHE constant on every deploy — see
     // updateVerhint() below for why this exists.
-    const APP_BUILD = "202608280141";
+    const APP_BUILD = "202608281800";
 
     // ---- The deck itself: not a load-time constant ----
     // A single-file, one-fetch app used to be a safe assumption: one device,
@@ -631,6 +631,7 @@
     const CURSOR_KEY = "brain-gym.cursor.v1";
     const CLIENT_ID_KEY = "brain-gym.client.v1";
     const MIGRATED_KEY = "brain-gym.migrated.v1";
+    const RECONCILE_KEY = "brain-gym.reconcile.v1";
     const REVIEW_PAGE_SIZE = 300;
 
     function getClientId() {
@@ -783,7 +784,28 @@
       });
       if (!res.ok) throw new Error(`fsQueryReviewsForCard: HTTP ${res.status}`);
       const rows = await res.json();
-      return rows.filter(r => r.document).map(r => fsDecodeFields(r.document.fields || {}));
+      // __id feeds replayCard's tiebreak below — two rows can share a
+      // reviewedAt millisecond, and without a stable secondary sort the
+      // replay order (and therefore the resulting state) could differ
+      // between devices computing the "same" replay independently.
+      return rows.filter(r => r.document)
+        .map(r => ({ ...fsDecodeFields(r.document.fields || {}), __id: r.document.name.split("/").pop() }));
+    }
+
+    // Every document in one collection, unfiltered — used by reconcile() to
+    // discover every meta/baseline* doc without knowing their ids up front.
+    async function fsListCollection(cfg, collectionId) {
+      const structuredQuery = { from: [{ collectionId }] };
+      const parent = `${fsBase(cfg)}/brain_gym/${cfg.tenant}`;
+      const res = await fetch(`${parent}:runQuery?key=${encodeURIComponent(cfg.apiKey)}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", ...(await cfgHeaders(cfg)) },
+        body: JSON.stringify({ structuredQuery }),
+      });
+      if (!res.ok) throw new Error(`fsListCollection ${collectionId}: HTTP ${res.status}`);
+      const rows = await res.json();
+      return rows.filter(r => r.document)
+        .map(r => ({ ...fsDecodeFields(r.document.fields || {}), __id: r.document.name.split("/").pop() }));
     }
 
     // ---- Outbox: grades queue here first, sync is never on the critical
@@ -858,21 +880,73 @@
       }
       settleSyncStatus(true);
     }
+    // Pure: replays `rows` (any order) on top of `seed` (a card's state as of
+    // some earlier point, or undefined for "no history yet"), skipping any
+    // row already reflected in `seed.__lastReviewAt`. The sort's secondary
+    // key (`__id`) only matters for two rows sharing a reviewedAt millisecond
+    // — rare, but without it two devices replaying "the same" rows could
+    // apply them in different orders and land on different states.
+    function replayCard(seed, rows) {
+      const sorted = rows.slice().sort((a, b) => {
+        const d = new Date(a.reviewedAt).getTime() - new Date(b.reviewedAt).getTime();
+        if (d !== 0) return d;
+        return a.__id < b.__id ? -1 : a.__id > b.__id ? 1 : 0;
+      });
+      let state = seed ? { ...seed } : undefined;
+      for (const row of sorted) {
+        const ts = new Date(row.reviewedAt).getTime();
+        if (ts <= (state?.__lastReviewAt ?? -Infinity)) continue;
+        state = schedule(state, row.grade, ts, hash(row.cardId));
+        state.__lastReviewAt = ts;
+      }
+      return state;
+    }
+
     async function pullReviewsInner(cfgOverride) {
       const cfg = cfgOverride || liveCfg();
       const myClientId = getClientId();
+      const startedFromScratch = !loadCursor();
       let cursor = loadCursor();
       let appliedAny = false;
       const needsRebuild = new Set();
+      // Only populated on a full rebuild (null starting cursor): every row
+      // fetched below is already in hand, so a flagged card can replay from
+      // this instead of paying for a second per-card round trip — see the
+      // needsRebuild loop below.
+      const fullLogByCard = startedFromScratch ? new Map() : null;
       for (;;) {
         const page = await fsQueryReviews(cfg, cursor);
         if (!page.length) break;
         for (const row of page) {
           const ts = new Date(row.reviewedAt).getTime();
           const lastApplied = srs[row.cardId]?.__lastReviewAt ?? -Infinity;
+          if (fullLogByCard) {
+            if (!fullLogByCard.has(row.cardId)) fullLogByCard.set(row.cardId, []);
+            fullLogByCard.get(row.cardId).push(row);
+          }
           if (row.clientId === myClientId) {
+            // Normally a no-op: this device's own applyGrade() already wrote
+            // srs[cardId] before this row was ever enqueued, so there's
+            // nothing to apply — just keep __lastReviewAt current. But if
+            // the card is missing locally (a wiped/restored device, or a
+            // reused client id), the assumption "my own row is already
+            // reflected locally" is false, and silently doing nothing here
+            // would drop that review forever — the cursor still advances
+            // past it below. Route it through the same full replay the
+            // out-of-order branch uses instead of trusting a shortcut that
+            // no longer holds.
             if (srs[row.cardId]) srs[row.cardId].__lastReviewAt = Math.max(lastApplied, ts);
-          } else if (ts >= lastApplied) {
+            else needsRebuild.add(row.cardId);
+          } else if (ts > lastApplied) {
+            // Strictly greater, not >=: on a full rebuild, `srs` starts out
+            // seeded from the baseline, and a card's baseline
+            // __lastReviewAt is exactly the ts of the last row already
+            // folded into it (flushOutbox runs before migrateOrRebuild, so
+            // every pre-sync grade is both a log row and baked into the
+            // baseline). A >= here would let that exact row re-apply via
+            // schedule() a second time — same grade, same timestamp, wrong
+            // extra rep. Falling to needsRebuild instead triggers a full,
+            // baseline-seeded replay, which is idempotent.
             srs[row.cardId] = schedule(srs[row.cardId], row.grade, ts, hash(row.cardId));
             srs[row.cardId].__lastReviewAt = ts;
             appliedAny = true;
@@ -881,22 +955,32 @@
           }
           cursor = row.createdAt;
         }
-        saveCursor(cursor);
         if (page.length < REVIEW_PAGE_SIZE) break;
       }
       // Rare path: a full, correctly-ordered replay for just the cards where
-      // an out-of-order arrival was detected above, using every review for
-      // that card (own and foreign alike) rather than trusting whatever
-      // state happened to already be sitting in `srs`.
-      for (const cardId of needsRebuild) {
-        const rows = await fsQueryReviewsForCard(cfg, cardId);
-        rows.sort((a, b) => new Date(a.reviewedAt) - new Date(b.reviewedAt));
-        let state;
-        for (const row of rows) state = schedule(state, row.grade, new Date(row.reviewedAt).getTime(), hash(cardId));
-        if (state) state.__lastReviewAt = new Date(rows[rows.length - 1].reviewedAt).getTime();
-        srs[cardId] = state;
-        appliedAny = true;
+      // an out-of-order arrival (or the tie above) was detected, using every
+      // review for that card — own and foreign alike — seeded from the
+      // baseline rather than from whatever happened to already be sitting in
+      // `srs`, so a card whose earliest history lives only in the baseline
+      // (never individually logged) doesn't lose that history on replay.
+      if (needsRebuild.size) {
+        let baselineState;   // fetched at most once, lazily, only if needed
+        for (const cardId of needsRebuild) {
+          const rows = fullLogByCard?.get(cardId) ?? await fsQueryReviewsForCard(cfg, cardId);
+          if (baselineState === undefined) {
+            const baseline = await fsGetDoc(cfg, `brain_gym/${authUser?.uid}/meta/baseline`);
+            baselineState = baseline?.state || {};
+          }
+          srs[cardId] = replayCard(baselineState[cardId], rows);
+          appliedAny = true;
+        }
       }
+      // Cursor is only persisted once every row on the way to it has been
+      // fully resolved (folded or queued into needsRebuild AND replayed) —
+      // if a fetch above throws, nothing here runs and the next attempt
+      // simply redoes the same pull from the old cursor, rather than risking
+      // a cursor that's already past rows whose replay never completed.
+      if (cursor) saveCursor(cursor);
       if (appliedAny) {
         saveSrs(srs);
         session = newSession(activeTheme, session.queue[0]?.id);
@@ -927,16 +1011,122 @@
       if (Object.keys(srs).length === 0) {
         await rebuildFromLog();
       } else {
+        let created;
         try {
-          await fsCreateDoc(liveCfg(), `brain_gym/${authUser.uid}/meta/baseline`,
+          created = await fsCreateDoc(liveCfg(), `brain_gym/${authUser.uid}/meta/baseline`,
             { state: srs, takenAt: new Date() });
         } catch (e) {
           console.warn("Brain Gym sync: baseline write failed, will retry next launch", e);
           return;   // don't mark migrated — try again on next open
         }
+        // Lost the race: another device already authored the baseline
+        // (fsCreateDoc's 409 → { created: false }, not an exception — this
+        // used to be silently treated as success). That baseline can hold
+        // pre-sync history that exists nowhere else — no individual review
+        // rows, just the snapshot — so it has to be fetched and folded in,
+        // not skipped. Union by card, keeping whichever side reviewed it
+        // more recently; either side's card wins outright if the other
+        // doesn't have it at all.
+        if (!created.created) {
+          const baseline = await fsGetDoc(liveCfg(), `brain_gym/${authUser.uid}/meta/baseline`);
+          if (baseline && baseline.state) {
+            for (const [cardId, remote] of Object.entries(baseline.state)) {
+              const local = srs[cardId];
+              if (!local || (remote.__lastReviewAt ?? -Infinity) > (local.__lastReviewAt ?? -Infinity)) {
+                srs[cardId] = remote;
+              }
+            }
+            saveSrs(srs);
+          }
+        }
         await pullReviews();
       }
       localStorage.setItem(MIGRATED_KEY, "1");
+    }
+
+    // One-shot, per device: the two devices that had already diverged before
+    // the pullReviewsInner/migrateOrRebuild fixes above shipped won't self-
+    // heal just from those fixes — both are past the code paths that would
+    // apply them (already migrated, cursor already at the tip). This runs
+    // once more, computing the true canonical state straight from the
+    // server (baseline + the full log, via replayCard) and reconciling
+    // local `srs` against it, so the fix reaches devices that already have
+    // stale local state, not just devices syncing for the first time from
+    // here on.
+    async function reconcile() {
+      if (localStorage.getItem(RECONCILE_KEY)) return;
+      // A local grade not yet on the server would look, incorrectly, like
+      // local-only history worth preserving as residue (see below) — retry
+      // once the outbox drains instead.
+      if (loadOutbox().length) return;
+      const cfg = liveCfg();
+      const baseline = await fsGetDoc(cfg, `brain_gym/${authUser.uid}/meta/baseline`);
+      const baseState = baseline?.state || {};
+      const rowsByCard = new Map();
+      let cursor = null, lastCreatedAt = null;
+      for (;;) {
+        const page = await fsQueryReviews(cfg, cursor);
+        if (!page.length) break;
+        for (const row of page) {
+          if (!rowsByCard.has(row.cardId)) rowsByCard.set(row.cardId, []);
+          rowsByCard.get(row.cardId).push(row);
+          cursor = row.createdAt;
+        }
+        lastCreatedAt = cursor;
+        if (page.length < REVIEW_PAGE_SIZE) break;
+      }
+      const canon = {};
+      const cardIds = new Set([...Object.keys(baseState), ...rowsByCard.keys(), ...Object.keys(srs)]);
+      for (const cardId of cardIds) canon[cardId] = replayCard(baseState[cardId], rowsByCard.get(cardId) || []);
+
+      // Fold local `srs` against the canonical truth: local wins only where
+      // it's strictly newer than anything derivable from the server (the
+      // pre-sync history of a device that lost a baseline race before the
+      // migrateOrRebuild fix existed to merge it in) — a tie goes to the
+      // canonical value so every device that reconciles lands on the exact
+      // same state, not just an equivalent one.
+      const residue = {};
+      for (const [cardId, local] of Object.entries(srs)) {
+        const localTs = local?.__lastReviewAt ?? -Infinity;
+        const canonTs = canon[cardId]?.__lastReviewAt ?? -Infinity;
+        if (localTs > canonTs) residue[cardId] = local;
+        else srs[cardId] = canon[cardId];
+      }
+      for (const [cardId, state] of Object.entries(canon)) if (!(cardId in srs)) srs[cardId] = state;
+      Object.assign(srs, residue);
+
+      if (Object.keys(residue).length) {
+        // This is expected to be empty in practice — the constant ~3-card
+        // gap Hector saw is fully explained by the double-apply bug above,
+        // not by lost pre-sync history. If it ever isn't empty, that's
+        // surprising enough to want a loud signal rather than a silent
+        // publish-and-move-on.
+        console.warn("Brain Gym sync: reconcile found local-only history with no server counterpart, publishing", Object.keys(residue));
+        try {
+          await fsCreateDoc(cfg, `brain_gym/${authUser.uid}/meta/baseline_${getClientId()}`,
+            { state: residue, takenAt: new Date() });
+        } catch (e) {
+          console.warn("Brain Gym sync: residue publish failed, will retry next launch", e);
+          return;   // don't mark reconciled — try again next open
+        }
+      }
+      // Other devices may have published their own residue before this one
+      // ran reconcile — fold those in too, so convergence doesn't depend on
+      // reconcile order across devices.
+      const metaDocs = await fsListCollection(cfg, "meta");
+      const myResidueId = `baseline_${getClientId()}`;
+      for (const doc of metaDocs) {
+        if (!doc.__id.startsWith("baseline_") || doc.__id === myResidueId) continue;
+        for (const [cardId, remote] of Object.entries(doc.state || {})) {
+          const localTs = srs[cardId]?.__lastReviewAt ?? -Infinity;
+          const remoteTs = remote?.__lastReviewAt ?? -Infinity;
+          if (remoteTs > localTs) srs[cardId] = remote;
+        }
+      }
+
+      saveSrs(srs);
+      if (lastCreatedAt) saveCursor(lastCreatedAt);
+      localStorage.setItem(RECONCILE_KEY, "1");
     }
 
     let authUser = null;        // { uid, email, getToken() } once signed in
@@ -1391,6 +1581,7 @@
             await importLegacyTenant();
             await flushOutbox();
             await migrateOrRebuild();
+            await reconcile();
             session = newSession(activeTheme, session.queue[0]?.id);
             render();
             settleSyncStatus(true);
