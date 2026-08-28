@@ -292,6 +292,14 @@
 </head>
 <body>
   <div id="app"></div>
+  <!-- Outside #app on purpose: render() replaces #app's innerHTML wholesale on
+       every screen, including mid-card, so a watermark placed inside it would
+       either vanish on some screens or need re-injecting on every render.
+       This exists purely so one screenshot from any device is enough to tell
+       whether two devices are actually running the same deck and the same
+       app build — the exact question that used to take a back-and-forth to
+       answer. -->
+  <div id="verhint" aria-hidden="true" style="position:fixed;left:6px;bottom:4px;font-size:0.55rem;line-height:1;color:#52525b;opacity:0.55;font-variant-numeric:tabular-nums;pointer-events:none;z-index:9999;"></div>
   <script src="./data.js"></script>
   <script>
     const app = document.getElementById("app");
@@ -305,6 +313,10 @@
     const shortTitle = (t) => (String(t).split(/[:(]/)[0].trim() || String(t));
 
     const hash = s => { let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; };
+
+    // Bumped by hand alongside sw.js's CACHE constant on every deploy — see
+    // updateVerhint() below for why this exists.
+    const APP_BUILD = "202608280141";
 
     // ---- The deck itself: not a load-time constant ----
     // A single-file, one-fetch app used to be a safe assumption: one device,
@@ -333,6 +345,20 @@
         .filter(c => c.aligned !== false)
         .sort((a, b) => hash(a.id) - hash(b.id));
       deckSnapshot = JSON.stringify(data);
+      updateVerhint();
+    }
+
+    // A silent watermark, not UI: the whole reason two devices used to take a
+    // multi-message diagnosis to compare is that nothing on screen said which
+    // deck or which app code was actually running. This makes that a single
+    // screenshot — deck book count + a short hash of its content, plus the
+    // app build stamp — so "are these two devices actually in sync" stops
+    // being a question that needs me to answer it.
+    function updateVerhint() {
+      const el = document.getElementById("verhint");
+      if (!el) return;
+      const h = (hash(deckSnapshot) >>> 0).toString(16).padStart(8, "0").slice(0, 6);
+      el.textContent = `deck ${books.length}·${h} · app ${APP_BUILD}`;
     }
     applyDeck(window.ANKI);
 
@@ -1040,9 +1066,38 @@
     // network-first fetch can still hand back the copy that was current when
     // the tab was opened. So the app re-fetches data.js itself and swaps it
     // in live when the content actually changed.
-    let deckStalePending = null;
     let lastDeckCheckAt = 0;
     const DECK_CHECK_MIN_INTERVAL_MS = 60e3;
+
+    // ---- Applying an update safely ----
+    // Two different things can land while this tab is open — a new deck, or
+    // a new build of the app itself (via a service-worker update) — and both
+    // share the same one rule: never yank the question out from under a
+    // reviewer mid-answer. `pendingApply` holds at most one of them; a
+    // reload always wins over a deck swap, since a reload picks up whatever
+    // deck is current anyway.
+    let pendingApply = null;   // null | "reload" | { deck: <object> }
+    function whenSafe(action) {
+      if (session.revealed) {
+        if (action === "reload" || pendingApply !== "reload") pendingApply = action;
+        return;
+      }
+      applyPending(action);
+    }
+    function applyPending(action) {
+      if (action === "reload") { location.reload(); return; }
+      if (action && action.deck) swapDeck(action.deck);
+    }
+    // Called right after a grade is applied and the card is no longer on
+    // screen mid-answer — the one moment it's always safe to apply anything
+    // that was waiting.
+    function applyDeferred() {
+      if (!pendingApply) return false;
+      const action = pendingApply;
+      pendingApply = null;
+      applyPending(action);
+      return true;
+    }
 
     function swapDeck(data) {
       const keepCardId = session.queue[0]?.id;
@@ -1085,8 +1140,7 @@
       try { data = parseDeckText(text); } catch (e) { console.warn("Brain Gym: bad data.js, ignoring", e); return; }
       if (!data || !Array.isArray(data.themes) || !Array.isArray(data.books)) return;
       if (JSON.stringify(data) === deckSnapshot) return;   // already current
-      if (session.revealed) { deckStalePending = data; return; }   // mid-card: don't yank it
-      swapDeck(data);
+      whenSafe({ deck: data });
     }
 
     // Leeches disappear from the queue silently by design, but not from the
@@ -1275,10 +1329,9 @@
         // once its own due timestamp really arrives — see promotePending().
         if (next.st !== "rev" && !next.leech) s.pending.push(c);
         s.revealed = false;
-        // A fresher deck may have arrived while this card was up — apply it
-        // now that the card is answered rather than mid-answer.
-        if (deckStalePending) { const fresh = deckStalePending; deckStalePending = null; swapDeck(fresh); }
-        else render();
+        // A fresher deck, or a whole new app build, may have arrived while
+        // this card was up — apply it now that the card is answered.
+        if (!applyDeferred()) render();
       }));
     }
 
@@ -1298,8 +1351,25 @@
     render();
     checkDeck();   // this load may itself have come from a stale SW/CDN copy
 
+    let swRegistration = null;
     if ("serviceWorker" in navigator) {
-      addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
+      addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+          .then(reg => { swRegistration = reg; })
+          .catch(() => {});
+      });
+      // A deploy replaces sw.js's bytes; the browser installs the new worker,
+      // it skipWaiting()s and clients.claim()s (see sw.js), and the instant
+      // it takes over, `controller` changes out from under this tab. None of
+      // that touches the JS already running here, though — a page can never
+      // replace its own executing code, only reload into fresh code. So this
+      // is the one signal that a reload actually has something new to fetch,
+      // and it's what makes every deploy AFTER this one self-apply on every
+      // open device without anyone closing an app or reading instructions.
+      // (This deploy itself is the exception: a tab already open before it
+      // shipped has no way to hear about it until it navigates on its own —
+      // that first pickup still needs one manual close-and-reopen.)
+      navigator.serviceWorker.addEventListener("controllerchange", () => whenSafe("reload"));
     }
 
     // Sync starts after the first paint, deliberately: the app is fully
@@ -1337,13 +1407,27 @@
         render();
       },
     };
-    addEventListener("online", () => { checkDeck(); if (isSyncEnabled()) { flushOutbox(); pullReviews().catch(() => {}); } });
+    // Browsers only recheck a service worker's bytes on their own roughly
+    // once a day; explicitly asking on every real signal that the app is
+    // actually in use (foreground, reconnect, and the interval below as the
+    // catch-all) is what makes controllerchange fire promptly instead of
+    // eventually.
+    function pokeForUpdates() {
+      checkDeck();
+      swRegistration?.update().catch(() => {});
+    }
+    addEventListener("online", () => { pokeForUpdates(); if (isSyncEnabled()) { flushOutbox(); pullReviews().catch(() => {}); } });
     addEventListener("offline", () => { if (isSyncEnabled()) setSyncStatus("offline"); });
     document.addEventListener("visibilitychange", () => {
       if (document.visibilityState !== "visible") return;
-      checkDeck();
+      pokeForUpdates();
       if (isSyncEnabled()) { flushOutbox(); pullReviews().catch(() => {}); }
     });
+    // iOS Safari in particular doesn't reliably fire visibilitychange when a
+    // home-screen PWA resumes from the app switcher, so a plain timer is the
+    // one trigger that doesn't depend on the OS/browser cooperating. Both
+    // calls inside are already self-throttled/cheap.
+    setInterval(pokeForUpdates, 15 * 60e3);
   </script>
   <script type="module">
     (async () => {
