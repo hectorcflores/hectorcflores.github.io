@@ -2,4 +2,4 @@
 
 | App | What |
 |-----|------|
-| [brain-gym](https://hectorcflores.github.io/brain-gym/) | Spaced repetition over my Kindle highlights |
+| [my-anki](https://hectorcflores.github.io/my-anki/) | Spaced repetition over my Kindle highlights (own repo: [my-anki](https://github.com/hectorcflores/my-anki)) |
