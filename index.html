@@ -123,11 +123,12 @@
       <h1>Apps</h1>
       <span id="account"></span>
     </div>
-    <p class="subtitle" id="subtitle">One sign-in covers all three.</p>
+    <p class="subtitle" id="subtitle">One sign-in covers the first three.</p>
     <nav>
       <a class="app-button" href="https://hectorcflores.github.io/my-pomodoro/app/index.html">Pomodoro</a>
       <a class="app-button" href="https://hectorcflores.github.io/my-reading-list/app/index.html">Reading List</a>
       <a class="app-button" href="https://hectorcflores.github.io/my-anki/app/">My Anki</a>
+      <a class="app-button" href="https://hectorcflores.github.io/aura-app/app/">Aura</a>
     </nav>
   </main>
   <script type="module">
@@ -162,10 +163,10 @@
             av.textContent = name.slice(0, 1).toUpperCase();
             btn.append(av, document.createTextNode(name));
             btn.title = `${user.email || "Signed in"} — sign out`;
-            subtitle.textContent = "Signed in — all three apps are in sync.";
+            subtitle.textContent = "Signed in — the first three apps are in sync.";
           } else {
             btn.textContent = "Sign in";
-            subtitle.textContent = "One sign-in covers all three.";
+            subtitle.textContent = "One sign-in covers the first three.";
           }
           btn.addEventListener("click", async () => {
             if (!user) {
